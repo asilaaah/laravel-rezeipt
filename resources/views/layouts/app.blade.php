@@ -23,8 +23,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                   Rezeipt
+                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <div><img src="\png\Logo.png" style="border-right: 1px solid #1b1e21; height: 45px" class="pr-3"/></div>
+                    <div class="pl-3 pt-1 font-weight-bold">Rezeipt</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
