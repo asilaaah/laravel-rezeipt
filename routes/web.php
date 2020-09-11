@@ -19,4 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+Route::get('/manager', 'App\Http\Controllers\ManagerController@index' )->name('manager')->middleware('manager');
+Route::get('/cashier', 'App\Http\Controllers\CashierController@index' )->name('cashier')->middleware('cashier');
+
+//Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
