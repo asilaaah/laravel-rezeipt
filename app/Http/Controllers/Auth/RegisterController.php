@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -29,7 +30,27 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
+
+    public function redirectTo()
+    {
+        switch(Auth::user()->role){
+            case 1:
+                $this->redirectTo =  '/manager';
+                return $this->redirectTo;
+            break;
+
+            case 2:
+                $this->redirectTo = '/cashier';
+                return $this->redirectTo;
+            break;
+
+            default:
+            $this->redirectTo = '/login';
+            return $this->redirectTo;
+        }
+    }
+
 
     /**
      * Create a new controller instance.
@@ -38,7 +59,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware('guest');
     }
 
     /**
@@ -53,6 +74,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required'],
         ]);
     }
 
@@ -68,6 +90,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
         ]);
     }
 }
