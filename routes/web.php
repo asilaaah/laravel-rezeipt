@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('/i', 'App\Http\Controllers\ProductsController@create');
 
 Route::get('/manager', 'App\Http\Controllers\ManagerController@index' )->name('manager')->middleware('manager');
 Route::get('/cashier', 'App\Http\Controllers\CashierController@index' )->name('cashier')->middleware('cashier');

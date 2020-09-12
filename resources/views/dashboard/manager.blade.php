@@ -1,23 +1,17 @@
+
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+    <div class="row">
+        <div class="col-3 border-right">
+            <a href="/i">Manage Inventory</a>
+        </div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    This is Manager's Dashboard
-                </div>
-            </div>
+        <div class="col-9">
+            <div class="h4">{{ auth()->user()->name }}</div>
         </div>
     </div>
+
 </div>
 @endsection
