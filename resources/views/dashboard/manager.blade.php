@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 border-right">
-            <a href="/i">Manage Inventory</a>
+            <a href="/p/create">Manage Inventory</a>
         </div>
 
         <div class="col-9">

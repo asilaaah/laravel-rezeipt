@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/i', 'App\Http\Controllers\ProductsController@create');
+Route::get('/p/create', 'App\Http\Controllers\ProductsController@create');
+Route::post('/p', 'App\Http\Controllers\ProductsController@store');
 
-Route::get('/manager', 'App\Http\Controllers\ManagerController@index' )->name('manager')->middleware('manager');
-Route::get('/cashier', 'App\Http\Controllers\CashierController@index' )->name('cashier')->middleware('cashier');
+Route::get('/manager/{user}', 'App\Http\Controllers\ManagerController@index' )->name('manager')->middleware('manager');
+Route::get('/cashier/{user}', 'App\Http\Controllers\CashierController@index' )->name('cashier')->middleware('cashier');

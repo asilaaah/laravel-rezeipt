@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <form action="#" enctype="multipart/form-data" method="post">
+    <form action="/p" enctype="multipart/form-data" method="post">
         @csrf
         <div class="row">
             <div class="col-8 offset-2">
@@ -50,7 +50,7 @@
                            class="form-control @error('description') is-invalid @enderror"
                            name="description"
                            value="{{ old('description') }}"
-                           required autocomplete="description"
+                           autocomplete="description"
                            autofocus>
 
                     @error('description')
