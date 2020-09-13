@@ -28,8 +28,18 @@ class ProductsController extends Controller
             'image' => 'required|image',
         ]);
 
-        auth()->user()->products()->create($data);
+        $imagePath = request('image')->store('uploads', 'public');
 
-        dd(request()->all());
+        auth()->user()->products()->create([
+            'category' => $data['category'],
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'price' => $data['price'],
+            'quantity' => $data['quantity'],
+            'image' => $imagePath,
+            ]);
+
+        return redirect('/manager/'. auth()-> user()->id);
     }
+
 }
