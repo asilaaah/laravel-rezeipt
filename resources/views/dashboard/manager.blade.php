@@ -3,15 +3,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-3 border-right">
-            <a href="/p/create">Manage Inventory</a>
-        </div>
-
-        <div class="col-9">
-            <div class="h4">{{ auth()->user()->name }}</div>
-        </div>
-    </div>
-
+    <div class="h4">{{ auth()->user()->name }}</div>
+    <a href="/p/index">Manage Inventory</a>
 </div>
 @endsection

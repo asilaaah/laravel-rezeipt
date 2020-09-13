@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/p/index', 'App\Http\Controllers\ProductsController@index');
 Route::get('/p/create', 'App\Http\Controllers\ProductsController@create');
 Route::post('/p', 'App\Http\Controllers\ProductsController@store');
 
