@@ -38,16 +38,20 @@ class ProductsController extends Controller
 
         $imagePath = request('image')->store('uploads', 'public');
 
-        auth()->user()->products()->create([
-            'category' => $data['category'],
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'price' => $data['price'],
-            'quantity' => $data['quantity'],
-            'image' => $imagePath,
-            ]);
+        $imagePath = request('image')->store('uploads', 'public');
 
-        return redirect('/p/index');
+        $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+        $image->save();
+
+        $imageArray = ['image' => $imagePath];
+        
+        auth()->user()->products()->create(array_merge(
+            $data,
+            $imageArray ?? []
+    ));
+
+    return redirect('/p/index');
+
     }
 
     public function edit(Product $product)
@@ -68,7 +72,7 @@ class ProductsController extends Controller
             'image' => 'image',
         ]);
         if (request('image')){
-            $imagePath = request('image')->store('profile', 'public');
+            $imagePath = request('image')->store('uploads', 'public');
 
             $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();

@@ -35,7 +35,7 @@
             <td>{{ $product->category }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->description }}</td>
-            <td>{{ $product->price }}</td>
+            <td>RM {{ number_format($product->price, 2, '.', ',') }}</td>
             <td>{{ $product->quantity }}</td>
             <td>
                 <form action="/p/{{ $product->id }}" method="POST"> 
