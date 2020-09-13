@@ -29,7 +29,7 @@
             <th>Quantity</th>
             <th width="250px">Action</th>
         </tr>
-        @foreach (auth()->user()->products as $product)
+        @foreach ($products as $product)
         <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->category }}</td>
