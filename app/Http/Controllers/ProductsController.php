@@ -82,4 +82,12 @@ class ProductsController extends Controller
 
         return redirect('/p/index');
     }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+  
+        return redirect('/p/index')
+                        ->with('success','Products deleted successfully');
+    }
 }

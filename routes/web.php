@@ -25,6 +25,7 @@ Route::get('/p/create', 'App\Http\Controllers\ProductsController@create');
 Route::post('/p', 'App\Http\Controllers\ProductsController@store');
 Route::get('/p/{product}/edit', 'App\Http\Controllers\ProductsController@edit')->name('product.edit');
 Route::patch('/p/{product}', 'App\Http\Controllers\ProductsController@update')->name('product.update');
+Route::delete('/p/{product}','App\Http\Controllers\ProductsController@destroy')->name('product.delete');
 
 
 Route::get('/manager/{user}', 'App\Http\Controllers\ManagerController@index' )->name('manager')->middleware('manager');

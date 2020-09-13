@@ -38,7 +38,7 @@
             <td>{{ $product->price }}</td>
             <td>{{ $product->quantity }}</td>
             <td>
-                <form action="#" method="POST"> 
+                <form action="/p/{{ $product->id }}" method="POST"> 
                     
                     <a class="btn btn-primary" href="/p/{{ $product->id }}/edit">Edit</a>
    
