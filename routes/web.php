@@ -23,6 +23,9 @@ Auth::routes();
 Route::get('/p/index', 'App\Http\Controllers\ProductsController@index');
 Route::get('/p/create', 'App\Http\Controllers\ProductsController@create');
 Route::post('/p', 'App\Http\Controllers\ProductsController@store');
+Route::get('/p/{product}/edit', 'App\Http\Controllers\ProductsController@edit')->name('product.edit');
+Route::patch('/p/{product}', 'App\Http\Controllers\ProductsController@update')->name('product.update');
+
 
 Route::get('/manager/{user}', 'App\Http\Controllers\ManagerController@index' )->name('manager')->middleware('manager');
 Route::get('/cashier/{user}', 'App\Http\Controllers\CashierController@index' )->name('cashier')->middleware('cashier');

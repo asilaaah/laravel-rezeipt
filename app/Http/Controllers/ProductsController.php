@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -44,7 +46,40 @@ class ProductsController extends Controller
             'image' => $imagePath,
             ]);
 
-        return redirect('/manager/'. auth()-> user()->id);
+        return redirect('/p/index');
     }
 
+    public function edit(Product $product)
+    {
+
+        return view('products.edit', compact('product'));
+    }
+
+    public function update(Product $product, User $user)
+    {
+
+        $data = request()->validate([
+            'category'=> 'required',
+            'name' => 'required',
+            'description' => '',
+            'price' => 'required',
+            'quantity' => 'required',
+            'image' => 'image',
+        ]);
+        if (request('image')){
+            $imagePath = request('image')->store('profile', 'public');
+
+            $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+
+            $imageArray = ['image' => $imagePath];
+        }
+
+        $product->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
+
+        return redirect('/p/index');
+    }
 }

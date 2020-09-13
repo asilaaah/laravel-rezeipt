@@ -42,7 +42,7 @@
    
                    <a class="btn btn-info" href="#">Show</a>
     
-                    <a class="btn btn-primary" href="#">Edit</a>
+                    <a class="btn btn-primary" href="/p/{{ $product->id }}/edit">Edit</a>
    
                     @csrf
                     @method('DELETE')
