@@ -22,15 +22,21 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
+            <th>Category</th>
             <th>Name</th>
+            <th>Description</th>
             <th>Price</th>
+            <th>Quantity</th>
             <th width="250px">Action</th>
         </tr>
         @foreach (auth()->user()->products as $product)
         <tr>
             <td>{{ $product->id }}</td>
+            <td>{{ $product->category }}</td>
             <td>{{ $product->name }}</td>
+            <td>{{ $product->description }}</td>
             <td>{{ $product->price }}</td>
+            <td>{{ $product->quantity }}</td>
             <td>
                 <form action="#" method="POST"> 
    
