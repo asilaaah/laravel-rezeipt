@@ -14,22 +14,6 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="category" class="col-md-4 col-form-label">Category</label>
-
-                    <input id="category"
-                           type="text"
-                           class="form-control @error('category') is-invalid @enderror"
-                           name="category"
-                           value="{{ old('category') ?? $product->category}}"
-                           required autocomplete="category"
-                           autofocus>
-
-                    @error('category')
-                    <strong>{{ $message }}</strong>
-                    @enderror
-                </div>
-
-                <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label">Name</label>
 
                     <input id="name"
