@@ -39,7 +39,7 @@ class ProductsController extends Controller
 
         $imagePath = request('image')->store('products', 'public');
 
-        $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+        $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(900, 900);
 
         $image->save();
 
@@ -75,7 +75,7 @@ class ProductsController extends Controller
         if (request('image')){
             $imagePath = request('image')->store('products', 'public');
 
-            $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(900, 900);
 
             $image->save();
 
