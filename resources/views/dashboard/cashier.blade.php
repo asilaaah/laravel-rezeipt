@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+ 
 @section('content')
 <div class="container">
     <div class="row">
@@ -14,17 +14,23 @@
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif
-
-    <div class="row pt-5">
-        @foreach($products as $product)
+    @endif 
+        <div class="row pt-5">
+ 
+            @foreach($products as $product)
             <div class="col-4 pb-4">
-                    <img src= "/storage/{{ $product->image }}" class="w-100">
-                    <div>{{ $product->name }}</div>
-                    <div>RM {{ number_format($product->price, 2, '.', ',') }}</div>
+                        <img src="/storage/{{ $product->image }}" class="w-100">
+                            <div>{{ $product->name }}</div>
+                            <div>{{ $product->description }}</div>
+                            <div><strong>Price: </strong> RM {{ number_format($product->price, 2, '.', ',') }}</div>
+                            <p class="btn-holder"><a href="#" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                           
             </div>
-        @endforeach
+        
+            @endforeach
+ 
+        </div><!-- End row -->
+ 
     </div>
-   
-</div>   
+</div>
 @endsection
