@@ -16,6 +16,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('products.index', compact('products'));
     }
 
@@ -36,11 +37,10 @@ class ProductsController extends Controller
             'image' => 'required|image',
         ]);
 
-        $imagePath = request('image')->store('uploads', 'public');
-
-        $imagePath = request('image')->store('uploads', 'public');
+        $imagePath = request('image')->store('products', 'public');
 
         $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+
         $image->save();
 
         $imageArray = ['image' => $imagePath];
@@ -71,10 +71,12 @@ class ProductsController extends Controller
             'quantity' => 'required',
             'image' => 'image',
         ]);
+
         if (request('image')){
-            $imagePath = request('image')->store('uploads', 'public');
+            $imagePath = request('image')->store('products', 'public');
 
             $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+
             $image->save();
 
             $imageArray = ['image' => $imagePath];
@@ -92,7 +94,6 @@ class ProductsController extends Controller
     {
         $product->delete();
   
-        return redirect('/p/index')
-                        ->with('success','Products deleted successfully');
+        return redirect('/p/index')->with('success','Products deleted successfully');
     }
 }

@@ -22,9 +22,8 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('quantity');
             $table->float('price',8,2);
-
-            $table->timestamps();
             $table->index('user_id');
+            $table->timestamps();
         });
     }
 

@@ -29,6 +29,7 @@
             <th>Quantity</th>
             <th width="250px">Action</th>
         </tr>
+
         @foreach ($products as $product)
         <tr>
             <td>{{ $product->id }}</td>
@@ -51,5 +52,6 @@
         </tr>
         @endforeach
     </table>
+    
 </div>   
 @endsection

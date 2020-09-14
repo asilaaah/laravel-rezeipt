@@ -11,6 +11,7 @@ class CashierController extends Controller
     public function index()
     {
         $products = Product::all();
+        
         return view('dashboard.cashier', compact('products'));
     }
 }
