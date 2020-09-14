@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,13 +24,15 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        $categories = Category::get();
+
+        return view('products.create', compact('categories'));
     }
 
     public function store()
     {
         $data = request()->validate([
-            'category'=> 'required',
+            'category_id' => '',
             'name' => 'required',
             'description' => '',
             'price' => 'required',
@@ -45,12 +48,13 @@ class ProductsController extends Controller
 
         $imageArray = ['image' => $imagePath];
         
+        
         auth()->user()->products()->create(array_merge(
             $data,
             $imageArray ?? []
-    ));
+        ));
 
-    return redirect('/p/index');
+        return redirect('/p/index');
 
     }
 
@@ -64,7 +68,6 @@ class ProductsController extends Controller
     {
 
         $data = request()->validate([
-            'category'=> 'required',
             'name' => 'required',
             'description' => '',
             'price' => 'required',

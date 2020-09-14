@@ -6,25 +6,26 @@
         @csrf
         <div class="row">
             <div class="col-8 offset-2">
-                <div class="row">
+                
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
+            
+                <div class="row d-flex align-items-center justify-content-between">
                     <h1>Add New Products</h1>
+                    <a href="/category/create">Add New Category</a>
                 </div>
 
-                <div class="form-group row">
-                    <label for="category" class="col-md-4 col-form-label">Category</label>
-
-                    <input id="category"
-                           type="text"
-                           class="form-control @error('category') is-invalid @enderror"
-                           name="category"
-                           value="{{ old('category') }}"
-                           required autocomplete="category"
-                           autofocus>
-
-                    @error('category')
-                            <strong>{{ $message }}</strong>
-                    @enderror
-                </div>
+             <div class="form-group row">
+                 <label for="category_id">Category</label>
+                 <select class="form-control" name="category_id">
+                     @foreach ($categories as $category)
+                        <option value={{ $category->id }}>{{ $category->name}}</option>  
+                     @endforeach
+                 </select>
+            </div>
 
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label">Name</label>

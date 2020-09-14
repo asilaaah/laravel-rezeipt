@@ -33,7 +33,7 @@
         @foreach ($products as $product)
         <tr>
             <td>{{ $product->id }}</td>
-            <td>{{ $product->category }}</td>
+            <td>{{ $product->category->name }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->description }}</td>
             <td>RM {{ number_format($product->price, 2, '.', ',') }}</td>
@@ -52,6 +52,6 @@
         </tr>
         @endforeach
     </table>
-    
+
 </div>   
 @endsection
