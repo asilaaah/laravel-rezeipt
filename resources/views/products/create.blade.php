@@ -15,7 +15,7 @@
             
                 <div class="row d-flex align-items-center justify-content-between">
                     <h1>Add New Products</h1>
-                    <a href="/category/create">Add New Category</a>
+                    <a class="btn btn-success" href="/category/create">Add New Category</a>
                 </div>
 
              <div class="form-group row">
