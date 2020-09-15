@@ -37,7 +37,7 @@ class LoginController extends Controller
             break;
 
             case 2:
-                $this->redirectTo = '/cashier/' . auth()->user()->id;
+                $this->redirectTo = '/cashier';
                 return $this->redirectTo;
             break;
 
