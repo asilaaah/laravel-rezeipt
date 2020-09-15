@@ -9,6 +9,11 @@ use Symfony\Component\Console\Input\Input;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function create()
     {
         return view('category.create');
