@@ -13,7 +13,7 @@ class CashierController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $user = FacadesAuth::user();
         $products = Product::all();
         
 

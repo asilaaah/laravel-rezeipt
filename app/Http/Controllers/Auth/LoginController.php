@@ -5,6 +5,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class LoginController extends Controller
 {
@@ -30,7 +31,7 @@ class LoginController extends Controller
 
     public function redirectTo()
     {
-        switch(Auth::user()->role){
+        switch(FacadesAuth::user()->role){
             case 1:
                 $this->redirectTo =  '/manager/' . auth()->user()->id;
                 return $this->redirectTo;

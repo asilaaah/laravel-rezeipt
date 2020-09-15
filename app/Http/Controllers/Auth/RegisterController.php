@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,7 +35,7 @@ class RegisterController extends Controller
 
     public function redirectTo()
     {
-        switch(Auth::user()->role){
+        switch(FacadesAuth::user()->role){
             case 1:
                 $this->redirectTo =  '/manager/' . auth()->user()->id;
                 return $this->redirectTo;
