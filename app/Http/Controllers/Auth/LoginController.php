@@ -20,6 +20,7 @@ class LoginController extends Controller
     |
     */
 
+
     use AuthenticatesUsers;
 
     /**
@@ -27,7 +28,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo;
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    /*protected $redirectTo;
 
     public function redirectTo()
     {
@@ -46,7 +55,7 @@ class LoginController extends Controller
             $this->redirectTo = '/login';
             return $this->redirectTo;
         }
-    }
+    }*/
 
     /**
      * Create a new controller instance.

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    //tambah comment kit
 
 <div class="container">
     <div class="row justify-content-center">
@@ -9,7 +8,7 @@
             <div class="d-flex justify-content-between">
             <div style="margin-bottom:30px"><h2>Cashier ( {{ $cashier->count() }} )</h2></div>
             <div class="pull-right">
-                <a class="btn btn-success" href="#"> Add new cashier</a>
+                <a class="btn btn-success" href="/register"> Add new cashier</a>
             </div>
             </div>
 
@@ -32,7 +31,7 @@
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->role }}</td>
                         <td class="d-flex">
-                            <div style="padding-right:5px;"><a href="#">Edit</a></div>
+                            <div style="padding-right:5px;"><a href="/c/{{ $data->id }}/edit">Edit</a></div>
                             <div><a href="#">Delete</a></div>
                         </td>
                     </tr>

@@ -11,11 +11,13 @@ class CashierController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index(User $user)
     {
         $cashier = $user->where('role', 2)->get();
-        
+
         return view ('cashiers.index', ['cashier'=>$cashier]);
     }
+
+
 }

@@ -18,6 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/approval', 'App\Http\Controllers\HomeController@approval')->name('approval');
+
+    Route::middleware(['approved'])->group(function () {
+        Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+    });
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/users', 'App\Http\Controllers\UserController@index')->name('admin.users.index');
+        Route::get('/users/{user_id}/approve', 'App\Http\Controllers\UserController@approve')->name('admin.users.approve');
+    });
+});
+
 Auth::routes();
 
 Route::get('/p/index', 'App\Http\Controllers\ProductsController@index');
@@ -31,6 +43,7 @@ Route::get('/category/create', 'App\Http\Controllers\CategoryController@create')
 Route::post('/category', 'App\Http\Controllers\CategoryController@store');
 
 Route::get('/c/index', 'App\Http\Controllers\CashierController@index');
+
 
 Route::get('/manager/{user}', 'App\Http\Controllers\ManagerController@index')->name('manager')->middleware('manager');
 Route::get('/cashier', 'App\Http\Controllers\CartController@index')->name('cart.index')->middleware('cashier');
