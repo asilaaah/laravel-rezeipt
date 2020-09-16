@@ -16,11 +16,20 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d897f2a-10e0-4683-99d0-f771558866c7" name="Default Changelist" comment="try adding a comment">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CashierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CashierController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/cashiers/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cashiers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,8 +176,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600217393767</updated>
-      <workItem from="1600217396075" duration="1529000" />
+      <workItem from="1600217396075" duration="5187000" />
     </task>
+    <task id="LOCAL-00001" summary="try adding a comment">
+      <created>1600219200534</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600219200535</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,26 +207,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="try adding a comment" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1600217871126">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1600222954256">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1600217871126" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1600217871123">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1600222954256" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1600222954255">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1600217871123" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1600217871121">
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1600222954255" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1600222954253">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1600217871121" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1600217871125">
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1600222954253" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1600222954255">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1600217871125" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1600222954255" />
     <state x="141" y="39" key="SettingsEditor" timestamp="1600218069076">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1600218069076" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1600219211378">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1600219211378" />
     <state x="423" y="296" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1600217866487">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

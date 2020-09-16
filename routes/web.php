@@ -31,6 +31,8 @@ Route::get('/category/create', 'App\Http\Controllers\CategoryController@create')
 Route::post('/category', 'App\Http\Controllers\CategoryController@store');
 
 Route::get('/c/index', 'App\Http\Controllers\CashierController@index');
+Route::get('/c/{cashier}/edit', 'App\Http\Controllers\CashierController@edit')->name('cashier.edit');
+Route::patch('/c/{cashier}', 'App\Http\Controllers\CashierController@update')->name('cashier.update');
 
 Route::get('/manager/{user}', 'App\Http\Controllers\ManagerController@index')->name('manager')->middleware('manager');
 Route::get('/cashier', 'App\Http\Controllers\CartController@index')->name('cart.index')->middleware('cashier');
