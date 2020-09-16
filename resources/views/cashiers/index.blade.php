@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    //tambah comment kit
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
@@ -30,11 +32,12 @@
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->role }}</td>
                         <td class="d-flex">
-                            <div style="padding-right:5px;"><a href="#">Edit</div>
-                            <div><a href="#">Delete</div>
+                            <div style="padding-right:5px;"><a href="#">Edit</a></div>
+                            <div><a href="#">Delete</a></div>
                         </td>
                     </tr>
                     @endforeach
+
 
 
                 </tbody>
@@ -42,5 +45,5 @@
         </div>
     </div>
 
-</div>   
+</div>
 @endsection
