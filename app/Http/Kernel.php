@@ -65,5 +65,7 @@ class Kernel extends HttpKernel
 
         'manager' => \App\Http\Middleware\Manager::class,
         'cashier' => \App\Http\Middleware\Cashier::class,
+        'approved' => \App\Http\Middleware\CheckApproved::class,
+        'admin' => \App\Http\Middleware\CheckAdmin::class,
     ];
 }
