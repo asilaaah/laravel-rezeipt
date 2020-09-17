@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'admin' , 'approved_at' ,
+        'name', 'email', 'password', 'admin' , 'approved_at' , 'role'
     ];
 
     /**
@@ -41,5 +41,21 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function isManager()
+    {
+       if ($this->role == 1){
+           return true;
+       }
+        return false;
+    } 
+
+    public function isAdmin()
+    {
+        if ($this->admin == 1){
+            return true;
+        }
+        return false;
     }
 }

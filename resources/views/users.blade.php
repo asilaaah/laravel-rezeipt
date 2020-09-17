@@ -18,6 +18,7 @@
                         <table class="table">
                             <tr>
                                 <th>User name</th>
+                                <th>Role</th>
                                 <th>Email</th>
                                 <th>Registered at</th>
                                 <th></th>
@@ -25,6 +26,11 @@
                             @forelse ($users as $user)
                                 <tr>
                                     <td>{{ $user->name }}</td>
+                                    <td>   @if ($user->isManager())
+                                        Manager
+                                     @else
+                                        Cashier
+                                     @endif</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
                                     <td><a href="{{ route('admin.users.approve', $user->id) }}"
