@@ -6,20 +6,16 @@
     <div class="row justify-content-center">
         <div class="col-md-9">
             <div class="d-flex justify-content-between">
-            <div style="margin-bottom:30px"><h2>Cashier ( {{ $cashier->count() }} )</h2></div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="/register"> Add new cashier</a>
-            </div>
+            <div style="margin-bottom:30px"><h2>List of Cashiers ( {{ $cashier->count() }} )</h2></div>
             </div>
 
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Role</th>
-                    <th scope="col"></th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -29,12 +25,16 @@
                         <td>{{ $data->id }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->email }}</td>
-                        <td>{{ $data->role }}</td>
                         <td class="d-flex">
-                            <div style="padding-right:5px;"><a href="/c/{{ $data->id }}/edit">Edit</a></div>
-                            <div><a href="#">Delete</a></div>
-                        </td>
-                    </tr>
+                            <form action="/c/{{ $data->id }}" method="POST"> 
+                    
+                                <a class="btn btn-primary" href="/c/{{ $data->id }}/edit">Edit</a>
+               
+                                @csrf
+                                @method('DELETE')
+                  
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
+                            </form>
                     @endforeach
 
 
