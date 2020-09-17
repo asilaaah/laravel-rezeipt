@@ -17,7 +17,7 @@
             <nav>
                 <ul class="list-group">
                     @foreach ($categories as $category)
-                    <li class="list-group-item"><a href="{{ route('cart.index', ['category' => $category->name]) }}">{{ $category->name }}</a></li>
+                    <li class="list-group-item"><a href="{{ route('cart.users.index', ['category' => $category->name]) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </nav>
