@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class UserController extends Controller
+class ApprovalController extends Controller
 {
     public function index()
     {
@@ -20,5 +20,10 @@ class UserController extends Controller
         $user->update(['approved_at' => now()]);
 
         return redirect()->route('admin.users.index')->withMessage('User approved successfully');
+    }
+
+    public function approval()
+    {
+        return view('approval');
     }
 }
