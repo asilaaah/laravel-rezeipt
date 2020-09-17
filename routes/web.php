@@ -19,14 +19,19 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/approval', 'App\Http\Controllers\HomeController@approval')->name('approval');
+    Route::get('/approval', 'App\Http\Controllers\ApprovalController@approval')->name('approval');
 
-    Route::middleware(['approved'])->group(function () {
-        Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+    Route::middleware(['approved', 'manager'])->group(function () {
+        Route::get('/manager', 'App\Http\Controllers\ManagerController@index')->name('manager');
     });
+
+    Route::middleware(['approved', 'cashier'])->group(function () {
+        Route::get('/cashier', 'App\Http\Controllers\CartController@index')->name('cart.users.index');
+    });
+
     Route::middleware(['admin'])->group(function () {
-        Route::get('/users', 'App\Http\Controllers\UserController@index')->name('admin.users.index');
-        Route::get('/users/{user_id}/approve', 'App\Http\Controllers\UserController@approve')->name('admin.users.approve');
+        Route::get('/users', 'App\Http\Controllers\ApprovalController@index')->name('admin.users.index');
+        Route::get('/users/{user}/approve', 'App\Http\Controllers\ApprovalController@approve')->name('admin.users.approve');
     });
 });
 
@@ -43,7 +48,8 @@ Route::get('/category/create', 'App\Http\Controllers\CategoryController@create')
 Route::post('/category', 'App\Http\Controllers\CategoryController@store');
 
 Route::get('/c/index', 'App\Http\Controllers\CashierController@index');
+Route::get('/c/{user}/edit', 'App\Http\Controllers\CashierController@edit')->name('cashier.edit');
+Route::patch('/c/{user}', 'App\Http\Controllers\CashierController@update')->name('cashier.update');
+Route::delete('/c/{user}','App\Http\Controllers\CashierController@destroy')->name('cashier.delete');
 
 
-Route::get('/manager/{user}', 'App\Http\Controllers\ManagerController@index')->name('manager')->middleware('manager');
-Route::get('/cashier', 'App\Http\Controllers\CartController@index')->name('cart.index')->middleware('cashier');
