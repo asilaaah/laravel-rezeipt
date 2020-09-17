@@ -12,6 +12,15 @@
             </div>
         </div>
     </div>
+
+    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file" class="form-control mt-3">
+        <div class="mt-3 d-flex justify-content-end">
+        <button class="btn btn-success">Import Excel File</button>
+        <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
+        </div>
+    </form>
    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -19,7 +28,7 @@
         </div>
     @endif
    
-    <table class="table table-bordered">
+    <table class="table table-bordered mt-4">
         <tr>
             <th>No</th>
             <th>Category</th>
@@ -33,7 +42,7 @@
         @foreach ($products as $product)
         <tr>
             <td>{{ $product->id }}</td>
-            <td>{{ $product->category->name }}</td>
+            <td>{{ $product->category->name ?? NULL }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->description }}</td>
             <td>RM {{ number_format($product->price, 2, '.', ',') }}</td>

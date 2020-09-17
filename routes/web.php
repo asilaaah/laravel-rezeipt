@@ -37,6 +37,9 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
+Route::get('/export', 'App\Http\Controllers\ImportExportController@export')->name('export');
+Route::post('/import', 'App\Http\Controllers\ImportExportController@import')->name('import');
+
 Route::get('/p/index', 'App\Http\Controllers\ProductsController@index');
 Route::get('/p/create', 'App\Http\Controllers\ProductsController@create');
 Route::post('/p', 'App\Http\Controllers\ProductsController@store');
@@ -51,5 +54,4 @@ Route::get('/c/index', 'App\Http\Controllers\CashierController@index');
 Route::get('/c/{user}/edit', 'App\Http\Controllers\CashierController@edit')->name('cashier.edit');
 Route::patch('/c/{user}', 'App\Http\Controllers\CashierController@update')->name('cashier.update');
 Route::delete('/c/{user}','App\Http\Controllers\CashierController@destroy')->name('cashier.delete');
-
 
