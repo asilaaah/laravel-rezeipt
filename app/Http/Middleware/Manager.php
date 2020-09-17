@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 use Auth;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
+use PharIo\Manifest\Author;
 
 class Manager
 {
@@ -16,11 +18,11 @@ class Manager
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::check()) {
+        if(!FacadesAuth::check()) {
             return redirect()->route('login');
         }
 
-        if (Auth::user()->role == 1){
+        if (FacadesAuth::user()->role == 1){
             return $next($request);
         }
 
@@ -28,6 +30,6 @@ class Manager
             2 => 'cashier',
         ];
         
-        return redirect(route($destinations[Auth::user()->role]));
+        return redirect(route($destinations[FacadesAuth::user()->role]));
     }
 }

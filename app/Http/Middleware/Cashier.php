@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 use Auth;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class Cashier
 {
@@ -16,11 +17,11 @@ class Cashier
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::check()) {
+        if(!FacadesAuth::check()) {
             return redirect()->route('login');
         }
 
-        if (Auth::user()->role == 2){
+        if (FacadesAuth::user()->role == 2){
             return $next($request);
         }
 
@@ -28,6 +29,6 @@ class Cashier
             1 => 'manager',
         ];
         
-        return redirect(route($destinations[Auth::user()->role]));
+        return redirect(route($destinations[FacadesAuth::user()->role]));
     }
 }
