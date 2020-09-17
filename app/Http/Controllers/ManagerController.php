@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\User;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -9,11 +11,11 @@ class ManagerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('approved');
     }
 
-    public function index()
+    public function index(User $user)
     {
-        return view ('dashboard.manager');
+        return view ('dashboard.manager', compact('user'));
     }
 }
