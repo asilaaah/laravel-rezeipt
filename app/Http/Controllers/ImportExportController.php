@@ -14,7 +14,7 @@ class ImportExportController extends Controller
     {
         Excel::import(new ImportProduct,request()->file('file'));
            
-        return back();
+        return back()->with('success','Products imported successfully');
     }
 
     public function export()
