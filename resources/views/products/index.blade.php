@@ -27,7 +27,7 @@
         <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
         </div>
     </form>
-   
+
     <table class="table table-bordered mt-4">
         <tr>
             <th>No</th>
@@ -48,19 +48,25 @@
             <td>RM {{ number_format($product->price, 2, '.', ',') }}</td>
             <td>{{ $product->quantity }}</td>
             <td>
-                <form action="/p/{{ $product->id }}" method="POST"> 
-                    
+                <form action="/p/{{ $product->id }}" method="POST">
+
                     <a class="btn btn-primary" href="/p/{{ $product->id }}/edit">Edit</a>
-   
+
                     @csrf
                     @method('DELETE')
-      
+
                     <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>
         @endforeach
     </table>
-
-</div>   
+    <div class="form-group row mb-0">
+        <div class="col-md-6 offset-md-5">
+            <p class="btn-holder">
+                <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>
+            </p>
+        </div>
+    </div>
+</div>
 @endsection
