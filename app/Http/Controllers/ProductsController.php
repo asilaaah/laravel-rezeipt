@@ -57,7 +57,7 @@ class ProductsController extends Controller
             $imageArray ?? []
         ));
 
-        return redirect('/p/index');
+        return redirect('/p/index')->with('success','Products added successfully');
 
     }
 
@@ -93,7 +93,7 @@ class ProductsController extends Controller
             $imageArray ?? []
         ));
 
-        return redirect('/p/index');
+        return redirect('/p/index')->with('success','Products updated successfully');
     }
 
     public function destroy(Product $product)

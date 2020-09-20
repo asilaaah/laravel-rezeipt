@@ -13,6 +13,12 @@
         </div>
     </div>
 
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
+    </div>
+@endif
+
     <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="file" class="form-control mt-3">
@@ -21,12 +27,6 @@
         <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
         </div>
     </form>
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
 
     <table class="table table-bordered mt-4">
         <tr>
