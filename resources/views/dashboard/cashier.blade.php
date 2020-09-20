@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="justify-content-between d-flex pb-5">
+    <div class="justify-content-between d-flex pb-3">
         <div><h2>{{auth()->user()->name}} 's dashboard</h2></div>
         <div class="pr-5"><h2><a href="{{ route('product.cart') }}">
                     Cart
@@ -35,11 +35,28 @@
             <div class="row">
                 @forelse($products as $product)
                     <div class="col-3 pb-4">
+                        <form method="POST" action="{{ route('product.addToCart', ['id' => $product->id]) }}" enctype="multipart/form-data">
+                            @csrf
                         <img src="/storage/{{ $product->image }}" class="w-100">
-                        <div style="text-align: center;"><strong>{{ $product->name }}</strong></div>
-                        <div style="text-align: center;">{{ $product->description }}</div>
-                        <div style="text-align: center;"><strong>Price: </strong> RM {{ number_format($product->price, 2, '.', ',') }}</div>
-                        <p class="btn-holder"><a href="{{ route('product.addToCart', ['id' => $product->id]) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                        <div class="text-center"><strong>{{ $product->name }}</strong></div>
+                        <div class="text-center">{{ $product->description }}</div>
+                        <div class="text-center"><strong>Price: </strong> RM {{ number_format($product->price, 2, '.', ',') }}</div>
+                        <div align="center" class="pb-2">
+                        <select name="qty" id="qty" class="mr-2">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        </div>
+                        <button class="btn btn-warning btn-block text-center">Add to cart</button>
+                        </form>
                     </div>
                 @empty
                     <div>No items found</div>

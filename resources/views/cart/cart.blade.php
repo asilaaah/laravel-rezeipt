@@ -42,7 +42,7 @@
                     </table>
                     <h3><strong>Total Price : RM {{ number_format( $totalPrice , 2, '.', ',') }} </strong></h3>
                     <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4 d-flex">
+                        <div class="col-12 d-flex justify-content-between">
                             <p class="btn-holder pr-1">
                                 <a href="/cashier" class="btn btn-primary text-center" role="button">Back</a>
                             </p>
@@ -53,7 +53,7 @@
                     </div>
 
                 @else
-                    <h3>No Items Cart.</h3>
+                    <h3>No items in cart.</h3>
                 @endif
                 </div>
             </div>

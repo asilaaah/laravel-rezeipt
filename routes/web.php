@@ -55,5 +55,5 @@ Route::get('/c/{user}/edit', 'App\Http\Controllers\CashierController@edit')->nam
 Route::patch('/c/{user}', 'App\Http\Controllers\CashierController@update')->name('cashier.update');
 Route::delete('/c/{user}','App\Http\Controllers\CashierController@destroy')->name('cashier.delete');
 
-Route::get('/add-to-cart/{id}', 'App\Http\Controllers\ProductsController@getAddToCart')->name('product.addToCart');
+Route::post('/add-to-cart/{id}', 'App\Http\Controllers\ProductsController@getAddToCart')->name('product.addToCart');
 Route::get('/cart', 'App\Http\Controllers\ProductsController@getCart')->name('product.cart');

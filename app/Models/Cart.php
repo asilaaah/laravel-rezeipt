@@ -17,7 +17,7 @@ class Cart
         }
     }
 
-    public function add($item, $id)
+    public function add($item, $id, $quantity = 1)
     {
         $storedItem = ['qty' => 0, 'price' => $item->price, 'item' => $item];
 
@@ -27,11 +27,11 @@ class Cart
             }
         }
 
-        $storedItem['qty']++;
+        $storedItem['qty'] += $quantity;
         $storedItem['price'] = $item->price * $storedItem['qty'];
 
         $this->items[$id] = $storedItem;
-        $this->totalQty++;
-        $this->totalPrice += $item->price;
+        $this->totalQty += $quantity;
+        $this->totalPrice += $item->price * $storedItem['qty'];;
     }
 }
