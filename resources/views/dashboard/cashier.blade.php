@@ -4,7 +4,7 @@
 <div class="container">
     <div class="justify-content-between d-flex pb-3">
         <div><h2>{{auth()->user()->name}} 's dashboard</h2></div>
-        <div class="pr-5"><h2><a href="{{ route('product.cart') }}">
+        <div class="pr-5"><h2><a href="{{ route('cart.cart') }}">
                     Cart
                     <span class="badge badge-pill badge-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                 </a></h2></div>
@@ -35,7 +35,7 @@
             <div class="row">
                 @forelse($products as $product)
                     <div class="col-3 pb-4">
-                        <form method="POST" action="{{ route('product.addToCart', ['id' => $product->id]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('cart.addToCart', ['id' => $product->id]) }}" enctype="multipart/form-data">
                             @csrf
                         <img src="/storage/{{ $product->image }}" class="w-100">
                         <div class="text-center"><strong>{{ $product->name }}</strong></div>

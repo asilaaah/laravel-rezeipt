@@ -102,30 +102,4 @@ class ProductsController extends Controller
 
         return redirect('/p/index')->with('success','Products deleted successfully');
     }
-
-    public function getAddToCart(Request $request, $id)
-    {
-        $qty = $request->get('qty');
-        $product = Product::find($id);
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-
-        $cart = new Cart($oldCart);
-        $cart->add($product, $product->id, $qty);
-
-        $request->session()->put('cart', $cart);
-
-        return redirect("/cashier");
-    }
-
-    public function getCart()
-    {
-        if (!Session::has('cart')) {
-            return view('cart.cart');
-        }
-
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
-
-        return view('cart.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
-    }
 }
