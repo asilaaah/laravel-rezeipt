@@ -4,14 +4,14 @@
     width: 300px;
     height: 300px;
     padding-left:3px;
-    filter: grayscale(1) brightness(0.5);
+    filter: grayscale(0);
     border-radius: 20px;
     cursor: pointer;
     transition: 0.2s linear;
 }
 
 .imagecenter img:hover {
-    filter: grayscale(0);
+    filter: grayscale(1) brightness(0.5);
 }
 
 @media screen and (max-width: 800px) {

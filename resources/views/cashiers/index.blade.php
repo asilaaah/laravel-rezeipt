@@ -5,8 +5,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <div class="d-flex justify-content-between">
-            <div style="margin-bottom:30px"><h2>List of Cashiers ( {{ $cashier->count() }} )</h2></div>
+            <div class="d-flex justify-content-between mb-3">
+            <h2>List of Cashiers</h2>
             </div>
 
             <table class="table table-striped table-hover">
@@ -42,7 +42,14 @@
                 </tbody>
             </table>
         </div>
+      
     </div>
-
+    <div class="form-group row">
+        <div class="col-md-6 offset-md-5">
+            <p class="btn-holder">
+                <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>
+            </p>
+        </div>
+    </div>
 </div>
 @endsection

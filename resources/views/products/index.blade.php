@@ -28,7 +28,7 @@
         </div>
     </form>
 
-    <table class="table table-bordered mt-4">
+    <table class="table mt-4">
         <tr>
             <th>No</th>
             <th>Category</th>
@@ -61,7 +61,7 @@
         </tr>
         @endforeach
     </table>
-    <div class="form-group row mb-0">
+    <div class="form-group row">
         <div class="col-md-6 offset-md-5">
             <p class="btn-holder">
                 <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>

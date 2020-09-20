@@ -4,10 +4,11 @@
 <div class="container">
     <div class="justify-content-between d-flex pb-3">
         <div><h2>{{auth()->user()->name}} 's dashboard</h2></div>
-        <div class="pr-5"><h2><a href="{{ route('cart.cart') }}">
-                    Cart
+        <div class="pr-5">
+            <h3><a href="{{ route('cart.cart') }}">
+            Cart
                     <span class="badge badge-pill badge-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
-                </a></h2></div>
+                </a></h3></div>
     </div>
     <div class="row pt-3">
 
