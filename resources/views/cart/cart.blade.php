@@ -52,7 +52,7 @@
                     <div class="form-group row mb-0 d-flex justify-content-between">
                     <h3><strong>Total Price : RM {{ number_format( $totalPrice , 2, '.', ',') }} </strong></h3>
                             <p class="btn-holder pl-1">
-                                <a href="#" class="btn btn-primary text-center" role="button">Generate QR Code</a>
+                                <a href="{{ route('cart.qrcode') }}" class="btn btn-primary text-center" role="button">Generate QR Code</a>
                             </p>
                     </div>
 
