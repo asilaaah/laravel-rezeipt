@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sales;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -86,5 +87,21 @@ class CartController extends Controller
         }
 
         return redirect()->route('cart.cart');
+    }
+
+    public function generateQRCode()
+    {
+        //insert function to generate qr code and save sales order
+
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        
+        $sales = new Sales();
+        $sales->cart = serialize($cart);
+        FacadesAuth::user()->sales()->save($sales);
+            
+        
+        Session::forget('cart');
+        return view('cart.qrcode');
     }
 }

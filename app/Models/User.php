@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany(Product::class);
     }
 
+    public function sales()
+    {
+        return $this->hasMany(Sales::class);
+    }
+
     public function isManager()
     {
        if ($this->role == 1){
