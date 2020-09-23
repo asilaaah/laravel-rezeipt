@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Session;
+use App\Events\ProductReachedMinimumQuantity;
 
 class CartController extends Controller
 {
@@ -48,6 +49,7 @@ class CartController extends Controller
 
         return redirect("/cashier");
     }
+
 
     public function cart()
     {
@@ -99,8 +101,14 @@ class CartController extends Controller
         $sales = new Sales();
         $sales->cart = serialize($cart);
         FacadesAuth::user()->sales()->save($sales);
-            
-        
+
+        $product = Product::select("quantity", "minimum_quantity")->first();
+        $user = User::all();
+
+        if ($product->quantity <= $product->minimum_quantity) {
+            event(new ProductReachedMinimumQuantity($user, $product));
+        }
+
         Session::forget('cart');
         return view('cart.qrcode');
     }
