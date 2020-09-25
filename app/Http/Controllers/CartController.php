@@ -12,26 +12,28 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Session;
 
+use Barryvdh\DomPDF\Facade as PDF;
+
 class CartController extends Controller
 {
     public function index()
     {
         $user = FacadesAuth::user();
         $products = Product::all();
-        
 
-        if (request()->category) 
+
+        if (request()->category)
         {
             $products = Product::with('category')->whereHas('category', function ($query) {
                 $query->where('name', request()->category);
             })->get();
             $categories = Category::all();
-        } 
+        }
         else {
             $products = Product::all();
             $categories = Category::all();
         }
-        
+
         return view('dashboard.cashier', compact('products', 'user', 'categories'));
     }
 
@@ -95,13 +97,31 @@ class CartController extends Controller
 
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        
+
         $sales = new Sales();
         $sales->cart = serialize($cart);
         FacadesAuth::user()->sales()->save($sales);
-            
-        
+
         Session::forget('cart');
         return view('cart.qrcode');
     }
+
+    public function getReceipt()
+    {
+        $receipt = FacadesAuth::user()->sales;
+        $receipt->transform(function ($sales, $key) {
+            $sales->cart = unserialize($sales->cart);
+            return $sales;
+        });
+
+        $newreceipt = $receipt->sortByDesc('created_at')->first();
+
+        /*return view('cart.receipt', compact('newreceipt'));*/
+        $pdf = PDF::loadView('cart.receipt', compact('newreceipt'));
+        return $pdf->stream();
+    }
+
+    
+
+
 }
