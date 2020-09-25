@@ -104,8 +104,7 @@ class CartController extends Controller
         $sales->cart = serialize($cart);
         FacadesAuth::user()->sales()->save($sales);
 
-<<<<<<< HEAD
-=======
+
         $product = Product::select("quantity", "minimum_quantity")->first();
         $user = User::all();
 
@@ -113,7 +112,6 @@ class CartController extends Controller
             event(new ProductReachedMinimumQuantity($user, $product));
         }
 
->>>>>>> 98c5a0c144552cb81af9c32a28574dd9dd0a622e
         Session::forget('cart');
         return view('cart.qrcode');
     }
