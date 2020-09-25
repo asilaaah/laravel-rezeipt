@@ -41,6 +41,7 @@ class ProductsController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'image' => 'required|image',
+            'minimum_quantity'=>'',
         ]);
 
         $imagePath = request('image')->store('products', 'public');
@@ -76,6 +77,7 @@ class ProductsController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'image' => 'image',
+            'minimum_quantity'=>'',
         ]);
 
         if (request('image')){

@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->text('description')->nullable();
             $table->integer('quantity');
             $table->float('price',8,2);
+            $table->integer('minimum_quantity')->default(10);
             $table->unsignedBigInteger('category_id');
             $table->index('user_id');
             $table->index('category_id');

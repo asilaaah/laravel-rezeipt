@@ -11,6 +11,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Session;
+use App\Events\ProductReachedMinimumQuantity;
 
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -50,6 +51,7 @@ class CartController extends Controller
 
         return redirect("/cashier");
     }
+
 
     public function cart()
     {
@@ -102,6 +104,16 @@ class CartController extends Controller
         $sales->cart = serialize($cart);
         FacadesAuth::user()->sales()->save($sales);
 
+<<<<<<< HEAD
+=======
+        $product = Product::select("quantity", "minimum_quantity")->first();
+        $user = User::all();
+
+        if ($product->quantity <= $product->minimum_quantity) {
+            event(new ProductReachedMinimumQuantity($user, $product));
+        }
+
+>>>>>>> 98c5a0c144552cb81af9c32a28574dd9dd0a622e
         Session::forget('cart');
         return view('cart.qrcode');
     }

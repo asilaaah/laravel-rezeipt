@@ -91,6 +91,22 @@
                     @enderror
                 </div>
 
+                <div class="form-group row">
+                    <label for="minimum_quantity" class="col-md-4 col-form-label">Minimum Quantity</label>
+
+                    <input id="minimum_quantity"
+                           type="text"
+                           class="form-control @error('minimum_quantity') is-invalid @enderror"
+                           name="minimum_quantity"
+                           value="{{ old('minimum_quantity') }}"
+                           required autocomplete="quantity"
+                           autofocus>
+
+                    @error('minimum_quantity')
+                            <strong>{{ $message }}</strong>
+                    @enderror
+                </div>
+
                 <div class="row">
                     <label for="image" class="col-md-4 col-form-label">Post Image</label>
 
