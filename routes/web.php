@@ -61,3 +61,5 @@ Route::get('/reduce/{id}', 'App\Http\Controllers\CartController@reduceByOne')->n
 Route::get('/remove/{id}', 'App\Http\Controllers\CartController@removeItem')->name('cart.remove');
 
 Route::get('/qrcode', 'App\Http\Controllers\CartController@generateQRCode')->name('cart.qrcode');
+
+Route::get('/receipt', 'App\Http\Controllers\CartController@getReceipt')->name('cart.receipt');

@@ -47,6 +47,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sales::class);
     }
+    
 
     public function isManager()
     {
@@ -54,7 +55,7 @@ class User extends Authenticatable
            return true;
        }
         return false;
-    } 
+    }
 
     public function isAdmin()
     {
