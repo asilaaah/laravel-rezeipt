@@ -34,6 +34,8 @@ class LowStockEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email.lowstock');
+        return $this->markdown('email.lowstock')
+        ->with(['product' , $this->product])
+        ->with(['user', $this->user]);
     }
 }

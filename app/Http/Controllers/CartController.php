@@ -105,12 +105,16 @@ class CartController extends Controller
         FacadesAuth::user()->sales()->save($sales);
 
 
-        $product = Product::select("quantity", "minimum_quantity")->first();
-        $user = User::all();
+        $products = Product::all();
+        $user = FacadesAuth::user();
+
+        foreach ($products as $product) {
 
         if ($product->quantity <= $product->minimum_quantity) {
             event(new ProductReachedMinimumQuantity($user, $product));
         }
+    };
+
 
         Session::forget('cart');
         return view('cart.qrcode');
