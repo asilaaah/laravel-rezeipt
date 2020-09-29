@@ -11,7 +11,7 @@
                 <h2>Your cart</h2>
 
                 <p class="btn-holder pr-1">
-                    <a href="/cashier" class="btn btn-primary text-center" role="button">Back</a>
+                    <a href="/product-list" class="btn btn-primary text-center" role="button">Back</a>
                 </p>
 
                 </div>

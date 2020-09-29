@@ -12,8 +12,13 @@
 
     <div class="d-flex justify-content-center" style="padding-top:10%">
         <div class="imagecenter">
-            <a href="/product-list">
-                <img alt="cart" src="\png\cartlogo.jpg">
+            <a href="/users">
+                <img alt="approve" src="\png\approvelogo.jpg">
+            </a>
+        </div>
+        <div>
+            <a class="imagecenter" href="#">
+                <img alt="store" src="\png\storelogo.jpg">
             </a>
         </div>
 

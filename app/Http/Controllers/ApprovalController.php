@@ -9,6 +9,11 @@ class ApprovalController extends Controller
 {
     public function index()
     {
+        return view('dashboard.admin');
+    }
+
+    public function approveList()
+    {
         $users = User::whereNull('approved_at')->get();
 
         return view('users', compact('users'));

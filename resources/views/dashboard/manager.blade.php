@@ -22,6 +22,13 @@
             </a>
         </div>
 
+        <div>
+            <a class="imagecenter" href="#">
+                <img alt="profile" src="\png\profilelogo.jpg">
+            </a>
+        </div>
+        
+
     </div>
 
 

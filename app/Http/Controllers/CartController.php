@@ -19,6 +19,11 @@ class CartController extends Controller
 {
     public function index()
     {
+        return view ('dashboard.cashier');
+    }
+
+    public function productList()
+    {
         $user = FacadesAuth::user();
         $products = Product::all();
 
@@ -35,7 +40,7 @@ class CartController extends Controller
             $categories = Category::all();
         }
 
-        return view('dashboard.cashier', compact('products', 'user', 'categories'));
+        return view('cart.product-list', compact('products', 'user', 'categories'));
     }
 
     public function addToCart(Request $request, $id)
@@ -49,7 +54,7 @@ class CartController extends Controller
 
         $request->session()->put('cart', $cart);
 
-        return redirect("/cashier");
+        return redirect("/product-list");
     }
 
 
