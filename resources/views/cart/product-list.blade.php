@@ -42,7 +42,7 @@
                     <div class="col-3 pb-4">
                         <form method="POST" action="{{ route('cart.addToCart', ['id' => $product->id]) }}" enctype="multipart/form-data">
                             @csrf
-                        <img src="/storage/{{ $product->image }}" class="w-100">
+                        <img src="{{ $product->productImage() }}" class="w-100">
                         <div class="text-center"><strong>{{ $product->name }}</strong></div>
                         <div class="text-center">{{ $product->description }}</div>
                         <div class="text-center"><strong>Price: </strong> RM {{ number_format($product->price, 2, '.', ',') }}</div>

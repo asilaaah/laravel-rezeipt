@@ -40,17 +40,19 @@ class ProductsController extends Controller
             'description' => '',
             'price' => 'required',
             'quantity' => 'required',
-            'image' => 'required|image',
+            'image' => 'image',
             'minimum_quantity'=>'',
         ]);
 
-        $imagePath = request('image')->store('products', 'public');
+        if (request('image')) {
+            $imagePath = request('image')->store('products', 'public');
 
-        $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(900, 900);
+            $image = \Intervention\Image\Facades\Image::make(public_path("storage/{$imagePath}"))->fit(900, 900);
 
-        $image->save();
+            $image->save();
 
-        $imageArray = ['image' => $imagePath];
+            $imageArray = ['image' => $imagePath];
+        }
 
 
         auth()->user()->products()->create(array_merge(

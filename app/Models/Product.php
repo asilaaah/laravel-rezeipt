@@ -24,4 +24,10 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function productImage()
+    {
+        $imagePath = ($this->image) ? $this->image : 'products/0eFfhuTN7hncGhomYTebWGIcJiK63ZDKMRzKf2a9.png';
+        return '/storage/' . $imagePath;
+    }
 }
