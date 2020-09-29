@@ -26,4 +26,13 @@ class ImportProduct implements ToModel
             'category_id' => Category::where('name', $row[4])->first()->id,
         ]);
     }
+
+    public function rules(): array
+    {
+        return [
+            '0' => 'unique:products,name',
+            '0' => function($attribute, $value, $onFailure) {
+                $onFailure('The'. $value .'is already exists');
+        }];
+    }
 }

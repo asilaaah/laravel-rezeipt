@@ -10,11 +10,19 @@ use Maatwebsite\Excel\Facades\Excel;
 class ImportExportController extends Controller
 {
 
-    public function import() 
+    public function import(Request $request) 
     {
-        Excel::import(new ImportProduct,request()->file('file'));
-           
-        return back()->with('success','Products imported successfully');
+        $extensions = array("xls","xlsx","xlm","xla","xlc","xlt","xlw");
+
+        $result = array($request->file('file')->getClientOriginalExtension());
+
+        if(in_array($result[0],$extensions)){
+            Excel::import(new ImportProduct,$request->file('file'));
+            return back()->with('success','Products imported successfully');
+        }else{
+            return back()->with('error','The selected file is not of the required type');
+        }
+        
     }
 
     public function export()
