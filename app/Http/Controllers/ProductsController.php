@@ -14,7 +14,7 @@ class ProductsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('approved');
+        $this->middleware('manager');
     }
 
     public function index()

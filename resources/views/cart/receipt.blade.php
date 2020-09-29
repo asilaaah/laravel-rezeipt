@@ -49,7 +49,8 @@
                 <th>Price (RM)</th>
                 <th>Subtotal (RM)</th>
             </tr>
-                @foreach($newreceipt->cart->items as $item)
+
+                @foreach((array) $newreceipt->cart->items as $item)
                         <tr>
                             <td>{{ $item['item']['name'] }}</td>
                             <td>{{ $item['item']['description'] }}</td>
@@ -59,6 +60,7 @@
                         </tr>
 
                 @endforeach
+        
             <tr>
                 <td colspan="4" style="text-align: right;">Total Price (RM)</td>
                 <td>{{ number_format( $newreceipt->cart->totalPrice , 2, '.', ',') }}</td>
