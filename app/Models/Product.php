@@ -27,6 +27,9 @@ class Product extends Model
 
     public function productImage()
     {
+        // add new product then upload the "no image" image first
+        // go to product-list, copy paste the image path of  the "no image" image to here
+        
         $imagePath = ($this->image) ? $this->image : 'products/0eFfhuTN7hncGhomYTebWGIcJiK63ZDKMRzKf2a9.png';
         return '/storage/' . $imagePath;
     }
