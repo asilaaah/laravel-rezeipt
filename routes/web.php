@@ -42,6 +42,10 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/c/{user}', 'App\Http\Controllers\CashierController@update')->name('cashier.update');
         Route::delete('/c/{user}','App\Http\Controllers\CashierController@destroy')->name('cashier.delete');
 
+        Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
+        Route::get('/profile/{user}/edit', 'App\Http\Controllers\ProfileController@edit');
+        Route::patch('/profile/{user}', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+
     });
 
     Route::middleware(['approved', 'cashier'])->group(function () {
