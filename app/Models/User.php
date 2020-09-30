@@ -47,6 +47,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sales::class);
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
     
 
     public function isManager()
