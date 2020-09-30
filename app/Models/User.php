@@ -48,7 +48,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Sales::class);
     }
-    
+
 
     public function isManager()
     {
@@ -65,7 +65,7 @@ class User extends Authenticatable
         }
         return false;
     }
-    
+
     public function store()
     {
         return $this->belongsTo(Store::class);
