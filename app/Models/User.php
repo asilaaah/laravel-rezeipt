@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Session\Store;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'admin' , 'approved_at' , 'role'
+        'name', 'email', 'password', 'admin' , 'approved_at' , 'role', 'store_id'
     ];
 
     /**
@@ -63,5 +64,10 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+    
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
     }
 }
