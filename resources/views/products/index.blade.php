@@ -17,11 +17,17 @@
     <div class="alert alert-success">
         <p>{{ $message }}</p>
     </div>
-@endif
+    @endif
+
+    @if ($message = Session::get('error'))
+    <div class="alert alert-danger">
+        <p>{{ $message }}</p>
+    </div>
+    @endif
 
     <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="file" class="form-control mt-3">
+        <input type="file" name="file" class="form-control mt-3" required>
         <div class="mt-3 d-flex justify-content-end">
         <button class="btn btn-success">Import Excel File</button>
         <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
