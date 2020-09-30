@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
+            $table->string('name');
             $table->text('cart');
         });
     }
