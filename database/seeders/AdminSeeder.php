@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -25,5 +26,7 @@ class AdminSeeder extends Seeder
             'admin' => 1,
             'approved_at' => now(),
         ]);
+
+        Profile::create(['user_id' => '0']);
     }
 }
