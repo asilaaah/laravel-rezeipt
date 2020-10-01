@@ -12,11 +12,17 @@ class Profile extends Model
     protected $table = 'profiles';
 
     protected $fillable = [
-        'address', 'phone_number', 'birthday', 'profile_photo'
+        'address', 'phone_number', 'birthday', 'profile_photo', 'user_id'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function profileImage()
+    {
+        $imagePath = ($this->profile_photo) ? $this->profile_photo : 'profile/No-Photo-Available.jpg';
+        return '/storage/' . $imagePath;
     }
 }
