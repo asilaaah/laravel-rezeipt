@@ -17,7 +17,7 @@
             </a>
         </div>
         <div>
-            <a class="imagecenter" href="#">
+            <a class="imagecenter" href="/store/index">
                 <img alt="store" src="\png\storelogo.jpg">
             </a>
         </div>

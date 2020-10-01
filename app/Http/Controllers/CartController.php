@@ -107,6 +107,7 @@ class CartController extends Controller
 
         $sales = new Sales();
         $sales->cart = serialize($cart);
+        $sales->name = FacadesAuth::user()->name;
         FacadesAuth::user()->sales()->save($sales);
 
 

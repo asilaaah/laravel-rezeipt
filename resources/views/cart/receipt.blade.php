@@ -1,6 +1,7 @@
 
 <html>
 <head>
+
     <style>
         table, th, td {
             border: 1px solid black;
@@ -15,8 +16,8 @@
             margin-right: auto;
         }
         .flex-item  {
-            justify-content: space-between;
             display: flex;
+            justify-content: space-between;
         }
 
     </style>
@@ -34,6 +35,7 @@
         <div>
             <div>TYPE : CASH</div>
             <div>#{{ $newreceipt->id }}</div>
+            <div>CASHIER : {{ $newreceipt->name }}</div>
         </div>
         <div>
             <div>DATE : {{ $newreceipt->created_at->format('d/m/Y') }}</div>
@@ -60,7 +62,7 @@
                         </tr>
 
                 @endforeach
-        
+
             <tr>
                 <td colspan="4" style="text-align: right;">Total Price (RM)</td>
                 <td>{{ number_format( $newreceipt->cart->totalPrice , 2, '.', ',') }}</td>

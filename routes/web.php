@@ -61,6 +61,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin','App\Http\Controllers\ApprovalController@index');
         Route::get('/users', 'App\Http\Controllers\ApprovalController@approveList')->name('admin.users.index');
         Route::get('/users/{user}/approve', 'App\Http\Controllers\ApprovalController@approve')->name('admin.users.approve');
+        Route::get('/store/index','App\Http\Controllers\StoreController@index');
+        Route::get('/store/create','App\Http\Controllers\StoreController@create');
+        Route::post('/store', 'App\Http\Controllers\StoreController@store');
+        Route::get('/store/{store}/edit', 'App\Http\Controllers\StoreController@edit')->name('store.edit');
+        Route::patch('/store/{store}', 'App\Http\Controllers\StoreController@update')->name('store.update');
     });
 });
 
