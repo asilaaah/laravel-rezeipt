@@ -23,7 +23,7 @@
         </div>
 
         <div>
-            <a class="imagecenter" href="#">
+            <a class="imagecenter" href="/profile">
                 <img alt="profile" src="\png\profilelogo.jpg">
             </a>
         </div>
