@@ -57,6 +57,7 @@
                                 name="phone_number"
                                 value="{{ old('name') ?? $user->name }}"
                                 autocomplete="name"
+                                required
                                 autofocus>
 
                             @error('phone_number')
@@ -71,6 +72,25 @@
                     </div>
 
                     <div class="card-body">
+                        <div class="form-group row pt-3">
+                            <label class="col-sm-4 col-form-label text-sm-right">Email
+                            <small class="text-danger font-italic">(Required)</small></label>
+                            <div class="col-sm-8">
+                            <input id="email"
+                                type="text"
+                                class="form-control @error('email') is-invalid @enderror"
+                                name="email"
+                                value="{{ old('email') ?? $user->email }}"
+                                autocomplete="email"
+                                required
+                                autofocus>
+
+                            @error('email')
+                            <strong>{{ $message }}</strong>
+                            @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row pt-3">
                             <label class="col-sm-4 col-form-label text-sm-right">Phone Number</label>
                             <div class="col-sm-8">
@@ -88,22 +108,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row pt-3">
-                            <label class="col-sm-4 col-form-label text-sm-right">Email</label>
-                            <div class="col-sm-8">
-                            <input id="email"
-                                type="text"
-                                class="form-control @error('email') is-invalid @enderror"
-                                name="email"
-                                value="{{ old('email') ?? $user->email }}"
-                                autocomplete="email"
-                                autofocus>
-
-                            @error('email')
-                            <strong>{{ $message }}</strong>
-                            @enderror
-                            </div>
-                        </div>
                     </div>
 
                     <div class="card-header border-top">
