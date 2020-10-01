@@ -70,3 +70,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Auth::routes();
+
+Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
+Route::get('/profile/{user}/edit', 'App\Http\Controllers\ProfileController@edit');
+Route::patch('/profile/{user}', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
