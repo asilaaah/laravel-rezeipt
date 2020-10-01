@@ -47,6 +47,9 @@ class CartController extends Controller
     {
         $qty = $request->get('qty');
         $product = Product::find($id);
+        $quantity = $product->quantity;
+
+        if(($quantity - $qty) >= 0){
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
 
         $cart = new Cart($oldCart);
@@ -55,6 +58,10 @@ class CartController extends Controller
         $request->session()->put('cart', $cart);
 
         return redirect("/product-list");
+        }
+        else {
+            return redirect('/product-list')->with('error', 'Item is not enough.' );
+        }
     }
 
 

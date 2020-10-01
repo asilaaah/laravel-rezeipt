@@ -2,19 +2,27 @@
 
 @section('content')
 <div class="container">
+    <div class="col-lg-12 margin-tb">
+        @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>	
+        <strong>{{ $message }}</strong>
+        </div>
+        @endif
+    </div>
+
     <div class="justify-content-between d-flex pb-3">
         <div><h2>{{auth()->user()->name}} 's dashboard</h2></div>
         <div class="pr-5">
-            <h3><a href="{{ route('cart.cart') }}">
-            Cart
-                    <span class="badge badge-pill badge-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
-                </a></h3></div>
+            <h3><a href="{{ route('cart.cart') }}">Cart
+            <span class="badge badge-pill badge-primary">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+            </a></h3>
+        </div>
     </div>
-    <div class="row pt-3">
 
+    <div class="row pt-3">
         <div class="col-2">
             <div class="col-lg-12 margin-tb">
-
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
                     <p>{{ $message }}</p>
