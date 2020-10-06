@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Sales;
 use App\Models\User;
+use App\Models\Store;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -142,13 +143,14 @@ class CartController extends Controller
         });
 
         $newreceipt = $receipt->sortByDesc('created_at')->first();
+        $store = Store::all()->first();
 
         /*return view('cart.receipt', compact('newreceipt'));*/
-        $pdf = PDF::loadView('cart.receipt', compact('newreceipt'));
+        $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store'));
         return $pdf->stream();
     }
 
-    
+
 
 
 }

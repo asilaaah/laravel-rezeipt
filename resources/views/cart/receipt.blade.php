@@ -26,14 +26,13 @@
 <body>
 
 <div style="text-align: center">
-    <div><h2><strong>XEN LIT TRADING</strong></h2></div>
-    <div>POS 132 A PEKAN BARU, 83610 PARIT YUSOF, <br>
-                MUAR, JOHOR.</div>
-    <div>07-416xxxx</div>
-    <div><h3>SALES RECEIPT</h3></div>
+    <div><h3><strong>{{ $store->name }}</strong></h3></div>
+    <div>{{ $store->address }}</div>
+    <div>{{ $store->phone_num }}</div>
+    <div><h4>SALES RECEIPT</h4></div>
     <div>
         <div>
-            <div>TYPE : CASH</div>
+            <div>TYPE : Cash</div>
             <div>#{{ $newreceipt->id }}</div>
             <div>CASHIER : {{ $newreceipt->name }}</div>
         </div>

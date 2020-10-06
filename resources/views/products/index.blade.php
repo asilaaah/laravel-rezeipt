@@ -8,31 +8,36 @@
                 <h2>List of Products</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="/p/create"> Add new products</a>
+                <div>
+                    <a class="btn btn-success" href="/p/create"> Add New Products</a>
+                </div>
+                <div>
+                    <a class="btn btn-danger mt-2" href="/category/index">Delete Categories</a>
+                </div>
             </div>
         </div>
     </div>
 
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-    @endif
-
-    @if ($message = Session::get('error'))
-    <div class="alert alert-danger">
-        <p>{{ $message }}</p>
-    </div>
-    @endif
-
     <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="file" class="form-control mt-3" required>
+        <input type="file" name="file" class="form-control mt-3 " required>
         <div class="mt-3 d-flex justify-content-end">
         <button class="btn btn-success">Import Excel File</button>
         <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
         </div>
     </form>
+
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 
     <table class="table mt-4">
         <tr>

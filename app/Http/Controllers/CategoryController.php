@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $this->middleware('approved');
     }
-    
+
     public function create()
     {
         return view('category.create');
@@ -27,4 +27,21 @@ class CategoryController extends Controller
 
         return redirect('/p/create')->with('success','New category added successfully');
     }
+
+
+        public function index()
+    {
+        $categories = Category::all();
+
+        return view('category.index', compact('categories'));
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->products()->delete();
+        $category->delete();
+
+        return redirect('/p/index')->with('success','Category and all products under it deleted successfully');
+    }
+
 }
