@@ -37,8 +37,6 @@ class Cart
         $this->totalQty += $quantity;
         $this->totalPrice += $item->price * $storedItem['qty'];
 
-        $product = Product::find($id);
-        $product->decrement('quantity', $storedItem['qty']);
     }
 
     public function reduceByOne($id) {
@@ -50,16 +48,10 @@ class Cart
         if ($this->items[$id]['qty'] <= 0) {
             unset($this->items[$id]);
         }
-
-        $product = Product::find($id);
-        $product->increment('quantity', 1);
     }
 
     public function removeItem($id) 
     {
-        $product = Product::find($id);
-        $product->increment('quantity', $this->items[$id]['qty']);
-        
         $this->totalQty -= $this->items[$id]['qty'];
         $this->totalPrice -= $this->items[$id]['price'];
         unset($this->items[$id]);

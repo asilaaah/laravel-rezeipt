@@ -61,7 +61,7 @@ class CartController extends Controller
         return redirect("/product-list");
         }
         else {
-            return redirect('/product-list')->with('error', 'Item is not enough.' );
+            return redirect('/product-list')->with(['error' => 'Item is not enough.', 'quantity' => $quantity]);
         }
     }
 
@@ -118,6 +118,8 @@ class CartController extends Controller
         $sales->name = FacadesAuth::user()->name;
         FacadesAuth::user()->sales()->save($sales);
 
+        $this->decreaseQuantitites();
+
 
         $products = Product::all();
         $user = FacadesAuth::user();
@@ -148,6 +150,19 @@ class CartController extends Controller
         /*return view('cart.receipt', compact('newreceipt'));*/
         $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store'));
         return $pdf->stream();
+    }
+
+    
+    public function decreaseQuantitites()
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        
+        foreach ($cart->items as $item)
+        {
+            $product = Product::find($item['item']['id']);
+            $product->decrement('quantity', $item['qty']);
+        }
     }
 
 
