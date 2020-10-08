@@ -19,7 +19,7 @@
         </div>
 
         <p class="btn-holder pr-1">
-            <a href="/cashier" class="btn btn-primary text-center mt-3" role="button">Back</a>
+            <a href="/product-list" class="btn btn-primary text-center mt-3" role="button">Back</a>
             <a href="{{route('cart.receipt')}}" class="btn btn-primary text-center mt-3" role="button">PDF</a>
         </p>
     </div>
