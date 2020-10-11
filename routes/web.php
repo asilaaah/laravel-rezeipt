@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/remove/{id}', 'App\Http\Controllers\CartController@removeItem')->name('cart.remove');
 
         Route::get('/qrcode', 'App\Http\Controllers\CartController@generateQRCode')->name('cart.qrcode');
-
+        Route::match(['get', 'post'], '/payment', 'App\Http\Controllers\CartController@getChange')->name('cart.payment');
         Route::get('/receipt', 'App\Http\Controllers\CartController@getReceipt')->name('cart.receipt');
     });
 

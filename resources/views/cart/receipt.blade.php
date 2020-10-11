@@ -66,6 +66,15 @@
                 <td colspan="4" style="text-align: right;">Total Price (RM)</td>
                 <td>{{ number_format( $newreceipt->cart->totalPrice , 2, '.', ',') }}</td>
             </tr>
+            <tr>
+                <td colspan="4" style="text-align: right;">Paid Amount (RM)</td>
+                <td>{{ number_format( session()->get('paid') , 2, '.', ',') }}</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: right;">Change (RM)</td>
+                <td>{{ number_format( session()->get('change') , 2, '.', ',') }}</td>
+            </tr>
+
         </table>
     </div>
 </div>

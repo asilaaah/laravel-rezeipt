@@ -56,6 +56,26 @@
                             </p>
                     </div>
 
+                        <form action="{{ route('cart.payment') }}" method="POST" enctype="multipart/form-data" class="form-inline">
+                            @csrf
+                            <div class="form-group row">
+                                <label for="paidAmount" class="col-form-label mr-2"><h3>Paid Amount : </h3></label>
+
+                                <input id="paidAmount"
+                                       type="text"
+                                       class="form-control mb-2 mr-sm-2"
+                                       name="paidAmount"
+                                       value=""
+                                       autofocus>
+                                <button type="submit" class="btn btn-primary mb-2">Calculate Change</button>
+                            </div>
+                        </form>
+
+                    <div class="form-group row mb-0">
+                        <h3><strong>Change : RM {{ number_format( session()->get('change') , 2, '.', ',') }} </strong></h3>
+                    </div>
+
+
 
                 @else
                     <h3>No items in cart.</h3>
