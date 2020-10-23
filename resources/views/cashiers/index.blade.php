@@ -14,7 +14,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Full Name</th>
-                    <th scope="col">E-mail</th>
+                    <th scope="col">Email</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -44,7 +44,14 @@
         </div>
       
     </div>
-    <div class="form-group row">
+
+    <div class="row pagination">
+        <div class="col-12 d-flex justify-content-center mb-3">
+            {{ $cashier->render() }}
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
         <div class="col-md-6 offset-md-5">
             <p class="btn-holder">
                 <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>

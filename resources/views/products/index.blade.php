@@ -72,12 +72,19 @@
         </tr>
         @endforeach
     </table>
-    <div class="form-group row">
-        <div class="col-md-6 offset-md-5">
-            <p class="btn-holder">
-                <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>
-            </p>
+
+    <div class="row pagination mb-3">
+        <div class="col-12 d-flex justify-content-center">
+            {{ $products->render() }}
         </div>
     </div>
+
+    <div class="form-group row d-flex justify-content-center">
+        <div class="col-md-6 offset-md-5">
+                <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>
+        </div>
+    </div>
+
 </div>
+
 @endsection
