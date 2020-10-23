@@ -120,9 +120,9 @@
 
                 </div>
 
-                <div class="row pt-4">
+                <div class="row pt-4 d-flex justify-content-between">
+                    <a href="/p/index" class="btn btn-primary">Back</a>
                     <button class="btn btn-primary">Add New Products</button>
-
                 </div>
 
             </div>
