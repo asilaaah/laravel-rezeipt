@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Session;
 use App\Events\ProductReachedMinimumQuantity;
 
 use Barryvdh\DomPDF\Facade as PDF;
+use function PHPUnit\Framework\returnArgument;
 
 class CartController extends Controller
 {
@@ -136,7 +137,7 @@ class CartController extends Controller
         return view('cart.qrcode');
     }
 
-    public function getReceipt()
+    public function getReceipt(Request $request)
     {
         $receipt = FacadesAuth::user()->sales;
         $receipt->transform(function ($sales, $key) {
@@ -147,22 +148,51 @@ class CartController extends Controller
         $newreceipt = $receipt->sortByDesc('created_at')->first();
         $store = Store::all()->first();
 
-        /*return view('cart.receipt', compact('newreceipt'));*/
-        $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store'));
-        return $pdf->stream();
+        $paidAmount = $request->paidAmount;
+        if ($request->session()->has('paidAmount')) {
+            $paid = $request->session()->get('paidAmount');
+            $change = $paid - $newreceipt->cart->totalPrice;
+            session()->put('paid', $paid);
+            session()->put('change', $change);
+
+            $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change'));
+            return $pdf->stream();
+
+        }
+
     }
 
-    
+
     public function decreaseQuantitites()
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        
+
         foreach ($cart->items as $item)
         {
             $product = Product::find($item['item']['id']);
             $product->decrement('quantity', $item['qty']);
         }
+    }
+
+    public function getChange(Request $request)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+
+        $paidAmount = $request->paidAmount;
+        $request->session()->put('paidAmount', $paidAmount);
+
+        if ($request->session()->has('paidAmount')) {
+            $paid = $request->session()->get('paidAmount');
+            $change = $paid - $cart->totalPrice;
+
+            return redirect()->route('cart.cart')->with('change', $change);
+        }
+
+        else
+            return redirect()->route('cart.cart');
+
     }
 
 
