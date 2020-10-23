@@ -4,14 +4,14 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9">
-            <div class="d-flex justify-content-between mb-3">
-            <h2>List of Cashiers</h2>
-            </div>
+        <div class="col-md-10">
+            <div class="card">
+            <div class="card-header">List of Cashiers</div>
 
-            <table class="table table-striped table-hover">
+            <div class="card-body">
+            <table class="table table-hover">
                 <thead>
-                <tr>
+                <tr class="text-center">
                     <th scope="col">ID</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Email</th>
@@ -20,12 +20,12 @@
                 </thead>
                 <tbody>
 
-                @foreach ($cashier as $data)
-                    <tr>
+                @forelse ($cashier as $data)
+                    <tr class="text-center">
                         <td>{{ $data->id }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->email }}</td>
-                        <td class="d-flex">
+                        <td class="d-flex justify-content-center">
                             <form action="/c/{{ $data->id }}" method="POST"> 
                     
                                 <a class="btn btn-primary" href="/c/{{ $data->id }}/edit">Edit</a>
@@ -35,14 +35,19 @@
                   
                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
                             </form>
-                    @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center"><h5>No cashier information found</td></h5>
+                                </tr>
+                    @endforelse
 
 
 
                 </tbody>
             </table>
+            </div>
         </div>
-      
+        </div>
     </div>
 
     <div class="row pagination">

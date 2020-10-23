@@ -4,19 +4,17 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9">
-                <div class="d-flex justify-content-between mb-3">
-                    <div class="pull-left">
-                        <h2>Store Information</h2>
-                    </div>
-                    <div class="pull-right">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>Store Information</div>
                         <a class="btn btn-success" href="/store/create"> Add Store</a>
                     </div>
-                </div>
+                <div class="card-body">
 
-                <table class="table table-striped table-hover">
+                <table class="table">
                     <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th scope="col">Store Name</th>
                         <th scope="col">Address</th>
                         <th scope="col">Phone Number</th>
@@ -25,8 +23,8 @@
                     </thead>
                     <tbody>
 
-                    @foreach ($stores as $store)
-                        <tr>
+                    @forelse ($stores as $store)
+                        <tr class="text-center">
                             <td>{{ $store->name }}</td>
                             <td>{{ $store->address }}</td>
                             <td>{{ $store->phone_num }}</td>
@@ -37,19 +35,23 @@
 
                                     @csrf
                                 </form>
-                    @endforeach
+
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="text-center"><h5>No store information found</td></h5>
+                                </tr>
+                    @endforelse
 
                     </tbody>
                 </table>
+                </div>
+            </div>
             </div>
 
         </div>
-        <div class="form-group row">
-            <div class="col-md-6 offset-md-5">
-                <p class="btn-holder">
-                    <a href="/admin" class="btn btn-primary text-center" role="button">Back</a>
-                </p>
+        <div class="text-center">
+            <a href="/admin"
+                class="btn btn-primary mt-3">Back</a>
             </div>
-        </div>
     </div>
 @endsection

@@ -39,8 +39,9 @@
         </div>
     @endif
 
-    <table class="table mt-4">
-        <tr>
+    <table class="table table-bordered table-hover mt-4">
+        <thead>
+        <tr class="text-center">
             <th>No</th>
             <th>Category</th>
             <th>Name</th>
@@ -49,9 +50,10 @@
             <th>Quantity</th>
             <th width="250px">Action</th>
         </tr>
+    </thead>
 
         @foreach ($products as $product)
-        <tr>
+        <tr class="text-center">
             <td>{{ $product->id }}</td>
             <td>{{ $product->category->name ?? NULL }}</td>
             <td>{{ $product->name }}</td>

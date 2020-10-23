@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <div class="card">
                     <div class="card-header">Users List to Approve</div>
@@ -17,7 +17,7 @@
                         @endif
 
                         <table class="table">
-                            <tr>
+                            <tr class="text-center">
                                 <th>User name</th>
                                 <th>Role</th>
                                 <th>Email</th>
@@ -25,7 +25,7 @@
                                 <th></th>
                             </tr>
                             @forelse ($users as $user)
-                                <tr>
+                                <tr class="text-center">
                                     <td>{{ $user->name }}</td>
                                     <td>   @if ($user->isManager())
                                         Manager
@@ -39,7 +39,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">No users found.</td>
+                                    <td colspan="6" class="text-center"><h5>No users found</td></h5>
                                 </tr>
                             @endforelse
                         </table>
