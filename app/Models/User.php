@@ -62,6 +62,15 @@ class User extends Authenticatable
         return false;
     }
 
+    
+    public function isCashier()
+    {
+       if ($this->role == 2){
+           return true;
+       }
+        return false;
+    }
+
     public function isAdmin()
     {
         if ($this->admin == 1){
