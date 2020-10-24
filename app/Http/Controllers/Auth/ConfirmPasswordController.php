@@ -26,7 +26,31 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
+
+    public function redirectTo()
+    {
+        $user = auth()->user();
+        switch($user->role){
+            case 0:
+                $this->redirectTo = '/admin';
+                return $this->redirectTo;
+
+            case 1:
+                $this->redirectTo =  "/manager";
+                return $this->redirectTo;
+            break;
+
+            case 2:
+                $this->redirectTo = "/cashier";
+                return $this->redirectTo;
+            break;
+
+            default:
+            $this->redirectTo = '/login';
+            return $this->redirectTo;
+        }
+    }
 
     /**
      * Create a new controller instance.
