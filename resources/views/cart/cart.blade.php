@@ -4,22 +4,17 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-9">
+            <div class="col-md-10">
+                <div class="card">
 
-                <div class="row d-flex justify-content-between">
-
-                <h2>Your cart</h2>
-
-                <p class="btn-holder pr-1">
-                    <a href="/product-list" class="btn btn-primary text-center" role="button">Back</a>
-                </p>
-
-                </div>
-
+                   <div class="card-header d-flex justify-content-between"><h3 class="ml-2">Your cart</h3>
+                    <a href="/product-list" class="btn btn-primary" role="button">Back</a>
+            </div>
+        <div class="card-body mx-2">
                 @if(Session::has('cart'))
-                    <table class="table mt-4 table-hover">
+                    <table class="table table-hover">
                         <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>ID</th>
                             <th>Name</th>
                             <th>Quantity</th>
@@ -30,7 +25,7 @@
                         </thead>
                         <tbody>
                         @foreach($products as $id => $product)
-                            <tr>
+                            <tr class="text-center">
                                 <td>{{$id}}</td>
                                 <td scope="row">{{ $product['item']['name'] }}</td>
                                 <td>{{ $product['qty'] }}</td>
@@ -49,40 +44,38 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <div class="form-group row mb-0 d-flex justify-content-between">
+
+                    <div class="form-group row d-flex justify-content-between align-items-center">
                     <h3><strong>Total Price : RM {{ number_format( $totalPrice , 2, '.', ',') }} </strong></h3>
-                            <p class="btn-holder pl-1">
                                 <a href="{{ route('cart.qrcode') }}" class="btn btn-primary text-center" role="button">Generate QR Code</a>
-                            </p>
                     </div>
 
-                        <form action="{{ route('cart.payment') }}" method="POST" enctype="multipart/form-data" class="form-inline">
-                            @csrf
-                            <div class="form-group row">
-                                <label for="paidAmount" class="col-form-label mr-2"><h3>Paid Amount : </h3></label>
+                    <form action="{{ route('cart.payment') }}" method="POST" enctype="multipart/form-data" class="form-inline">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="paidAmount" class="col-form-label mr-3"><h4><strong>Paid Amount :</strong></h4></label>
 
-                                <input id="paidAmount"
-                                       type="text"
-                                       class="form-control mb-2 mr-sm-2"
-                                       name="paidAmount"
-                                       value=""
-                                       autofocus>
-                                <button type="submit" class="btn btn-primary mb-2">Calculate Change</button>
-                            </div>
-                        </form>
+                            <input id="paidAmount"
+                                    type="text"
+                                    class="form-control mb-2 mr-sm-2"
+                                    name="paidAmount"
+                                    value=""
+                                    autofocus>
+                            <button type="submit" class="btn btn-primary mb-2">Calculate Change</button>
+                        </div>
+                    </form>
 
-                    <div class="form-group row mb-0">
-                        <h3><strong>Change : RM {{ number_format( session()->get('change') , 2, '.', ',') }} </strong></h3>
+                    <div class="form-group row">
+                        <h4><strong>Change : RM {{ number_format( session()->get('change') , 2, '.', ',') }} </strong></h4>
                     </div>
-
-
 
                 @else
                     <h3>No items in cart.</h3>
                 @endif
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
