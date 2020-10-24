@@ -21,14 +21,11 @@ class Cashier
             return redirect()->route('login');
         }
 
-        if (FacadesAuth::user()->role == 2){
+        if (auth()->user()->role == 2) {
             return $next($request);
         }
 
-        $destinations = [
-            1 => 'manager',
-        ];
+        abort(403, 'not authorized');
         
-        return redirect(route($destinations[FacadesAuth::user()->role]));
     }
 }

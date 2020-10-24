@@ -22,14 +22,10 @@ class Manager
             return redirect()->route('login');
         }
 
-        if (FacadesAuth::user()->role == 1){
+        if (auth()->user()->role == 1) {
             return $next($request);
         }
-
-        $destinations = [
-            2 => 'cashier',
-        ];
         
-        return redirect(route($destinations[FacadesAuth::user()->role]));
+        abort(403, 'not authorized');
     }
 }
