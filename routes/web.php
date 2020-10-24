@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['approved', 'cashier'])->group(function () {
-        Route::get('/cashier', 'App\Http\Controllers\CartController@index');
+        Route::get('/cashier', 'App\Http\Controllers\CartController@index')->name('cashier');
         Route::get('/product-list', 'App\Http\Controllers\CartController@productList')->name('cart.product-list');
         Route::post('/add-to-cart/{id}', 'App\Http\Controllers\CartController@addToCart')->name('cart.addToCart');
         Route::get('/cart', 'App\Http\Controllers\CartController@cart')->name('cart.cart');
@@ -76,3 +76,5 @@ Auth::routes();
 Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
 Route::get('/profile/{user}/edit', 'App\Http\Controllers\ProfileController@edit');
 Route::patch('/profile/{user}', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+Route::get('/change-password', 'App\Http\Controllers\ChangePasswordController@index');
+Route::post('/change-password', 'App\Http\Controllers\ChangePasswordController@store')->name('change.password');

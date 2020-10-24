@@ -4,11 +4,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+
+            <div class="col-lg-12 margin-tb">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>	
+                <strong>{{ $message }}</strong>
+                </div>
+                @endif
+            </div>
             
             <!-- User Profile -->
             <div class="card user-profile">
                 <div class="card-header">
                     <h4 class="float-left mb-0 mt-2">User Profile</h4>
+                <a href="/change-password" class="btn btn-primary btn-100 float-right ml-2 ">Change Password</a>
                 <a href="/profile/{{$user->id}}/edit" class="btn btn-primary btn-100 float-right">Edit</a>
                 </div>
 
