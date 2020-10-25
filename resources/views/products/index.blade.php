@@ -9,10 +9,8 @@
             </div>
             <div class="pull-right">
                 <div>
-                    <a class="btn btn-success" href="/p/create"> Add New Products</a>
-                </div>
-                <div>
-                    <a class="btn btn-danger mt-2" href="/category/index">Delete Categories</a>
+                    <a class="btn btn-success" href="/p/create">Add New Products</a>
+                    <a class="btn btn-success" href="/category/index">Add New Category</a>
                 </div>
             </div>
         </div>
