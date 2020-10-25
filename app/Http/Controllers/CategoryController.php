@@ -22,10 +22,15 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        if (Category::where('name', $request->name)->first()) {
+            return redirect('/category/index')->with('error','Category already exist! ');
+        }
+        else{
         $category = new Category($data);
         $category->save();
 
-        return redirect('/p/create')->with('success','New category added successfully');
+        return redirect('/category/index')->with('success','New category added successfully');
+        }
     }
 
 
@@ -41,7 +46,7 @@ class CategoryController extends Controller
         $category->products()->delete();
         $category->delete();
 
-        return redirect('/p/index')->with('success','Category and all products under it deleted successfully');
+        return redirect('/category/index')->with('success','Category and all products under it deleted successfully');
     }
 
 }
