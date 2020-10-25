@@ -66,7 +66,8 @@
                     </div>
 
 
-                    <div class="row pt-4">
+                    <div class="row pt-4 d-flex justify-content-between">
+                        <a href="/store/index" class="btn btn btn-secondary btn-100" role="button">Cancel</a>
                         <button class="btn btn-primary">Add Store</button>
 
                     </div>

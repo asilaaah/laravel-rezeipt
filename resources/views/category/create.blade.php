@@ -26,8 +26,11 @@
                     @enderror
                 </div>
 
-                <div class="row pt-4">
-                    <button class="btn btn-primary">Add New Category</button>
+                <div class="row pt-4 d-flex justify-content-between">
+                    <div class="text-center float-left">
+                        <a href="/category/index" class="btn btn btn-secondary btn-100" role="button">Cancel</a>
+                        </div>
+                    <button class="btn btn-primary float-right">Add New Category</button>
 
                 </div>
         </div>

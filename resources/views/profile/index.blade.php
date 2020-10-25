@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-
-            <div class="col-lg-12 margin-tb">
-                @if ($message = Session::get('success'))
-                <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>	
-                <strong>{{ $message }}</strong>
-                </div>
-                @endif
+        <div class="col-md-9 margin-tb">
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>	
+            <strong>{{ $message }}</strong>
             </div>
+            @endif
+        </div>
+
+        <div class="col-md-9">
             
             <!-- User Profile -->
             <div class="card user-profile">

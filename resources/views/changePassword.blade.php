@@ -2,9 +2,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
-                <div class="card-header">Laravel - Change Password with Current Password Validation Example - ItSolutionStuff.com</div>
+                <div class="card-header">Change Password</div>
    
                 <div class="card-body">
                     <form method="POST" action="{{ route('change.password') }}">
@@ -55,9 +55,10 @@
                             </div>
                         </div>
    
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group row justify-content-end">
+                            <div class="col-md-6 pl-4 d-flex">
+                                    <a href="/profile" class="btn btn btn-secondary btn-100 mr-0" role="button">Cancel</a>
+                                <button type="submit" class="btn btn-primary ml-4">
                                     Update Password
                                 </button>
                             </div>
