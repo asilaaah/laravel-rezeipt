@@ -40,12 +40,12 @@
     <table class="table table-bordered table-hover mt-4">
         <thead>
         <tr class="text-center">
-            <th>No</th>
-            <th>Category</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>@sortablelink('id','No')</th>
+            <th>@sortablelink('category_id','Category')</th>
+            <th>@sortablelink('name','Name')</th>
+            <th>@sortablelink('description','Description')</th>
+            <th>@sortablelink('price','Price')</th>
+            <th>@sortablelink('quantity','Quantity')</th>
             <th width="250px">Action</th>
         </tr>
     </thead>
@@ -75,7 +75,7 @@
 
     <div class="row pagination mb-3">
         <div class="col-12 d-flex justify-content-center">
-            {{ $products->render() }}
+        {!! $products->appends(\Request::except('page'))->render() !!}
         </div>
     </div>
 

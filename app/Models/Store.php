@@ -5,12 +5,15 @@ namespace App\Models;
 use http\Client\Curl\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Store extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     protected $guarded = [];
+
+    public $sortable = ['name', 'address', 'phone_num'];
 
     public function users()
     {

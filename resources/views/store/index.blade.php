@@ -15,9 +15,9 @@
                 <table class="table">
                     <thead>
                     <tr class="text-center">
-                        <th scope="col">Store Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Phone Number</th>
+                        <th scope="col">@sortablelink('name','Store Name')</th>
+                        <th scope="col">@sortablelink('address','Address')</th>
+                        <th scope="col">@sortablelink('phone_num','Phone Number')</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -28,7 +28,7 @@
                             <td>{{ $store->name }}</td>
                             <td>{{ $store->address }}</td>
                             <td>{{ $store->phone_num }}</td>
-                            <td class="d-flex">
+                            <td class="d-flex justify-content-center">
                                 <form action="/store/{{ $store->id }}" method="POST">
 
                                     <a class="btn btn-primary" href="/store/{{ $store->id }}/edit">Edit</a>

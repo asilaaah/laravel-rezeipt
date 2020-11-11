@@ -18,10 +18,10 @@
 
                         <table class="table">
                             <tr class="text-center">
-                                <th>User name</th>
-                                <th>Role</th>
-                                <th>Email</th>
-                                <th>Registered at</th>
+                                <th>@sortablelink('name','Full Name')</th>
+                                <th>@sortablelink('role','Role')</th>
+                                <th>@sortablelink('email','Email')</th>
+                                <th>@sortablelink('created_at','Registered at')</th>
                                 <th></th>
                             </tr>
                             @forelse ($users as $user)

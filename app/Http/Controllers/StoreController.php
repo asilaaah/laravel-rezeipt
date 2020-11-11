@@ -12,7 +12,7 @@ class StoreController extends Controller
 {
     public function index()
     {
-        $stores = Store::all();
+        $stores = Store::sortable()->paginate(10);
 
         return view('store.index', compact('stores'));
     }

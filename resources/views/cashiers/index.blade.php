@@ -12,9 +12,9 @@
             <table class="table table-hover">
                 <thead>
                 <tr class="text-center">
-                    <th scope="col">ID</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Email</th>
+                    <th scope="col">@sortablelink('id','ID')</th>
+                    <th scope="col">@sortablelink('name','Full Name')</th>
+                    <th scope="col">@sortablelink('email','Email')</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -52,7 +52,7 @@
 
     <div class="row pagination">
         <div class="col-12 d-flex justify-content-center mb-3">
-            {{ $cashier->render() }}
+        {!! $cashier->appends(\Request::except('page'))->render() !!}
         </div>
     </div>
 

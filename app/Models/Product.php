@@ -4,16 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
-    use HasFactory;
+    use Sortable, HasFactory;
 
     protected $table = 'products';
 
     protected $fillable = [
         'category_id','image','user_id','name','description','price','quantity','minimum_quantity',
     ];
+
+    public $sortable = ['id','category_id','name','description','price', 'quality'];
 
     public function user()
     {

@@ -14,7 +14,7 @@ class ApprovalController extends Controller
 
     public function approveList()
     {
-        $users = User::whereNull('approved_at')->get();
+        $users = User::whereNull('approved_at')->sortable()->get();
 
         return view('users', compact('users'));
     }
