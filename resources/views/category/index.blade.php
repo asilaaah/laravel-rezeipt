@@ -6,14 +6,14 @@
             <div class="col-md-10 margin-tb">
                 @if ($message = Session::get('error'))
                 <div class="alert alert-danger alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>	
+                <button type="button" class="close" data-dismiss="alert">×</button>
                 <strong>{{ $message }}</strong>
                 </div>
                 @endif
 
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>	
+                <button type="button" class="close" data-dismiss="alert">×</button>
                 <strong>{{ $message }}</strong>
                 </div>
                 @endif
@@ -24,7 +24,7 @@
                     <h2>List of Categories</h2>
                         <a class="btn btn-success" href="/category/create">Add New Category</a>
                 </div>
-                
+
                 <div class="card-body">
         <table class="table table-hover">
             <thead>
@@ -37,8 +37,8 @@
             <tbody>
             @foreach ($categories as $category)
                 <tr class="text-center">
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->name }}</td>
+                    <td><a href="/category/{{ $category->id }}">{{ $category->id }}</a></td>
+                    <td><a href="/category/{{ $category->id }}">{{ $category->name }}</a></td>
                     <td>
                         <form action="/category/{{ $category->id }}" method="POST">
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\Console\Input\Input;
@@ -47,6 +48,12 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect('/category/index')->with('success','Category and all products under it deleted successfully');
+    }
+
+    public function show(Category $category, Product $products)
+    {
+        $category = Category::with('products')->findOrFail( $category->id );
+        return view('category.show', compact('category'));
     }
 
 }

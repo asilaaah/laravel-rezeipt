@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/category/create', 'App\Http\Controllers\CategoryController@create');
         Route::post('/category', 'App\Http\Controllers\CategoryController@store');
         Route::get('/category/index', 'App\Http\Controllers\CategoryController@index');
+        Route::get('/category/{category}', 'App\Http\Controllers\CategoryController@show');
         Route::delete('/category/{category}','App\Http\Controllers\CategoryController@destroy')->name('category.delete');
 
         Route::get('/c/index', 'App\Http\Controllers\CashierController@index');
