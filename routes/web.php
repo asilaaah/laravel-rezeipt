@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/p/index', 'App\Http\Controllers\ProductsController@index');
         Route::get('/p/create', 'App\Http\Controllers\ProductsController@create');
         Route::post('/p', 'App\Http\Controllers\ProductsController@store');
+        Route::get('/p/{product}', 'App\Http\Controllers\ProductsController@show')->name('product.show');
         Route::get('/p/{product}/edit', 'App\Http\Controllers\ProductsController@edit')->name('product.edit');
         Route::patch('/p/{product}', 'App\Http\Controllers\ProductsController@update')->name('product.update');
         Route::delete('/p/{product}','App\Http\Controllers\ProductsController@destroy')->name('product.delete');

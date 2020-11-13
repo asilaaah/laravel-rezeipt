@@ -52,12 +52,12 @@
 
         @foreach ($products as $product)
         <tr class="text-center">
-            <td>{{ $product->id }}</td>
-            <td>{{ $product->category->name ?? NULL }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->description }}</td>
-            <td>RM {{ number_format($product->price, 2, '.', ',') }}</td>
-            <td>{{ $product->quantity }}</td>
+            <td><a href="/p/{{ $product->id }}">{{ $product->id }}</a></td>
+            <td><a href="/p/{{ $product->id }}">{{ $product->category->name ?? NULL }}</a></td>
+            <td><a href="/p/{{ $product->id }}">{{ $product->name }}</a></td>
+            <td><a href="/p/{{ $product->id }}">{{ $product->description }}</a></td>
+            <td><a href="/p/{{ $product->id }}">RM {{ number_format($product->price, 2, '.', ',') }}</a></td>
+            <td><a href="/p/{{ $product->id }}">{{ $product->quantity }}</a></td>
             <td>
                 <form action="/p/{{ $product->id }}" method="POST">
 
