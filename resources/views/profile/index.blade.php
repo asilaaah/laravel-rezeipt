@@ -6,20 +6,22 @@
         <div class="col-md-9 margin-tb">
             @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>	
+            <button type="button" class="close" data-dismiss="alert">×</button>
             <strong>{{ $message }}</strong>
             </div>
             @endif
         </div>
 
         <div class="col-md-9">
-            
+
             <!-- User Profile -->
             <div class="card user-profile">
                 <div class="card-header">
                     <h4 class="float-left mb-0 mt-2">User Profile</h4>
+                    @can('update', $user->profile)
                 <a href="/change-password" class="btn btn-primary btn-100 float-right ml-2 ">Change Password</a>
                 <a href="/profile/{{$user->id}}/edit" class="btn btn-primary btn-100 float-right">Edit</a>
+                @endcan
                 </div>
 
                 <div class="card-body pb-0 pt-0">
@@ -32,11 +34,11 @@
                     </div>
                 @endif
                 </div>
-                
+
                 <div class="card-body border-bottom">
                     <!-- Image -->
                         <div class="text-center">
-                            <img src="{{ $user->profile->profileImage()}}" class="img-thumbnail w-25"> 
+                            <img src="{{ $user->profile->profileImage()}}" class="img-thumbnail w-25">
                         </div>
                 </div>
 
@@ -71,7 +73,7 @@
                 <div class="card-header border-top">
                     <h5 class="float-left mb-0 mt-1">Contact</h5>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="row  mb-2">
                         <div class="col-sm-6 text-sm-right">Email</div>
@@ -109,14 +111,7 @@
 
                 <div class="card-footer text-center">
                     <p class="btn-holder">
-                        @if ($user->isManager())
-                            <a href='/manager' class="btn btn-primary text-center" role="button">Back</a>
-                        @elseif($user->isAdmin())
-                        <a href='/admin' class="btn btn-primary text-center" role="button">Back</a>
-                         @else
-                         <a href='/cashier' class="btn btn-primary text-center" role="button">Back</a>
-                         @endif
-                        
+                            <a href='{{ url()->previous() }}' class="btn btn-primary text-center" role="button">Back</a>
                     </p>
             </div>
 

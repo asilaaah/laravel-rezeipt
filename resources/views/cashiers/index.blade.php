@@ -22,17 +22,17 @@
 
                 @forelse ($cashier as $data)
                     <tr class="text-center">
-                        <td>{{ $data->id }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->email }}</td>
+                        <td><a href="/profile/{{ $data->id }}">{{ $data->id }}</a></td>
+                        <td><a href="/profile/{{ $data->id }}">{{ $data->name }}</a></td>
+                        <td><a href="/profile/{{ $data->id }}">{{ $data->email }}</a></td>
                         <td class="d-flex justify-content-center">
-                            <form action="/c/{{ $data->id }}" method="POST"> 
-                    
+                            <form action="/c/{{ $data->id }}" method="POST">
+
                                 <a class="btn btn-primary" href="/c/{{ $data->id }}/edit">Edit</a>
-               
+
                                 @csrf
                                 @method('DELETE')
-                  
+
                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
                             </form>
                             @empty
@@ -58,9 +58,7 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-6 offset-md-5">
-            <p class="btn-holder">
-                <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>
-            </p>
+            <a href='/manager/{{ $user->id }}' class="btn btn-primary text-center" role="button">Back</a>
         </div>
     </div>
 </div>

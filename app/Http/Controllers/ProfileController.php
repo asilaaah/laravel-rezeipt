@@ -10,29 +10,29 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function index(Profile $profile)
+    public function index(Profile $profile, User $user)
     {
-        $user = Auth::user();
+        $user = User::findOrFail($user->id);
         return view('profile.index', compact('user', 'profile'));
     }
 
-    public function edit(Profile $profile)
+    public function edit(Profile $profile, User $user)
     {
-        $user = Auth::user();
+        $this->authorize('update', $user->profile);
 
         return view('profile.edit', compact('user', 'profile'));
     }
 
-    public function update(Profile $profile)
+    public function update(Profile $profile, User $user)
     {
-
+        $this->authorize('update', $user->profile);
         $data = request()->validate([
             'phone_number' => '',
             'address' => '',
             'birthday' => '',
             'profile_photo' => 'image'
         ]);
- 
+
         if (request('profile_photo')){
             $imagePath = request('profile_photo')->store('profile', 'public');
 
@@ -41,7 +41,7 @@ class ProfileController extends Controller
             $image->save();
 
             $imageArray = ['profile_photo' => $imagePath];
-        } 
+        }
 
         auth()->user()->profile->update(array_merge(
             $data,
