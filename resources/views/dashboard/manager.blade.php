@@ -23,11 +23,11 @@
         </div>
 
         <div>
-            <a class="imagecenter" href="/profile">
+            <a class="imagecenter" href="/profile/{{ $user->id }}">
                 <img alt="profile" src="\png\profilelogo.jpg">
             </a>
         </div>
-        
+
 
     </div>
 

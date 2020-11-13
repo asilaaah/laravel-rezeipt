@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 
@@ -19,9 +20,10 @@ class ProductsController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
         $products = Product::sortable()->simplePaginate(15);
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'user'));
     }
 
 

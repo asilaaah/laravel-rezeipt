@@ -22,7 +22,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/approval', 'App\Http\Controllers\ApprovalController@approval')->name('approval');
 
     Route::middleware(['approved', 'manager'])->group(function () {
-        Route::get('/manager', 'App\Http\Controllers\ManagerController@index')->name('manager');
+        Route::get('/manager/{user}', 'App\Http\Controllers\ManagerController@index')->name('manager');
 
         Route::get('/export', 'App\Http\Controllers\ImportExportController@export')->name('export');
         Route::post('/import', 'App\Http\Controllers\ImportExportController@import')->name('import');
@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['approved', 'cashier'])->group(function () {
-        Route::get('/cashier', 'App\Http\Controllers\CartController@index')->name('cashier');
+        Route::get('/cashier/{user}', 'App\Http\Controllers\CartController@index')->name('cashier');
         Route::get('/product-list', 'App\Http\Controllers\CartController@productList')->name('cart.product-list');
         Route::post('/add-to-cart/{id}', 'App\Http\Controllers\CartController@addToCart')->name('cart.addToCart');
         Route::get('/cart', 'App\Http\Controllers\CartController@cart')->name('cart.cart');
@@ -61,7 +61,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::middleware(['admin'])->group(function () {
-        Route::get('/admin','App\Http\Controllers\ApprovalController@index');
+        Route::get('/admin/{user}','App\Http\Controllers\ApprovalController@index');
         Route::get('/users', 'App\Http\Controllers\ApprovalController@approveList')->name('admin.users.index');
         Route::get('/users/{user}/approve', 'App\Http\Controllers\ApprovalController@approve')->name('admin.users.approve');
         Route::get('/store/index','App\Http\Controllers\StoreController@index');
@@ -74,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
+Route::get('/profile/{user}', 'App\Http\Controllers\ProfileController@index')->name('profile.index');
 Route::get('/profile/{user}/edit', 'App\Http\Controllers\ProfileController@edit');
 Route::patch('/profile/{user}', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
 Route::get('/change-password', 'App\Http\Controllers\ChangePasswordController@index');

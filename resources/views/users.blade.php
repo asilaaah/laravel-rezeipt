@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                <a href="/admin"
+                <a href="/admin/{{ $id }}"
                     class="btn btn-primary mt-3">Back</a>
                 </div>
 

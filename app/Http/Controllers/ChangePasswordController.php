@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Rules\MatchOldPassword;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
@@ -16,23 +17,24 @@ class ChangePasswordController extends Controller
     {
         $this->middleware('auth');
     }
-   
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(User $user)
     {
-        return view('changePassword');
-    } 
-   
+        $user = Auth::user();
+        return view('changePassword', compact('user'));
+    }
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
     public function redirectTo()
     {
         $user = auth()->user();
@@ -64,7 +66,7 @@ class ChangePasswordController extends Controller
             'new_password' => ['required', 'string', 'min:8'],
             'new_confirm_password' => ['same:new_password'],
         ]);
-   
+
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
 
         return redirect('/profile')->with('success', 'Password changed successfully!');

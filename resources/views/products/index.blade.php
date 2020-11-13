@@ -81,7 +81,7 @@
 
     <div class="form-group row d-flex justify-content-center">
         <div class="col-md-6 offset-md-5">
-                <a href="/manager" class="btn btn-primary text-center" role="button">Back</a>
+            <a href='/manager/{{ $user->id }}' class="btn btn-primary text-center" role="button">Back</a>
         </div>
     </div>
 

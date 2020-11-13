@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use Auth;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -33,24 +34,24 @@ class LoginController extends Controller
      *
      * @var string
      */
-    
+
     protected $redirectTo;
 
     public function redirectTo()
     {
-        $user = auth()->user();
+        $user = User::findOrFail(FacadesAuth::user()->id);
         switch($user->role){
             case 0:
-                $this->redirectTo = '/admin';
+                $this->redirectTo = "/admin/". $user->id;
                 return $this->redirectTo;
 
             case 1:
-                $this->redirectTo =  "/manager";
+                $this->redirectTo =  "/manager/" . $user->id;
                 return $this->redirectTo;
             break;
 
             case 2:
-                $this->redirectTo = "/cashier";
+                $this->redirectTo = "/cashier/" .$user->id;
                 return $this->redirectTo;
             break;
 

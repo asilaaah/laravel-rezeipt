@@ -14,10 +14,10 @@
                     <div class="card-header">
                         <h4 class="float-left mb-0 mt-2">Edit Profile</h4>
                         <div class="btn-group float-right">
-                        <a href="/profile" class="btn btn-secondary btn-100">Cancel</a>
+                        <a href="/profile/{{ $user->id }}" class="btn btn-secondary btn-100">Cancel</a>
                         </div>
                     </div>
-               
+
 
                     <div class="card-body border-bottom">
                         <!-- Image -->
@@ -28,13 +28,13 @@
                             </div>
                             <div class="d-flex justify-content-center">
                                 <input type="file" class="form-control-file text-center" id="profile_photo" name="profile_photo">
-        
+
                                 @error('profile_photo')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-            
+
                             </div>
                             </div>
                     </div>
@@ -124,7 +124,7 @@
                                 autocomplete="address"
                                 autofocus>{{ old('address') ?? $user->profile->address}}
                         </textarea>
-    
+
                         @error('address')
                         <strong>{{ $message }}</strong>
                         @enderror
@@ -139,7 +139,7 @@
                                 class="form-control @error('birthday') is-invalid @enderror"
                                 name="birthday"
                                 value="{{ old('birthday') ?? $user->profile->birthday }}">
-        
+
                             @error('birthday')
                             <strong>{{ $message }}</strong>
                             @enderror
@@ -155,6 +155,6 @@
         </div>
     </div>
 
-</div>       
+</div>
 
 @endsection

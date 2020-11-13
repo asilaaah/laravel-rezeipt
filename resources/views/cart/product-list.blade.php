@@ -5,7 +5,7 @@
     <div class="col-lg-12 margin-tb">
         @if ($message = Session::get('error'))
         <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>	
+        <button type="button" class="close" data-dismiss="alert">×</button>
         <strong>{{ session('error') }} Only {{ session('quantity') }} remaining</strong>
         </div>
         @endif
@@ -38,7 +38,7 @@
             </nav>
 
                     <p class="btn-holder mt-3">
-                        <a href="/cashier" class="btn btn-primary text-center" role="button">Back</a>
+                        <a href="/cashier/{{ $user->id }}" class="btn btn-primary text-center" role="button">Back</a>
                     </p>
 
         </div>

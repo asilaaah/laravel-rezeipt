@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Store;
 use App\Models\User;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Session;
 
 class StoreController extends Controller
 {
     public function index()
     {
+        $user = FacadesAuth::user();
         $stores = Store::sortable()->paginate(10);
 
-        return view('store.index', compact('stores'));
+        return view('store.index', compact('stores', 'user'));
     }
 
 

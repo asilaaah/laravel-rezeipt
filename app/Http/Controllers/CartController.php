@@ -19,9 +19,9 @@ use function PHPUnit\Framework\returnArgument;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(User $user)
     {
-        return view ('dashboard.cashier');
+        return view ('dashboard.cashier', compact('user'));
     }
 
     public function productList()
