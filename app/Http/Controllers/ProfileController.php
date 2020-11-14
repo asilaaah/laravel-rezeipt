@@ -13,6 +13,7 @@ class ProfileController extends Controller
     public function index(Profile $profile, User $user)
     {
         $user = User::findOrFail($user->id);
+        $profile = User::findOrFail($user->id);
         return view('profile.index', compact('user', 'profile'));
     }
 
@@ -56,6 +57,6 @@ class ProfileController extends Controller
 
         auth()->user()->update($details);
 
-        return redirect('/profile');
+        return redirect('/profile/'. $user->id);
     }
 }

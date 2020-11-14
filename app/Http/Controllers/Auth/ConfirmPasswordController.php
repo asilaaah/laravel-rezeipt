@@ -33,16 +33,16 @@ class ConfirmPasswordController extends Controller
         $user = auth()->user();
         switch($user->role){
             case 0:
-                $this->redirectTo = '/admin';
+                $this->redirectTo = "/admin/" . $user->id;
                 return $this->redirectTo;
 
             case 1:
-                $this->redirectTo =  "/manager";
+                $this->redirectTo =  "/manager/" .  $user->id;
                 return $this->redirectTo;
             break;
 
             case 2:
-                $this->redirectTo = "/cashier";
+                $this->redirectTo = "/cashier/" . $user->id;
                 return $this->redirectTo;
             break;
 
