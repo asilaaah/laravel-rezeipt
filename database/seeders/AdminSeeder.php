@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
     public function run()
     {
         User::create([
-            'id' => '0',
+            'id' => '1',
             'store_id' => "1",
             'name' => 'Admin',
             'email' => 'admin@admin.com',
@@ -28,6 +28,8 @@ class AdminSeeder extends Seeder
             'approved_at' => now(),
         ]);
 
-        Profile::create(['user_id' => '0']);
+        Profile::create(['user_id' => '1'
+        , 'id' => '1'
+        ]);
     }
 }
