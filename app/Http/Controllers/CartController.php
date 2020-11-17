@@ -118,6 +118,7 @@ class CartController extends Controller
         $sales->cart = serialize($cart);
         $sales->name = FacadesAuth::user()->name;
         FacadesAuth::user()->sales()->save($sales);
+        $id = $sales->id;
 
         $this->decreaseQuantitites();
 
@@ -134,7 +135,7 @@ class CartController extends Controller
 
 
         Session::forget('cart');
-        return view('cart.qrcode');
+        return view('cart.qrcode', compact('id'));
     }
 
     public function getReceipt(Request $request)
@@ -147,6 +148,7 @@ class CartController extends Controller
 
         $newreceipt = $receipt->sortByDesc('created_at')->first();
         $store = Store::all()->first();
+        $id = $newreceipt->id;
 
         $paidAmount = $request->paidAmount;
         if ($request->session()->has('paidAmount')) {
@@ -155,7 +157,7 @@ class CartController extends Controller
             session()->put('paid', $paid);
             session()->put('change', $change);
 
-            $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change'));
+            $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change','id'));
             return $pdf->stream();
 
         }
