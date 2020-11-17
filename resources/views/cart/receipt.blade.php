@@ -26,9 +26,9 @@
 <body>
 
 <div style="text-align: center">
-    <div><h3><strong>{{ $store->name }}</strong></h3></div>
-    <div>{{ $store->address }}</div>
-    <div>{{ $store->phone_num }}</div>
+    <div><h3><strong>{{ $store->name ?? null }}</strong></h3></div>
+    <div>{{ $store->address ?? null }}</div>
+    <div>{{ $store->phone_num ?? null }}</div>
     <div><h4>SALES RECEIPT</h4></div>
     <div>
         <div>
