@@ -20,7 +20,7 @@
                                type="text"
                                class="form-control @error('name') is-invalid @enderror"
                                name="name"
-                               value="{{ old('name') }}"
+                               value="{{ old('name') ?? $redemption->name}}"
                                required autocomplete="name"
                                autofocus>
 
@@ -36,7 +36,7 @@
                                type="text"
                                class="form-control @error('description') is-invalid @enderror"
                                name="description"
-                               value="{{ old('description') }}"
+                               value="{{ old('description') ?? $redemption->description}}"
                                autocomplete="description"
                                autofocus>
 
@@ -52,7 +52,7 @@
                                type="number"
                                class="form-control @error('points') is-invalid @enderror"
                                name="points"
-                               value="{{ old('points') }}"
+                               value="{{ old('points') ?? $redemption->points }}"
                                required autocomplete="points"
                                autofocus>
 
@@ -68,7 +68,7 @@
                                type="number"
                                class="form-control @error('discountAmount') is-invalid @enderror"
                                name="discountAmount"
-                               value="{{ old('discountAmount') }}"
+                               value="{{ old('discountAmount') ?? $redemption->discountAmount}}"
                                required autocomplete="discountAmount"
                                autofocus>
 
@@ -84,7 +84,7 @@
                                type="date"
                                class="form-control @error('expirationDate') is-invalid @enderror"
                                name="expirationDate"
-                               value="{{ old('expirationDate') }}"
+                               value="{{ old('expirationDate') ?? $redemption->expirationDate }}"
                                required autocomplete="expirationDate"
                                autofocus>
 
