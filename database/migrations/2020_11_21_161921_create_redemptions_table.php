@@ -13,7 +13,7 @@ class CreateRedemptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('redemptions', function (Blueprint $table) {
+        Schema::create('redemption', function (Blueprint $table) {
             $table->id()->unique();
             $table->string('name');
             $table->text('description');
