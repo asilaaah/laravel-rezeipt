@@ -23,6 +23,12 @@
         </div>
 
         <div>
+            <a class="imagecenter" href="/redemption/index">
+                <img alt="profile" src="\png\redemptionlogo.png">
+            </a>
+        </div>
+
+        <div>
             <a class="imagecenter" href="/profile/{{ $user->id }}">
                 <img alt="profile" src="\png\profilelogo.jpg">
             </a>
