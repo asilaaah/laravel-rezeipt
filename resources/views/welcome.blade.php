@@ -67,37 +67,27 @@
         <div class="flex-center position-ref full-height">
                 <div class="top-right links">
                     @auth
-                        @if (Auth::user()->isManager())<a href="{{ url('/manager') }}">Home</a>
-                
-                        @elseif(Auth::user()->isAdmin())<a href="{{ url('/admin') }}">Home</a>
+                        @if (Auth::user()->isManager())<a href="{{ url('/manager/'.Auth::user()->id) }}">Home</a>
 
-                        @elseif(Auth::user()->isCashier())<a href="{{ url('/cashier') }}">Home</a>
+                        @elseif(Auth::user()->isAdmin())<a href="{{ url('/admin/'.Auth::user()->id) }}">Home</a>
+
+                        @elseif(Auth::user()->isCashier())<a href="{{ url('/cashier/'.Auth::user()->id) }}">Home</a>
 
                     @endauth
-                       
+
                         @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
 
                         @endif
-                        
+
                 </div>
 
             <div class="content">
-                <div class="title m-b-md">
-                    Rezeipt
+                <div>
+                    <img alt="Rezeipt" src="\png\Logo.png">
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <i>save Earth, go receiptless today!</i>
             </div>
         </div>
     </body>
