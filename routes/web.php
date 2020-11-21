@@ -70,6 +70,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', 'App\Http\Controllers\StoreController@store');
         Route::get('/store/{store}/edit', 'App\Http\Controllers\StoreController@edit')->name('store.edit');
         Route::patch('/store/{store}', 'App\Http\Controllers\StoreController@update')->name('store.update');
+        Route::get('/redemption/index','App\Http\Controllers\RedemptionController@index');
+        Route::get('/redemption/create','App\Http\Controllers\RedemptionController@create');
+        Route::post('/redemption', 'App\Http\Controllers\RedemptionController@store');
+        Route::get('/redemption/{redemption}/edit', 'App\Http\Controllers\RedemptionController@edit')->name('redemption.edit');
+        Route::patch('/redemption/{redemption}', 'App\Http\Controllers\RedemptionController@update')->name('redemption.update');
     });
 });
 
