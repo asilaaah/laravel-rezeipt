@@ -37,8 +37,8 @@
             <tbody>
             @foreach ($categories as $category)
                 <tr class="text-center">
-                    <td><a href="/category/{{ $category->id }}">{{ $category->id }}</a></td>
-                    <td><a href="/category/{{ $category->id }}">{{ $category->name }}</a></td>
+                    <td><a class="text-dark" href="/category/{{ $category->id }}">{{ $category->id }}</a></td>
+                    <td><a class="text-dark" href="/category/{{ $category->id }}">{{ $category->name }}</a></td>
                     <td>
                         <form action="/category/{{ $category->id }}" method="POST">
 

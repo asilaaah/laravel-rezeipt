@@ -45,8 +45,9 @@
                     @enderror
                 </div>
 
-                <div class="row pt-4">
-                    <button class="btn btn-primary">Update Information</button>
+                <div class="row pt-4 d-flex justify-content-between">
+                    <a href="/c/index" class="btn btn btn-secondary btn-100" role="button">Cancel</a>
+                    <button class="btn btn-primary">Update Cashier</button>
 
                 </div>
 

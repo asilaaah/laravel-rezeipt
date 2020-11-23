@@ -5,23 +5,26 @@
     <div class="row">
         <div class="col-lg-12 margin-tb d-flex d-flex justify-content-between">
             <div class="pull-left">
-                <h2>List of Products</h2>
-            </div>
-            <div class="pull-right">
-                <div>
-                    <a class="btn btn-success" href="/p/create">Add New Products</a>
-                    <a class="btn btn-success" href="/category/index">Add New Category</a>
-                </div>
+                <h3>List of Products</h3>
             </div>
         </div>
     </div>
 
     <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="file" name="file" class="form-control mt-3 " required>
-        <div class="mt-3 d-flex justify-content-end">
-        <button class="btn btn-success">Import Excel File</button>
-        <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
+
+        <div class="mt-3 d-flex justify-content-between align-items-end">
+            <div>
+                <div class="pull-right mb-2">
+                    <input type="file" name="file" class="form-control-file" required>
+                </div>
+                <button class="btn btn-success">Import Excel File</button>
+                <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
+            </div>
+            <div>
+                <a class="btn btn-info" href="/p/create">Add Products</a>
+                <a class="btn btn-info" href="/category/index">Add Category</a>
+            </div>
         </div>
     </form>
 
@@ -52,12 +55,12 @@
 
         @foreach ($products as $product)
         <tr class="text-center">
-            <td><a href="/p/{{ $product->id }}">{{ $product->id }}</a></td>
-            <td><a href="/p/{{ $product->id }}">{{ $product->category->name ?? NULL }}</a></td>
-            <td><a href="/p/{{ $product->id }}">{{ $product->name }}</a></td>
-            <td><a href="/p/{{ $product->id }}">{{ $product->description }}</a></td>
-            <td><a href="/p/{{ $product->id }}">RM {{ number_format($product->price, 2, '.', ',') }}</a></td>
-            <td><a href="/p/{{ $product->id }}">{{ $product->quantity }}</a></td>
+            <td><a class="text-dark" href="/p/{{ $product->id }}">{{ $product->id }}</a></td>
+            <td><a class="text-dark" href="/p/{{ $product->id }}">{{ $product->category->name ?? NULL }}</a></td>
+            <td><a class="text-dark"href="/p/{{ $product->id }}">{{ $product->name }}</a></td>
+            <td><a class="text-dark" href="/p/{{ $product->id }}">{{ $product->description }}</a></td>
+            <td><a class="text-dark" href="/p/{{ $product->id }}">RM {{ number_format($product->price, 2, '.', ',') }}</a></td>
+            <td><a class="text-dark" href="/p/{{ $product->id }}">{{ $product->quantity }}</a></td>
             <td>
                 <form action="/p/{{ $product->id }}" method="POST">
 

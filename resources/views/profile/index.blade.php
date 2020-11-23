@@ -17,7 +17,7 @@
             <!-- User Profile -->
             <div class="card user-profile">
                 <div class="card-header">
-                    <h4 class="float-left mb-0 mt-2">User Profile</h4>
+                    <h3 class="float-left mb-0 mt-2">User Profile</h3>
                     @can('update', $user->profile)
                 <a href="/change-password" class="btn btn-primary btn-100 float-right ml-2 ">Change Password</a>
                 <a href="/profile/{{$user->id}}/edit" class="btn btn-primary btn-100 float-right">Edit</a>

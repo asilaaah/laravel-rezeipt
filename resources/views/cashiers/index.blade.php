@@ -6,7 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-            <div class="card-header">List of Cashiers</div>
+            <div class="card-header">
+                <h3 class=" mb-0 mt-2">List of Cashiers </h3>
+                </div>
 
             <div class="card-body">
             <table class="table table-hover">
@@ -22,9 +24,9 @@
 
                 @forelse ($cashier as $data)
                     <tr class="text-center">
-                        <td><a href="/profile/{{ $data->id }}">{{ $data->id }}</a></td>
-                        <td><a href="/profile/{{ $data->id }}">{{ $data->name }}</a></td>
-                        <td><a href="/profile/{{ $data->id }}">{{ $data->email }}</a></td>
+                        <td><a class="text-dark" href="/profile/{{ $data->id }}">{{ $data->id }}</a></td>
+                        <td><a class="text-dark" href="/profile/{{ $data->id }}">{{ $data->name }}</a></td>
+                        <td><a class="text-dark" href="/profile/{{ $data->id }}">{{ $data->email }}</a></td>
                         <td class="d-flex justify-content-center">
                             <form action="/c/{{ $data->id }}" method="POST">
 

@@ -6,13 +6,13 @@
         @csrf
         <div class="row">
             <div class="col-8 offset-2">
-                
+
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            
+
                 <div class="row d-flex align-items-center justify-content-between">
                     <h1>Add New Products</h1>
                 </div>
@@ -21,7 +21,7 @@
                  <label for="category_id">Category</label>
                  <select class="form-control" name="category_id">
                      @foreach ($categories as $category)
-                        <option value={{ $category->id }}>{{ $category->name}}</option>  
+                        <option value={{ $category->id }}>{{ $category->name}}</option>
                      @endforeach
                  </select>
             </div>
@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="row pt-4 d-flex justify-content-between">
-                    <a href="/p/index" class="btn btn-primary">Back</a>
+                    <a href="/p/index" class="btn btn btn-secondary btn-100" role="button">Cancel</a>
                     <button class="btn btn-primary">Add New Products</button>
                 </div>
 

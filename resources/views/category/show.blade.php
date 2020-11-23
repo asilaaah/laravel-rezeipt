@@ -10,13 +10,11 @@
             </div>
 
         <div class="card-body">
-<div class="px-3">
     @foreach ($category->products as $product)
-    <div class="row">
+    <div class="row px-3 text-center">
         <div>{{ $product->name }}</div>
     </div>
     @endforeach
-        </div>
         </div>
         </div>
     </div>
