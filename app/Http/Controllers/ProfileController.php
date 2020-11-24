@@ -13,7 +13,7 @@ class ProfileController extends Controller
     public function index(Profile $profile, User $user)
     {
         $user = User::findOrFail($user->id);
-        $profile = User::findOrFail($user->id);
+        $profile = Profile::find($user->id);
         return view('profile.index', compact('user', 'profile'));
     }
 
