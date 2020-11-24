@@ -42,6 +42,24 @@ class CategoryController extends Controller
         return view('category.index', compact('categories'));
     }
 
+    public function edit(Category $category)
+    {
+        return view('category.edit', compact('category'));
+    }
+
+    public function update(Category $category)
+    {
+
+        $data = request()->validate([
+            'name' => 'required'
+        ]);
+
+        $category->update($data);
+
+        return redirect('/category/index')->with('success','Category name updated successfully');
+    }
+
+
     public function destroy(Category $category)
     {
         $category->products()->delete();

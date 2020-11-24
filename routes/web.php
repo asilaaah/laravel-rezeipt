@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/category', 'App\Http\Controllers\CategoryController@store');
         Route::get('/category/index', 'App\Http\Controllers\CategoryController@index');
         Route::get('/category/{category}', 'App\Http\Controllers\CategoryController@show');
+        Route::get('/category/{category}/edit', 'App\Http\Controllers\CategoryController@edit');
+        Route::patch('/category/{category}', 'App\Http\Controllers\CategoryController@update');
         Route::delete('/category/{category}','App\Http\Controllers\CategoryController@destroy')->name('category.delete');
 
         Route::get('/c/index', 'App\Http\Controllers\CashierController@index');
@@ -70,11 +72,14 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/store', 'App\Http\Controllers\StoreController@store');
         Route::get('/store/{store}/edit', 'App\Http\Controllers\StoreController@edit')->name('store.edit');
         Route::patch('/store/{store}', 'App\Http\Controllers\StoreController@update')->name('store.update');
+        Route::delete('/store/{store}','App\Http\Controllers\StoreController@destroy')->name('store.delete');
+
         Route::get('/redemption/index','App\Http\Controllers\RedemptionController@index');
         Route::get('/redemption/create','App\Http\Controllers\RedemptionController@create');
         Route::post('/redemption', 'App\Http\Controllers\RedemptionController@store');
         Route::get('/redemption/{redemption}/edit', 'App\Http\Controllers\RedemptionController@edit')->name('redemption.edit');
         Route::patch('/redemption/{redemption}', 'App\Http\Controllers\RedemptionController@update')->name('redemption.update');
+        Route::delete('/redemption/{redemption}','App\Http\Controllers\RedemptionController@destroy')->name('redemption.delete');
     });
 });
 

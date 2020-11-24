@@ -3,6 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+
             <div class="col-md-10 margin-tb">
                 @if ($message = Session::get('error'))
                 <div class="alert alert-danger alert-block">
@@ -18,6 +19,7 @@
                 </div>
                 @endif
             </div>
+
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -41,6 +43,8 @@
                     <td><a class="text-dark" href="/category/{{ $category->id }}">{{ $category->name }}</a></td>
                     <td>
                         <form action="/category/{{ $category->id }}" method="POST">
+
+                                <a class="btn btn-primary" href="/category/{{ $category->id }}/edit">Edit</a>
 
                             @csrf
                             @method('DELETE')
