@@ -60,4 +60,11 @@ class StoreController extends Controller
 
         return redirect('/store/index')->with('success','Store updated successfully');
     }
+
+    public function destroy(Store $store)
+    {
+        $store->delete();
+
+        return redirect('/store/index')->with('success','Store deleted successfully');
+    }
 }

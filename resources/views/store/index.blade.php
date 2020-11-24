@@ -4,6 +4,14 @@
 
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-10 margin-tb">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+                </div>
+                @endif
+            </div>
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -34,6 +42,9 @@
                                     <a class="btn btn-primary" href="/store/{{ $store->id }}/edit">Edit</a>
 
                                     @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</button>
                                 </form>
 
                                 @empty
