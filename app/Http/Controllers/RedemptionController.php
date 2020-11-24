@@ -62,4 +62,11 @@ class RedemptionController extends Controller
 
         return redirect('/redemption/index')->with('success','Redemption reward updated successfully');
     }
+
+    public function destroy(Redemption $redemption)
+    {
+        $redemption->delete();
+
+        return redirect('/redemption/index')->with('success','Redemption reward deleted successfully');
+    }
 }
