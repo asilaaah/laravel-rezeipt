@@ -12,6 +12,15 @@
             @endif
         </div>
 
+        <div class="col-md-9 margin-tb">
+            @if ($message = Session::get('error'))
+            <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+            </div>
+            @endif
+        </div>
+
         <div class="col-md-9">
 
             <!-- User Profile -->
@@ -94,7 +103,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="row  mb-2">
+                    <div class="row mb-2">
                         <div class="col-sm-6 text-sm-right">Address</div>
                         <div class="col-sm-6 field-bg">
                         {{ $user->profile->address }}
@@ -109,9 +118,38 @@
                     </div>
                 </div>
 
+                @cannot('update', $user->profile)
+                <div class="card-header border-top">
+                    <h5 class="float-left mb-0 mt-1">Additional Details</h5>
+                    <a href="/profile/{{$user->id}}/add/edit" class="float-right font-weight-bold">Edit</a>
+                </div>
+
+                <div class="card-body">
+                    <div class="row  mb-2">
+                        <div class="col-sm-6 text-sm-right">Salary</div>
+                        <div class="col-sm-6 field-bg">
+                        {{ $user->profile->salary }}
+                        </div>
+                    </div>
+
+                    <div class="row  mb-2">
+                        <div class="col-sm-6 text-sm-right">Remarks</div>
+                        <div class="col-sm-6 field-bg">
+                        {{ $user->profile->remarks }}
+                        </div>
+                    </div>
+                </div>
+                @endcannot
+
                 <div class="card-footer text-center">
                     <p class="btn-holder">
-                            <a href='{{ url()->previous() }}' class="btn btn-primary text-center" role="button">Back</a>
+                        @if (Auth::user()->isManager())<a class="btn btn-primary text-center" role="button"href="{{ url('/manager/'.Auth::user()->id) }}">Back</a>
+
+                        @elseif(Auth::user()->isAdmin())<a class="btn btn-primary text-center" role="button"href="{{ url('/admin/'.Auth::user()->id) }}">Back</a>
+
+                        @else<a class="btn btn-primary text-center" role="button"href="{{ url('/cashier/'.Auth::user()->id) }}">Back</a>
+
+                        @endif
                     </p>
             </div>
 

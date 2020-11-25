@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -88,5 +93,7 @@ Auth::routes();
 Route::get('/profile/{user}', 'App\Http\Controllers\ProfileController@index')->name('profile.index');
 Route::get('/profile/{user}/edit', 'App\Http\Controllers\ProfileController@edit');
 Route::patch('/profile/{user}', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+Route::get('/profile/{user}/add/edit', 'App\Http\Controllers\ProfileController@editAdditional');
+Route::patch('/profile/{user}/add', 'App\Http\Controllers\ProfileController@updateAdditional');
 Route::get('/change-password', 'App\Http\Controllers\ChangePasswordController@index');
 Route::post('/change-password', 'App\Http\Controllers\ChangePasswordController@store')->name('change.password');
