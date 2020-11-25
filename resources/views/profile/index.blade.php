@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="row  mb-2">
+                    <div class="row mb-2">
                         <div class="col-sm-6 text-sm-right">Address</div>
                         <div class="col-sm-6 field-bg">
                         {{ $user->profile->address }}
@@ -117,6 +117,29 @@
                         </div>
                     </div>
                 </div>
+
+                @cannot('update', $user->profile)
+                <div class="card-header border-top">
+                    <h5 class="float-left mb-0 mt-1">Additional Details</h5>
+                    <a href="/profile/{{$user->id}}/add/edit" class="float-right font-weight-bold">Edit</a>
+                </div>
+
+                <div class="card-body">
+                    <div class="row  mb-2">
+                        <div class="col-sm-6 text-sm-right">Salary</div>
+                        <div class="col-sm-6 field-bg">
+                        {{ $user->profile->salary }}
+                        </div>
+                    </div>
+
+                    <div class="row  mb-2">
+                        <div class="col-sm-6 text-sm-right">Remarks</div>
+                        <div class="col-sm-6 field-bg">
+                        {{ $user->profile->remarks }}
+                        </div>
+                    </div>
+                </div>
+                @endcannot
 
                 <div class="card-footer text-center">
                     <p class="btn-holder">

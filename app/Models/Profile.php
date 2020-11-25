@@ -12,7 +12,7 @@ class Profile extends Model
     protected $table = 'profiles';
 
     protected $fillable = [
-        'address', 'phone_number', 'birthday', 'profile_photo', 'user_id'];
+        'address', 'phone_number', 'birthday', 'profile_photo', 'user_id','salary', 'remarks'];
 
     public function user()
     {

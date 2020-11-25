@@ -93,5 +93,7 @@ Auth::routes();
 Route::get('/profile/{user}', 'App\Http\Controllers\ProfileController@index')->name('profile.index');
 Route::get('/profile/{user}/edit', 'App\Http\Controllers\ProfileController@edit');
 Route::patch('/profile/{user}', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+Route::get('/profile/{user}/add/edit', 'App\Http\Controllers\ProfileController@editAdditional');
+Route::patch('/profile/{user}/add', 'App\Http\Controllers\ProfileController@updateAdditional');
 Route::get('/change-password', 'App\Http\Controllers\ChangePasswordController@index');
 Route::post('/change-password', 'App\Http\Controllers\ChangePasswordController@store')->name('change.password');

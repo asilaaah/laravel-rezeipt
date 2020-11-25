@@ -72,4 +72,22 @@ class ProfileController extends Controller
 
         return redirect('/profile/'. $user->id)->with('success','Profile updated successfully');
     }
+
+    public function editAdditional(Profile $profile, User $user)
+    {
+        return view('profile.edit-additional',compact('profile','user'));
+    }
+
+    public function updateAdditional(Profile $profile, User $user)
+    {
+        $data = request()->validate([
+            'salary' => '',
+            'remarks' => ''
+        ]);
+
+        $user->profile->update($data);
+
+        return redirect('/profile/'. $user->id);
+
+    }
 }
