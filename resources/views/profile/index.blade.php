@@ -12,6 +12,15 @@
             @endif
         </div>
 
+        <div class="col-md-9 margin-tb">
+            @if ($message = Session::get('error'))
+            <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+            </div>
+            @endif
+        </div>
+
         <div class="col-md-9">
 
             <!-- User Profile -->
@@ -111,7 +120,13 @@
 
                 <div class="card-footer text-center">
                     <p class="btn-holder">
-                            <a href='{{ url()->previous() }}' class="btn btn-primary text-center" role="button">Back</a>
+                        @if (Auth::user()->isManager())<a class="btn btn-primary text-center" role="button"href="{{ url('/manager/'.Auth::user()->id) }}">Back</a>
+
+                        @elseif(Auth::user()->isAdmin())<a class="btn btn-primary text-center" role="button"href="{{ url('/admin/'.Auth::user()->id) }}">Back</a>
+
+                        @else<a class="btn btn-primary text-center" role="button"href="{{ url('/cashier/'.Auth::user()->id) }}">Back</a>
+
+                        @endif
                     </p>
             </div>
 
