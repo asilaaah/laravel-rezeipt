@@ -139,6 +139,7 @@ class CartController extends Controller
 
     public function getReceipt(Request $request)
     {
+        $user = FacadesAuth::user();
         $receipt = FacadesAuth::user()->sales;
         $receipt->transform(function ($sales, $key) {
             $sales->cart = unserialize($sales->cart);
@@ -146,7 +147,7 @@ class CartController extends Controller
         });
 
         $newreceipt = $receipt->sortByDesc('created_at')->first();
-        $store = Store::all()->first();
+        $store = Store::find($user->store_id);
         $id = $newreceipt->id;
 
         $paidAmount = $request->paidAmount;

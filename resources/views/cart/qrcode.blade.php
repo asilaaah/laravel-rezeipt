@@ -20,7 +20,7 @@
 
         <p class="btn-holder pr-1">
             <a href="/product-list" class="btn btn-primary text-center mt-3" role="button">Back</a>
-            <a href="/receipt/{{ $id }}" class="btn btn-primary text-center mt-3" role="button">PDF</a>
+            <a href="/receipt/{{ $id }}" class="btn btn-primary text-center mt-3" target="_blank" role="button">PDF</a>
         </p>
     </div>
 
