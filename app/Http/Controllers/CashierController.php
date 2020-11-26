@@ -16,7 +16,7 @@ class CashierController extends Controller
     public function index(User $user)
     {
         $user = Auth::user();
-        $cashier = $user->where('role', 2)->sortable()->simplePaginate(10);
+        $cashier = $user->where('role', 2)->where('store_id',$user->store_id)->sortable()->simplePaginate(10);
 
         return view ('cashiers.index', compact('cashier','user'));
     }

@@ -13,7 +13,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'category_id','image','user_id','name','description','price','quantity','minimum_quantity',
+        'category_id','image','user_id','name','description','price','quantity','minimum_quantity','store_id'
     ];
 
     public $sortable = ['id','category_id','name','description','price', 'quality'];
@@ -28,11 +28,16 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
+
     public function productImage()
     {
         // add new product then upload the "no image" image first
         // go to product-list, copy paste the image path of  the "no image" image to here
-        
+
         $imagePath = ($this->image) ? $this->image : 'products/No-Photo-Available.jpg';
         return '/storage/' . $imagePath;
     }
