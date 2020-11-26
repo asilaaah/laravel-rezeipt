@@ -66,6 +66,13 @@
                     </div>
 
                     <div class="row mb-2">
+                        <div class="col-sm-6 text-sm-right">Store Name</div>
+                        <div class="col-sm-6 field-bg">
+                            <span>{{ $store->name }}</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
                         <div class="col-sm-6 text-sm-right">Role</div>
                         <div class="col-sm-6 field-bg">
                             <span>@if ($user->isManager())
