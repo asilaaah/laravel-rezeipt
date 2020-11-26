@@ -15,8 +15,6 @@ class Store extends Model
 
     public $sortable = ['name', 'address', 'phone_num'];
 
-    protected $table = 'stores';
-
     public function users()
     {
         return $this->hasMany(User::class);

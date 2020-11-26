@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
-use App\Models\Store;
 use App\Models\User;
 use DateTime;
 use Illuminate\Support\Facades\Validator;
@@ -18,8 +17,7 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($user->id);
         $profile = Profile::find($user->id);
-        $store = Store::find($user->store_id);
-        return view('profile.index', compact('user', 'profile','store'));
+        return view('profile.index', compact('user', 'profile'));
     }
 
     public function edit(Profile $profile, User $user)
