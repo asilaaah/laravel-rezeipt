@@ -22,6 +22,7 @@
                                 <th>@sortablelink('role','Role')</th>
                                 <th>@sortablelink('email','Email')</th>
                                 <th>@sortablelink('created_at','Registered at')</th>
+                                <th>@sortablelink('store_id', 'Store ID')</th>
                                 <th></th>
                             </tr>
                             @forelse ($users as $user)
@@ -34,6 +35,7 @@
                                      @endif</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
+                                    <td>{{ $user->store_id}}</td>
                                     <td><a href="{{ route('admin.users.approve', $user->id) }}"
                                            class="btn btn-primary btn-sm">Approve</a></td>
                                 </tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\Store;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -33,8 +34,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    
-    
+
+
     protected $redirectTo = '/approval';
 
 /*
@@ -74,6 +75,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    public function showRegistrationForm()
+    {
+        $stores=Store::all();
+        return view('auth.register', compact('stores'));
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -81,6 +89,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'role' => ['required'],
+            'store_id' => ['required']
         ]);
     }
 
@@ -98,6 +107,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
+            'store_id' => $data['store_id']
         ]);
 
         Profile::create(['user_id' => $user->id]);

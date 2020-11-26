@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name', 'email', 'password', 'admin' , 'approved_at' , 'role', 'store_id'
     ];
 
-    public $sortable = ['id','name','email','role','created_at'];
+    public $sortable = ['id','name','email','role','created_at','store_id'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -65,7 +65,7 @@ class User extends Authenticatable
         return false;
     }
 
-    
+
     public function isCashier()
     {
        if ($this->role == 2){
@@ -84,6 +84,6 @@ class User extends Authenticatable
 
     public function store()
     {
-        return $this->belongsTo(Store::class, 'store_id');
+        return $this->belongsTo(Store::class);
     }
 }
