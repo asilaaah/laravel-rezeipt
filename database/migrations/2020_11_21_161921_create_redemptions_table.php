@@ -31,6 +31,6 @@ class CreateRedemptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('redemptions');
+        Schema::dropIfExists('redemption');
     }
 }

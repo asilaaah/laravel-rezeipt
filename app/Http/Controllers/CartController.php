@@ -27,18 +27,17 @@ class CartController extends Controller
     public function productList()
     {
         $user = FacadesAuth::user();
-        $products = Product::all();
 
 
         if (request()->category)
         {
             $products = Product::with('category')->whereHas('category', function ($query) {
                 $query->where('name', request()->category);
-            })->where('quantity', '>', 0)->get();
+            })->where('quantity', '>', 0)->where('store_id',$user->store_id)->get();
             $categories = Category::all();
         }
         else {
-            $products = Product::where('quantity', '>', 0)->get();
+            $products = Product::where('quantity', '>', 0)->where('store_id',$user->store_id)->get();
             $categories = Category::all();
         }
 
