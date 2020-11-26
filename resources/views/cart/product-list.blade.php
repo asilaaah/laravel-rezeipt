@@ -55,7 +55,7 @@
                         <div class="text-center">{{ $product->description }}</div>
                         <div class="text-center"><strong>Price: </strong> RM {{ number_format($product->price, 2, '.', ',') }}</div>
                         <div align="center" class="pb-2">
-                        <input name="qty" id="qty" type="number" min="0" data-bind="value:qty" class="col-md-7" />
+                        <input name="qty" id="qty" type="number" min="1" data-bind="value:qty" class="col-md-7" />
                         </div>
                         <button class="btn btn-warning btn-block text-center">Add to cart</button>
                         </form>
