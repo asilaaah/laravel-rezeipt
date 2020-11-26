@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
     {
         User::create([
             'id' => '1',
-            'store_id' => "1",
+            'store_id' => "0",
             'name' => 'Admin',
             'email' => 'admin@rezeipt.online',
             'email_verified_at' => now(),
