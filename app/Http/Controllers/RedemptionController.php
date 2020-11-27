@@ -6,6 +6,7 @@ use App\Models\Redemption;
 use App\Models\Store;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Str;
 
 class RedemptionController extends Controller
 {
@@ -24,18 +25,24 @@ class RedemptionController extends Controller
     }
 
 
-    public function store()
+    public function store(Redemption $redemption)
     {
 
         $data = request()->validate([
             'name' => 'required',
-            'description' => '',
+            'description' => 'required',
             'points' => 'required|integer|gt:0',
             'discountAmount' => 'required|lt:100|gt:0',
-            'expirationDate' => 'required|date'
+            'expirationDate' => 'required|date|after:today',
+            'discountUnit' => 'required|integer|gt:0'
         ]);
 
-        Redemption::create($data);
+        $redemptionArray = ['couponCode' => Str::random(7)];
+
+        $redemption->create(array_merge(
+            $data,
+            $redemptionArray
+        ));
 
         return redirect('/redemption/index')->with('success','Redemption reward added successfully');
     }
@@ -52,10 +59,11 @@ class RedemptionController extends Controller
 
         $data = request()->validate([
             'name' => 'required',
-            'description' => '',
+            'description' => 'required',
             'points' => 'required|integer|gt:0',
             'discountAmount' => 'required|lt:100|gt:0',
-            'expirationDate' => 'required|date'
+            'expirationDate' => 'required|date|after:today',
+            'discountUnit' => 'required|integer|gt:0'
         ]);
 
         $redemption->update($data);

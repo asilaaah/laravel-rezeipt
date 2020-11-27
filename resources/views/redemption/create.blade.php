@@ -41,7 +41,7 @@
                                class="form-control @error('description') is-invalid @enderror"
                                name="description"
                                value="{{ old('description') }}"
-                               autocomplete="description"
+                               required autocomplete="description"
                                autofocus>
 
                         @error('description')
@@ -77,6 +77,22 @@
                                autofocus>
 
                         @error('discountAmount')
+                        <strong>{{ $message }}</strong>
+                        @enderror
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="discountUnit" class="col-md-4 col-form-label">Discount Unit</label>
+
+                        <input id="discountUnit"
+                               type="number"
+                               class="form-control @error('discountUnit') is-invalid @enderror"
+                               name="discountUnit"
+                               value="{{ old('discountUnit') }}"
+                               required autocomplete="discountUnit"
+                               autofocus>
+
+                        @error('discountUnit')
                         <strong>{{ $message }}</strong>
                         @enderror
                     </div>

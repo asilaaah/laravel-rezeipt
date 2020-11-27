@@ -15,8 +15,8 @@ class Redemption extends Model
     protected $table = 'redemption';
 
     protected $fillable = [
-        'name','description','points','discountAmount','expirationDate'
+        'name','description','points','discountAmount','expirationDate','discountUnit','couponCode'
     ];
 
-    public $sortable = ['name','description','points','discountAmount','expirationDate'];
+    public $sortable = ['name','description','points','discountAmount','expirationDate','discountUnit'];
 }

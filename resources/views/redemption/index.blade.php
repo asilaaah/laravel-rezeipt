@@ -28,8 +28,9 @@
                         <th scope="col">@sortablelink('name','Name')</th>
                         <th scope="col">@sortablelink('description','Description')</th>
                         <th scope="col">@sortablelink('points','Points')</th>
-                        <th scope="col">@sortablelink('discountAmount','Discount Amount')</th>
+                        <th scope="col">@sortablelink('discountUnit','Discount Unit')</th>
                         <th scope="col">@sortablelink('expirationDate','Expiration Date')</th>
+                        <th scope="col" class="text-primary">Coupon Code</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -40,8 +41,9 @@
                             <td>{{ $redemption->name }}</td>
                             <td>{{ $redemption->description }}</td>
                             <td>{{ $redemption->points }}</td>
-                            <td>{{ $redemption->discountAmount }}</td>
+                            <td>{{ $redemption->discountUnit }}</td>
                             <td>{{ $redemption->expirationDate }}</td>
+                            <td>{{ $redemption->couponCode }}</td>
                             <td class="d-flex justify-content-center">
                                 <form action="/redemption/{{ $redemption->id }}" method="POST">
 
