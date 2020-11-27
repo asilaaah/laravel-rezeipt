@@ -78,6 +78,22 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="discountUnit" class="col-md-4 col-form-label">Discount Unit</label>
+
+                        <input id="discountUnit"
+                               type="number"
+                               class="form-control @error('discountUnit') is-invalid @enderror"
+                               name="discountUnit"
+                               value="{{ old('discountUnit') ?? $redemption->discountUnit }}"
+                               required autocomplete="discountUnit"
+                               autofocus>
+
+                        @error('discountUnit')
+                        <strong>{{ $message }}</strong>
+                        @enderror
+                    </div>
+
+                    <div class="form-group row">
                         <label for="expirationDate" class="col-md-4 col-form-label">Expiration Date</label>
 
                         <input id="expirationDate"

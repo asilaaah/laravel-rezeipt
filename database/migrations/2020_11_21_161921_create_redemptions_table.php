@@ -20,6 +20,8 @@ class CreateRedemptionsTable extends Migration
             $table->integer('points');
             $table->integer('discountAmount');
             $table->date('expirationDate');
+            $table->integer('discountUnit');
+            $table->string('couponCode', 7);
             $table->timestamps();
         });
     }
