@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('phone_number')->nullable();
             $table->date('birthday')->nullable();
             $table->string('profile_photo')->nullable();
-            $table->string('salary')->nullable();
+            $table->integer('salary')->nullable();
             $table->text('remarks')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->index('user_id');

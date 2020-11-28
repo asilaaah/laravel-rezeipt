@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-9 margin-tb">
+        <div class="col-md-8 margin-tb">
             @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -12,7 +12,7 @@
             @endif
         </div>
 
-        <div class="col-md-9 margin-tb">
+        <div class="col-md-8 margin-tb">
             @if ($message = Session::get('error'))
             <div class="alert alert-success alert-block">
             <button type="button" class="close" data-dismiss="alert">×</button>
@@ -21,7 +21,7 @@
             @endif
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-8">
 
             <!-- User Profile -->
             <div class="card user-profile">
@@ -31,17 +31,6 @@
                 <a href="/change-password" class="btn btn-primary btn-100 float-right ml-2 ">Change Password</a>
                 <a href="/profile/{{$user->id}}/edit" class="btn btn-primary btn-100 float-right">Edit</a>
                 @endcan
-                </div>
-
-                <div class="card-body pb-0 pt-0">
-                @if (session('status'))
-                    <div class="alert alert-success mb-0 mt-3">
-                        <strong>{{ session('status') }}</strong>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
                 </div>
 
                 <div class="card-body border-bottom">
@@ -137,7 +126,7 @@
                     <div class="row  mb-2">
                         <div class="col-sm-6 text-sm-right">Salary</div>
                         <div class="col-sm-6 field-bg">
-                        {{ $user->profile->salary }}
+                        RM {{ $user->profile->salary }}
                         </div>
                     </div>
 
@@ -151,7 +140,6 @@
                 @endcannot
 
                 <div class="card-footer text-center">
-                    <p class="btn-holder">
                         @if (Auth::user()->isManager())<a class="btn btn-primary text-center" role="button"href="{{ url('/manager/'.Auth::user()->id) }}">Back</a>
 
                         @elseif(Auth::user()->isAdmin())<a class="btn btn-primary text-center" role="button"href="{{ url('/admin/'.Auth::user()->id) }}">Back</a>
@@ -159,8 +147,7 @@
                         @else<a class="btn btn-primary text-center" role="button"href="{{ url('/cashier/'.Auth::user()->id) }}">Back</a>
 
                         @endif
-                    </p>
-            </div>
+                </div>
 
             </div>
         </div>

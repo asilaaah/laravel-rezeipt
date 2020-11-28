@@ -4,6 +4,8 @@ namespace App\Imports;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class ImportProduct implements ToModel
@@ -15,15 +17,18 @@ class ImportProduct implements ToModel
     */
     public function model(array $row)
     {
-        
+        $user = Auth::user();
+
         return new Product([
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
             'image' => '',
             'name' => $row[0],
             'description' => $row[1],
             'price' => $row[2],
             'quantity' => $row[3],
-            'category_id' => Category::where('name', $row[4])->first()->id,
+            'minimum_quantity' => $row[4],
+            'category_id' => Category::where('name', $row[5])->first()->id,
+            'store_id' => $user->store_id,
         ]);
     }
 

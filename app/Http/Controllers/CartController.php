@@ -8,14 +8,12 @@ use App\Models\Product;
 use App\Models\Sales;
 use App\Models\User;
 use App\Models\Store;
-use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Session;
 use App\Events\ProductReachedMinimumQuantity;
-
+use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade as PDF;
-use function PHPUnit\Framework\returnArgument;
 
 class CartController extends Controller
 {
@@ -118,6 +116,7 @@ class CartController extends Controller
         $sales->name = FacadesAuth::user()->name;
         FacadesAuth::user()->sales()->save($sales);
         $id = $sales->id;
+        $sales_key  = Str::random(7);
 
         $this->decreaseQuantitites();
 
@@ -134,7 +133,7 @@ class CartController extends Controller
 
 
         Session::forget('cart');
-        return view('cart.qrcode', compact('id'));
+        return view('cart.qrcode', compact('id', 'sales_key'));
     }
 
     public function getReceipt(Request $request)

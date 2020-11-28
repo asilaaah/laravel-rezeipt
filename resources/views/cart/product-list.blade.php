@@ -30,16 +30,16 @@
             </div>
 
             <nav>
-                <ul class="list-group">
+                <ul class="list-group text-center">
                     @foreach ($categories as $category)
-                    <li class="list-group-item"><a href="{{ route('cart.product-list', ['category' => $category->name]) }}">{{ $category->name }}</a></li>
+                    <li class=" list-group-item"><a class ="text-decoration-none text-dark font-weight-bold "href="{{ route('cart.product-list', ['category' => $category->name]) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
             </nav>
 
-                    <p class="btn-holder mt-3">
+                    <div class="btn-holder text-center mt-3">
                         <a href="/cashier/{{ $user->id }}" class="btn btn-primary text-center" role="button">Back</a>
-                    </p>
+                    </div>
 
         </div>
 
@@ -55,13 +55,13 @@
                         <div class="text-center">{{ $product->description }}</div>
                         <div class="text-center"><strong>Price: </strong> RM {{ number_format($product->price, 2, '.', ',') }}</div>
                         <div align="center" class="pb-2">
-                        <input name="qty" id="qty" type="number" min="1" data-bind="value:qty" class="col-md-7" />
+                        <input name="qty" id="qty" type="number" value="1" min="1" data-bind="value:qty" class="col-md-6 text-center" />
                         </div>
                         <button class="btn btn-warning btn-block text-center">Add to cart</button>
                         </form>
                     </div>
                 @empty
-                    <div>No items found</div>
+                    <h5>No items found</h5>
                 @endforelse
             </div>
 

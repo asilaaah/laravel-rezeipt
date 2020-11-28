@@ -40,7 +40,7 @@ class ProductsController extends Controller
         $data = request()->validate([
             'category_id' => '',
             'name' => 'required',
-            'description' => '',
+            'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
             'image' => 'image',
@@ -66,7 +66,7 @@ class ProductsController extends Controller
             $storeArray
         ));
 
-        return redirect('/p/index')->with('success','Products added successfully');
+        return redirect('/p/index')->with('success','Product added successfully');
 
     }
 
@@ -81,7 +81,7 @@ class ProductsController extends Controller
 
         $data = request()->validate([
             'name' => 'required',
-            'description' => '',
+            'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
             'image' => 'image',
@@ -103,14 +103,14 @@ class ProductsController extends Controller
             $imageArray ?? []
         ));
 
-        return redirect('/p/index')->with('success','Products updated successfully');
+        return redirect('/p/index')->with('success','Product updated successfully');
     }
 
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return redirect('/p/index')->with('success','Products deleted successfully');
+        return redirect('/p/index')->with('success','Product deleted successfully');
     }
 
     public function show(Product $product)

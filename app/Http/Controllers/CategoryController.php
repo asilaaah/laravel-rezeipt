@@ -47,17 +47,17 @@ class CategoryController extends Controller
         return view('category.edit', compact('category'));
     }
 
-    public function update(Category $category)
+    public function update(Category $category, Request $request)
     {
-
-        $data = request()->validate([
-            'name' => 'required'
-        ]);
-
+        $data = $request->all();
+        if (Category::where('name', $request->name)->first()) {
+            return redirect('/category/index')->with('error','Category already exist! ');
+        }
+        else{
         $category->update($data);
-
         return redirect('/category/index')->with('success','Category name updated successfully');
     }
+}
 
 
     public function destroy(Category $category)

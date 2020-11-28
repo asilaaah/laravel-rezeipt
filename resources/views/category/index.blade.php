@@ -23,7 +23,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                    <h2>List of Categories</h2>
+                    <div class="font-weight-bold">List of Categories</div>
                         <a class="btn btn-success" href="/category/create">Add New Category</a>
                 </div>
 

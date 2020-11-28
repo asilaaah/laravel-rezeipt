@@ -37,14 +37,14 @@ class CashierController extends Controller
 
         $user->update($data);
 
-        return redirect('/c/index');
+        return redirect('/c/index')->with('success', "Cashier details updated!");
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect('/c/index')->with('success','Products deleted successfully');
+        return redirect('/c/index')->with('success','Cashier deleted successfully');
     }
 
 

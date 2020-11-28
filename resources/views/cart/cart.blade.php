@@ -7,7 +7,8 @@
             <div class="col-md-10">
                 <div class="card">
 
-                   <div class="card-header d-flex justify-content-between"><h3 class="ml-2">Your cart</h3>
+                   <div class="card-header d-flex align-items-center justify-content-between">
+                       <h4>Your cart</h4>
                     <a href="/product-list" class="btn btn-primary" role="button">Back</a>
             </div>
         <div class="card-body mx-2">
@@ -56,11 +57,11 @@
                             <label for="paidAmount" class="col-form-label mr-3"><h4><strong>Paid Amount :</strong></h4></label>
 
                             <input id="paidAmount"
-                                    type="text"
+                                    type="number"
                                     class="form-control mb-2 mr-sm-2"
                                     name="paidAmount"
-                                    value=""
-                                    autofocus>
+                                    min="1" value=""
+                                    autofocus required>
                             <button type="submit" class="btn btn-primary mb-2">Calculate Change</button>
                         </div>
                     </form>
@@ -70,7 +71,7 @@
                     </div>
 
                 @else
-                    <h3>No items in cart.</h3>
+                    <h5>No items in cart</h5>
                 @endif
 
                     </div>

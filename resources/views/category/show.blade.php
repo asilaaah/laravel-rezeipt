@@ -6,15 +6,17 @@
     <div class="col-md-10">
         <div class="card">
             <div class="card-header">
-                <h2>{{ $category->name }}</h2>
+                <div class="">{{ $category->name }}</h2>
             </div>
 
         <div class="card-body">
-    @foreach ($category->products as $product)
-    <div class="row px-3 text-center">
+    @forelse ($category->products as $product)
+        <div class="row px-3 text-center">
         <div>{{ $product->name }}</div>
     </div>
-    @endforeach
+    @empty
+        <div colspan="6" class="text-center"><h5>No products under this category found</div></h5>
+@endforelse
         </div>
         </div>
     </div>
