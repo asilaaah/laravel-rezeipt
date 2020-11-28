@@ -45,9 +45,8 @@ class ProfileController extends Controller
             'phone_number' => '',
             'address' => '',
             'birthday' => 'nullable|olderThan:18',
-            'profile_photo' => 'image'
+            'profile_photo' => 'image|mimes:jpg,png'
         ]);
-
 
         if (request('profile_photo')){
             $imagePath = request('profile_photo')->store('profile', 'public');
@@ -83,7 +82,7 @@ class ProfileController extends Controller
     public function updateAdditional(Profile $profile, User $user)
     {
         $data = request()->validate([
-            'salary' => '',
+            'salary' => 'numeric',
             'remarks' => ''
         ]);
 

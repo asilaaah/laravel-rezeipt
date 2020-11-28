@@ -2,45 +2,53 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12 margin-tb d-flex d-flex justify-content-between">
-            <div class="pull-left">
-                <h3>List of Products</h3>
-            </div>
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-10 margin-tb mb-3">
+            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                        <div class="pull-right mb-2">
+                            <input type="file" name="file" class="form-control-file" required>
+                        </div>
+                        <div class="pull-left">
+                        <button class="btn btn-success">Import Excel File</button>
+                        <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
+                    </div>
+            </form>
         </div>
-    </div>
 
-    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+        <div class="col-md-10 margin-tb">
+            @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+            </div>
+            @endif
+        </div>
 
-        <div class="mt-3 d-flex justify-content-between align-items-end">
-            <div>
-                <div class="pull-right mb-2">
-                    <input type="file" name="file" class="form-control-file" required>
+        <div class="col-md-10 margin-tb">
+            @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+            </div>
+            @endif
+        </div>
+
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="font-weight-bold">List of Products</div>
+                <div>
+                    <a class="btn btn-info" href="/p/create">Add Products</a>
+                    <a class="btn btn-info" href="/category/index">Add Category</a>
                 </div>
-                <button class="btn btn-success">Import Excel File</button>
-                <a class="btn btn-warning" href="{{ route('export') }}">Export Excel File</a>
             </div>
-            <div>
-                <a class="btn btn-info" href="/p/create">Add Products</a>
-                <a class="btn btn-info" href="/category/index">Add Category</a>
-            </div>
-        </div>
-    </form>
 
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+            <div class="card-body">
 
-    @if ($message = Session::get('error'))
-        <div class="alert alert-danger">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-
-    <table class="table table-bordered table-hover mt-4">
+    <table class="table table-hover">
         <thead>
         <tr class="text-center">
             <th>@sortablelink('id','No')</th>
@@ -49,7 +57,7 @@
             <th>@sortablelink('description','Description')</th>
             <th>@sortablelink('price','Price')</th>
             <th>@sortablelink('quantity','Quantity')</th>
-            <th width="250px">Action</th>
+            <th class="text-primary">Action</th>
         </tr>
     </thead>
 
@@ -81,13 +89,17 @@
         {!! $products->appends(\Request::except('page'))->render() !!}
         </div>
     </div>
+</div>
+            </div>
 
-    <div class="form-group row d-flex justify-content-center">
-        <div class="col-md-6 offset-md-5">
-            <a href='/manager/{{ $user->id }}' class="btn btn-primary text-center" role="button">Back</a>
+    <div class="text-center">
+        <a href="/manager/{{ $user->id }}"
+            class="btn btn-primary mt-3">Back</a>
         </div>
-    </div>
 
+        </div>
+</div>
+    </div>
 </div>
 
 @endsection

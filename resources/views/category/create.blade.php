@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-8 offset-2">
                 <div class="row">
-                    <h1>Add New Category</h1>
+                    <h2 class="mt-3">Add New Category</h2>
                 </div>
 
                 <div class="form-group row">
@@ -38,4 +38,3 @@
     </form>
 </div>
 @endsection
-    

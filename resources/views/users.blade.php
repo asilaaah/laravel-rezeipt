@@ -6,7 +6,7 @@
             <div class="col-md-10">
 
                 <div class="card">
-                    <div class="card-header">Users List to Approve</div>
+                    <div class="card-header font-weight-bold">Users List to Approve</div>
 
                     <div class="card-body">
 
@@ -23,7 +23,7 @@
                                 <th>@sortablelink('email','Email')</th>
                                 <th>@sortablelink('created_at','Registered at')</th>
                                 <th>@sortablelink('store_id', 'Store ID')</th>
-                                <th></th>
+                                <th class="text-primary">Action</th>
                             </tr>
                             @forelse ($users as $user)
                                 <tr class="text-center">

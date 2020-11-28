@@ -10,7 +10,7 @@
             <div class="col-8 offset-2">
 
                 <div class="row">
-                    <h1>Update Products</h1>
+                    <h2 class="mt-3">Update Products</h2>
                 </div>
 
                 <div class="form-group row">
@@ -97,11 +97,11 @@
                 <div class="row">
                     <label for="image" class="col-md-4 col-form-label">Image</label>
 
-                    <input type="file" class="form-control-file" id="image" name="image">
+                    <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image" name="image">
 
                     @error('image')
                     <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>The photo must be an image</strong>
                         </span>
                     @enderror
 

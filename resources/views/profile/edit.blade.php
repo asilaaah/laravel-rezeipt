@@ -5,8 +5,16 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-8 margin-tb">
+            @if ($message = Session::get('error'))
+            <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+            </div>
+            @endif
+        </div>
         <div class="col-md-8">
-                <form class="card user-profile" method="POST" action="/profile/{{ $user->id }}" enctype="multipart/form-data">
+                <form class="card user-profile flex " method="POST" action="/profile/{{ $user->id }}" enctype="multipart/form-data">
 
                     @csrf
                     @method('PATCH')
@@ -27,7 +35,7 @@
                                 class="img-thumbnail w-25">
                             </div>
                             <div class="d-flex justify-content-center">
-                                <input type="file" class="form-control-file text-center" id="profile_photo" name="profile_photo">
+                                <input type="file" class="form-control-file @error('profile_photo') is-invalid @enderror" id="profile_photo" name="profile_photo">
 
                                 @error('profile_photo')
                                 <span class="invalid-feedback" role="alert">

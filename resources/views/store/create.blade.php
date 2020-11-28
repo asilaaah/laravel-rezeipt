@@ -8,7 +8,7 @@
                 <div class="col-8 offset-2">
 
                     <div class="row">
-                        <h1>Add Store Information</h1>
+                        <h2 class="mt-3">Add Store Information</h2>
                     </div>
 
                     @if ($message = Session::get('success'))

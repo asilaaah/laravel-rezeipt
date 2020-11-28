@@ -10,7 +10,7 @@
                 <div class="col-8 offset-2">
 
                     <div class="row">
-                        <h1>Edit Reward Information</h1>
+                        <h2 class="mt-3">Edit Reward Information</h2>
                     </div>
 
                     <div class="form-group row">

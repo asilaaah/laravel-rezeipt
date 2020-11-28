@@ -14,7 +14,7 @@
             @endif
 
                 <div class="row d-flex align-items-center justify-content-between">
-                    <h1>Add New Products</h1>
+                    <h2 class="my-3">Add New Products</h2>
                 </div>
 
              <div class="form-group row">
@@ -50,7 +50,7 @@
                            class="form-control @error('description') is-invalid @enderror"
                            name="description"
                            value="{{ old('description') }}"
-                           autocomplete="description"
+                           required autocomplete="description"
                            autofocus>
 
                     @error('description')
@@ -109,11 +109,11 @@
                 <div class="row">
                     <label for="image" class="col-md-4 col-form-label">Post Image</label>
 
-                    <input type="file" class="form-control-file" id="image" name="image">
+                    <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image" name="image">
 
                     @error('image')
                     <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>The photo must be an image</strong>
                         </span>
                     @enderror
 

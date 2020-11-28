@@ -15,7 +15,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <div>Store Information</div>
+                        <div class="font-weight-bold">Store Information</div>
                         <a class="btn btn-success" href="/store/create"> Add Store</a>
                     </div>
                 <div class="card-body">
@@ -32,7 +32,7 @@
                     <tbody>
 
                     @forelse ($stores as $store)
-                        <tr class="text-center">
+                        <tr class="text-center justify">
                             <td>{{ $store->name }}</td>
                             <td>{{ $store->address }}</td>
                             <td>{{ $store->phone_num }}</td>

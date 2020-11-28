@@ -10,7 +10,7 @@
             <div class="col-8 offset-2">
 
                 <div class="row">
-                    <h1>Update Cashier's Additional Details</h1>
+                    <h2 class="mt-3">Update Cashier's Additional Details</h2>
                 </div>
 
                 <div class="form-group row">
