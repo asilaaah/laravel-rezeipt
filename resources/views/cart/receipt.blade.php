@@ -33,7 +33,7 @@
     <div>
         <div>
             <div>TYPE : Cash</div>
-            <div>#{{ $newreceipt->id }}</div>
+            <div>SALES ID : {{ $newreceipt->id }}</div>
             <div>CASHIER : {{ $newreceipt->name }}</div>
         </div>
         <div>

@@ -112,11 +112,11 @@ class CartController extends Controller
         $cart = new Cart($oldCart);
 
         $sales = new Sales();
+        $sales->id = Str::random(16);
         $sales->cart = serialize($cart);
         $sales->name = FacadesAuth::user()->name;
         FacadesAuth::user()->sales()->save($sales);
         $id = $sales->id;
-        $sales_key  = Str::random(7);
 
         $this->decreaseQuantitites();
 
@@ -133,7 +133,7 @@ class CartController extends Controller
 
 
         Session::forget('cart');
-        return view('cart.qrcode', compact('id', 'sales_key'));
+        return view('cart.qrcode', compact('id'));
     }
 
     public function getReceipt(Request $request)
