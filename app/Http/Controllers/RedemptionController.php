@@ -21,7 +21,8 @@ class RedemptionController extends Controller
 
     public function create()
     {
-        return view('redemption.create');
+        $stores = Store::get();
+        return view('redemption.create',compact('stores'));
     }
 
 
@@ -29,8 +30,8 @@ class RedemptionController extends Controller
     {
 
         $data = request()->validate([
+            'store_id' =>'',
             'name' => 'required',
-            'description' => 'required',
             'points' => 'required|integer|gt:0',
             'discountAmount' => 'required|lt:100|gt:0',
             'expirationDate' => 'required|date|after:today',
@@ -58,8 +59,8 @@ class RedemptionController extends Controller
     {
 
         $data = request()->validate([
+            'store_id' =>'',
             'name' => 'required',
-            'description' => 'required',
             'points' => 'required|integer|gt:0',
             'discountAmount' => 'required|lt:100|gt:0',
             'expirationDate' => 'required|date|after:today',

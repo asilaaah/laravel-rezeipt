@@ -18,6 +18,15 @@
                     @endif
 
                     <div class="form-group row">
+                        <label for="store_id" class="col-md-4 col-form-label">Store Name</label>
+                        <select class="form-control" name="store_id">
+                            @foreach ($stores as $store)
+                               <option value={{ $store->id }}>{{ $store->name}}</option>
+                            @endforeach
+                        </select>
+                   </div>
+
+                    <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label">Name</label>
 
                         <input id="name"
@@ -29,22 +38,6 @@
                                autofocus>
 
                         @error('name')
-                        <strong>{{ $message }}</strong>
-                        @enderror
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="description" class="col-md-4 col-form-label">Description</label>
-
-                        <input id="description"
-                               type="text"
-                               class="form-control @error('description') is-invalid @enderror"
-                               name="description"
-                               value="{{ old('description') }}"
-                               required autocomplete="description"
-                               autofocus>
-
-                        @error('description')
                         <strong>{{ $message }}</strong>
                         @enderror
                     </div>

@@ -15,13 +15,14 @@ class CreateRedemptionsTable extends Migration
     {
         Schema::create('redemption', function (Blueprint $table) {
             $table->id()->unique();
+            $table->unsignedBigInteger('store_id');
             $table->string('name');
-            $table->text('description');
             $table->integer('points');
             $table->integer('discountAmount');
             $table->date('expirationDate');
             $table->integer('discountUnit');
             $table->string('couponCode', 7);
+            $table->index('store_id');
             $table->timestamps();
         });
     }

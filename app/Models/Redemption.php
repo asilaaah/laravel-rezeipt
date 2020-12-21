@@ -19,4 +19,9 @@ class Redemption extends Model
     ];
 
     public $sortable = ['name','description','points','discountAmount','expirationDate','discountUnit'];
+
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
 }
