@@ -82,7 +82,7 @@ class ProfileController extends Controller
     public function updateAdditional(Profile $profile, User $user)
     {
         $data = request()->validate([
-            'salary' => 'numeric',
+            'salary' => 'nullable|numeric',
             'remarks' => ''
         ]);
 
