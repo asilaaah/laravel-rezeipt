@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-md-10 margin-tb">
+            <div class="col-md-11 margin-tb">
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -14,7 +14,7 @@
                 @endif
             </div>
 
-            <div class="col-md-10">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div class="font-weight-bold">Redemption Information</div>
@@ -25,8 +25,8 @@
                 <table class="table">
                     <thead>
                     <tr class="text-center">
+                        <th scope="col">@sortablelink('store','Store Name')</th>
                         <th scope="col">@sortablelink('name','Name')</th>
-                        <th scope="col">@sortablelink('description','Description')</th>
                         <th scope="col">@sortablelink('points','Points')</th>
                         <th scope="col">@sortablelink('discountUnit','Discount Unit')</th>
                         <th scope="col">@sortablelink('expirationDate','Expiration Date')</th>
@@ -38,8 +38,8 @@
 
                     @forelse ($redemptions as $redemption)
                         <tr class="text-center">
+                            <td>{{ $redemption->store->name }}</td>
                             <td>{{ $redemption->name }}</td>
-                            <td>{{ $redemption->description }}</td>
                             <td>{{ $redemption->points }}</td>
                             <td>{{ $redemption->discountUnit }}</td>
                             <td>{{ $redemption->expirationDate }}</td>

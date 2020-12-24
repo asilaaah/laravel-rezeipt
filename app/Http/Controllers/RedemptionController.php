@@ -51,7 +51,8 @@ class RedemptionController extends Controller
 
     public function edit(Redemption $redemption)
     {
-        return view('redemption.edit', compact('redemption'));
+        $stores = Store::get();
+        return view('redemption.edit', compact('redemption','stores'));
     }
 
 
