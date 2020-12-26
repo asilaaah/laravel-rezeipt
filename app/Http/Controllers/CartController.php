@@ -133,6 +133,8 @@ class CartController extends Controller
 
 
         Session::forget('cart');
+        Session::forget('paidAmount');
+        Session::forget('redemptionCode');
         return view('cart.qrcode', compact('id'));
     }
 
@@ -196,7 +198,21 @@ class CartController extends Controller
 
     }
 
+    public function validateCode(Request $request)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
 
+        $redemptionCode = $request->redemptionCode;
 
-
+        if ($redemptionCode) {
+            $validCode = $request->validate([
+                'redemptionCode' => 'exists:App\Models\Redemption,couponCode'
+            ]);
+            $request->session()->put('redemptionCode', $redemptionCode);
+        return redirect()->route('cart.cart')->with('validCode', $validCode);
+    }
+        else{
+            return redirect()->route('cart.cart')->with('error', "Error code");
+}}
 }
