@@ -26,7 +26,7 @@
                         <th scope="col">@sortablelink('name','Store Name')</th>
                         <th scope="col">@sortablelink('address','Address')</th>
                         <th scope="col">@sortablelink('phone_num','Phone Number')</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="text-primary">Action</th>
                     </tr>
                     </thead>
                     <tbody>

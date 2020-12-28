@@ -31,14 +31,14 @@
                         <th scope="col">@sortablelink('discountUnit','Discount Unit')</th>
                         <th scope="col">@sortablelink('expirationDate','Expiration Date')</th>
                         <th scope="col" class="text-primary">Coupon Code</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="text-primary">Action</th>
                     </tr>
                     </thead>
                     <tbody>
 
                     @forelse ($redemptions as $redemption)
                         <tr class="text-center">
-                            <td>{{ $redemption->store->name }}</td>
+                            <td>{{ $redemption->store['name'] }}</td>
                             <td>{{ $redemption->name }}</td>
                             <td>{{ $redemption->points }}</td>
                             <td>{{ $redemption->discountUnit }}</td>
