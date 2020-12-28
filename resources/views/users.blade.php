@@ -4,17 +4,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
+                @if (session('message'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('message') }}
+                </div>
+            @endif
 
                 <div class="card">
                     <div class="card-header font-weight-bold">Users List to Approve</div>
 
                     <div class="card-body">
-
-                        @if (session('message'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('message') }}
-                            </div>
-                        @endif
 
                         <table class="table">
                             <tr class="text-center">
@@ -35,7 +34,7 @@
                                      @endif</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td>{{ $user->store_id}}</td>
+                                    <td>{{ $user->storeId}}</td>
                                     <td><a href="{{ route('admin.users.approve', $user->id) }}"
                                            class="btn btn-primary btn-sm">Approve</a></td>
                                 </tr>

@@ -13,7 +13,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'category_id','image','user_id','name','description','price','quantity','minimum_quantity','store_id'
+        'category_id','image','user_id','name','description','price','quantity','minimum_quantity','storeId'
     ];
 
     public $sortable = ['id','category_id','name','description','price', 'quality'];
@@ -30,7 +30,7 @@ class Product extends Model
 
     public function store()
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Store::class,'storeId');
     }
 
     public function productImage()

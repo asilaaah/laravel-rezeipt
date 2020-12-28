@@ -63,14 +63,14 @@
                         </div>
 
                         <div class="form-group row ">
-                            <label class = "col-md-4 col-form-label text-md-right" for="store_id">Store</label>
+                            <label class = "col-md-4 col-form-label text-md-right" for="storeId">Store</label>
                                 <div class="col-md-6">
-                                    <select class="form-control @error('store_id') is-invalid @enderror" name="store_id">
+                                    <select class="form-control @error('store_id') is-invalid @enderror" name="storeId">
                                         @foreach ($stores as $store)
                                         <option value={{ $store->id }}>{{ $store->name}}</option>
                                         @endforeach
                                     </select>
-                                    @error('store_id')
+                                    @error('storeId')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>Store name is required</strong>
                                     </span>

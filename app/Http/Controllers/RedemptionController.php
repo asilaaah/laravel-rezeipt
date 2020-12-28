@@ -30,7 +30,7 @@ class RedemptionController extends Controller
     {
 
         $data = request()->validate([
-            'store_id' =>'',
+            'storeId' =>'',
             'name' => 'required',
             'points' => 'required|integer|gt:0',
             'discountAmount' => 'required|lt:100|gt:0',
@@ -60,7 +60,7 @@ class RedemptionController extends Controller
     {
 
         $data = request()->validate([
-            'store_id' =>'',
+            'storeId' =>'',
             'name' => 'required',
             'points' => 'required|integer|gt:0',
             'discountAmount' => 'required|lt:100|gt:0',

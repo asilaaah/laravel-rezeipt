@@ -21,7 +21,7 @@ class ProductsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $products = Product::where('store_id',$user->store_id)->sortable()->simplePaginate(15);
+        $products = Product::where('storeId',$user->storeId)->sortable()->simplePaginate(15);
 
         return view('products.index', compact('products', 'user'));
     }
@@ -57,7 +57,7 @@ class ProductsController extends Controller
             $imageArray = ['image' => $imagePath];
         }
 
-        $storeArray = ['store_id' => $user->store_id];
+        $storeArray = ['storeId' => $user->storeId];
 
 
         auth()->user()->products()->create(array_merge(

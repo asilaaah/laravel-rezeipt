@@ -18,8 +18,8 @@
                     @endif
 
                     <div class="form-group row">
-                        <label for="store_id" class="col-md-4 col-form-label">Store Name</label>
-                        <select class="form-control" name="store_id">
+                        <label for="storeId" class="col-md-4 col-form-label">Store Name</label>
+                        <select class="form-control" name="storeId">
                             @foreach ($stores as $store)
                                <option value={{ $store->id }}>{{ $store->name}}</option>
                             @endforeach

@@ -16,8 +16,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('store_id');
-            $table->string('name')->unique();
+            $table->unsignedBigInteger('storeId');
+            $table->string('name');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->integer('quantity');
@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->index('user_id');
             $table->index('category_id');
-            $table->index('store_id');
+            $table->index('storeId');
             $table->timestamps();
         });
     }

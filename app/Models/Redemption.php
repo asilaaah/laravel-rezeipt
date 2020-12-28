@@ -15,13 +15,13 @@ class Redemption extends Model
     protected $table = 'redemption';
 
     protected $fillable = [
-        'name','description','points','discountAmount','expirationDate','discountUnit','couponCode'
+        'storeId','name','description','points','discountAmount','expirationDate','discountUnit','couponCode'
     ];
 
     public $sortable = ['name','description','points','discountAmount','expirationDate','discountUnit'];
 
     public function store()
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Store::class, 'storeId');
     }
 }

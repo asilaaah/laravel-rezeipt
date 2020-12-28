@@ -18,7 +18,7 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($user->id);
         $profile = Profile::find($user->id);
-        $store = Store::find($user->store_id);
+        $store = Store::find($user->storeId);
         return view('profile.index', compact('user', 'profile','store'));
     }
 

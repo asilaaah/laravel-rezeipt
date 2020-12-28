@@ -19,10 +19,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'admin' , 'approved_at' , 'role', 'store_id'
+        'name', 'email', 'password', 'admin' , 'approved_at' , 'role', 'storeId'
     ];
 
-    public $sortable = ['id','name','email','role','created_at','store_id'];
+    public $sortable = ['id','name','email','role','created_at','storeId'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -84,6 +84,6 @@ class User extends Authenticatable
 
     public function store()
     {
-        return $this->belongsTo(Store::class);
+        return $this->belongsTo(Store::class, 'storeId');
     }
 }
