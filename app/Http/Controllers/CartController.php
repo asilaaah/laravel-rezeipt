@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Session;
 use App\Events\ProductReachedMinimumQuantity;
+use App\Models\Redemption;
 use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade as PDF;
 
@@ -31,11 +32,11 @@ class CartController extends Controller
         {
             $products = Product::with('category')->whereHas('category', function ($query) {
                 $query->where('name', request()->category);
-            })->where('quantity', '>', 0)->where('store_id',$user->store_id)->get();
+            })->where('quantity', '>', 0)->where('storeId',$user->storeId)->get();
             $categories = Category::all();
         }
         else {
-            $products = Product::where('quantity', '>', 0)->where('store_id',$user->store_id)->get();
+            $products = Product::where('quantity', '>', 0)->where('storeId',$user->storeId)->get();
             $categories = Category::all();
         }
 
@@ -120,7 +121,6 @@ class CartController extends Controller
 
         $this->decreaseQuantitites();
 
-
         $products = Product::all();
         $user = FacadesAuth::user();
 
@@ -128,17 +128,13 @@ class CartController extends Controller
 
         if ($product->quantity <= $product->minimum_quantity) {
             event(new ProductReachedMinimumQuantity($user, $product));
-        }
-    };
-
+        }};
 
         Session::forget('cart');
-        Session::forget('paidAmount');
-        Session::forget('redemptionCode');
         return view('cart.qrcode', compact('id'));
     }
 
-    public function getReceipt(Request $request)
+    public function getReceipt(Request $request, $id)
     {
         $user = FacadesAuth::user();
         $receipt = FacadesAuth::user()->sales;
@@ -146,24 +142,20 @@ class CartController extends Controller
             $sales->cart = unserialize($sales->cart);
             return $sales;
         });
-
         $newreceipt = $receipt->sortByDesc('created_at')->first();
-        $store = Store::find($user->store_id);
-        $id = $newreceipt->id;
-
-        $paidAmount = $request->paidAmount;
+        $store = Store::find($user->storeId);
+        $redemptionCode = $request->session()->get('redemptionCode');
+        $rewardDetails = Redemption::where('couponCode', $redemptionCode)->first();
         if ($request->session()->has('paidAmount')) {
             $paid = $request->session()->get('paidAmount');
             $change = $paid - $newreceipt->cart->totalPrice;
-            session()->put('paid', $paid);
-            session()->put('change', $change);
 
-            $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change','id'));
-            return $pdf->stream();
-
-        }
-
+        $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change','rewardDetails'));
+        session()->forget('redemptionCode');
+        session()->forget('paidAmount');
+        return $pdf->stream();
     }
+}
 
 
     public function decreaseQuantitites()
@@ -185,17 +177,18 @@ class CartController extends Controller
 
         $paidAmount = $request->paidAmount;
         $request->session()->put('paidAmount', $paidAmount);
+        $redemptionCode = $request->session()->get('redemptionCode');
+        $rewardDetails = Redemption::where('couponCode',$redemptionCode)->first();
 
         if ($request->session()->has('paidAmount')) {
             $paid = $request->session()->get('paidAmount');
             $change = $paid - $cart->totalPrice;
 
-            return redirect()->route('cart.cart')->with('change', $change);
+            return redirect()->route('cart.cart')->with(['change'=> $change,'rewardDetails'=>$rewardDetails]);
         }
 
         else
             return redirect()->route('cart.cart');
-
     }
 
     public function validateCode(Request $request)
@@ -210,9 +203,32 @@ class CartController extends Controller
                 'redemptionCode' => 'exists:App\Models\Redemption,couponCode'
             ]);
             $request->session()->put('redemptionCode', $redemptionCode);
-        return redirect()->route('cart.cart')->with('validCode', $validCode);
-    }
+            $rewardDetails = Redemption::where('couponCode',$redemptionCode)->first();
+            $newTotal = $cart->totalPrice - ($rewardDetails->discountAmount/100)*$cart->totalPrice;
+            $priceBeforeDiscount = $cart->totalPrice;
+            $cart->totalPrice = $newTotal;
+            Session::put('cart', $cart);
+            Session::put('priceBeforeDiscount', $priceBeforeDiscount);
+
+        return redirect()->route('cart.cart')->with('rewardDetails', $rewardDetails);
+        }
         else{
             return redirect()->route('cart.cart')->with('error', "Error code");
-}}
+}
+}
+    public function destroyCode(Request $request)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+
+        $redemptionCode = $request->session()->get('redemptionCode');
+        $priceBeforeDiscount = $request->session()->get('priceBeforeDiscount');
+        $rewardDetails = Redemption::where('couponCode',$redemptionCode)->first();
+        $newTotal = $cart->totalPrice + ($rewardDetails->discountAmount/100)*$priceBeforeDiscount;
+        $cart->totalPrice = $newTotal;
+        Session::put('cart', $cart);
+        session()->forget('redemptionCode');
+
+        return back()->with('success_message', 'Coupon has been removed.');
+    }
 }

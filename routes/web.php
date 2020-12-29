@@ -64,9 +64,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/remove/{id}', 'App\Http\Controllers\CartController@removeItem')->name('cart.remove');
 
         Route::get('/qrcode', 'App\Http\Controllers\CartController@generateQRCode')->name('cart.qrcode');
-        Route::match(['get', 'post'], '/payment', 'App\Http\Controllers\CartController@getChange')->name('cart.payment');
-        Route::match(['get', 'post'], '/validate', 'App\Http\Controllers\CartController@validateCode')->name('cart.validate');
         Route::get('/receipt/{id}', 'App\Http\Controllers\CartController@getReceipt')->name('cart.receipt');
+        Route::match(['get', 'post'], '/payment', 'App\Http\Controllers\CartController@getChange')->name('cart.payment');
+        Route::match(['get', 'post'], '/coupon', 'App\Http\Controllers\CartController@validateCode')->name('coupon.validate');
+        Route::delete('/coupon','App\Http\Controllers\CartController@destroyCode')->name('coupon.destroy');
     });
 
     Route::middleware(['admin'])->group(function () {

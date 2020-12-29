@@ -51,7 +51,8 @@
                                 <a href="{{ route('cart.qrcode') }}" class="btn btn-primary text-center" role="button">Generate QR Code</a>
                     </div>
 
-                    <form action="{{ route('cart.validate') }}" method="POST" enctype="multipart/form-data" class="form-inline">
+                    @if(!session()->has('redemptionCode'))
+                    <form action="{{ route('coupon.validate') }}" method="POST" enctype="multipart/form-data" class="form-inline">
                         @csrf
                         <div class="form-group row">
                             <label for="redemptionCode" class="col-form-label mr-2"><h4><strong>Voucher Code :</strong></h4></label>
@@ -62,18 +63,31 @@
                                     name="redemptionCode"
                                     value="{{  Session::get('redemptionCode') }}"
                                     required>
-                            <button type="submit" class="btn btn-primary ml-2">Redeem</button>
+                            <button type="submit" class="btn btn-primary mb-2">Redeem</button>
+
 
                         </div>
                     </form>
-
-
-                    <div class="form-group row">
+                    @endif
 
                         @error('redemptionCode')
                         <strong>{{ $message }}</strong>
                         @enderror
+
+
+                    @if(session()->has('redemptionCode'))
+                    <div class="form-group row d-flex justify-content-start align-items-center ">
+                        <h4 class="mt-2"><strong>Discount Applied : {{ Session::get('redemptionCode') }}</strong></h4>
+                        <h4 class ="mt-2 ml-2">(-{{  Session::get('rewardDetails')["discountAmount"] ?? null }}%)</h4>
+
+                    <form action="{{ route('coupon.destroy') }}" method="POST" class="form-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-primary ml-2">Remove</button>
+
+                    </form>
                     </div>
+                    @endif
 
 
                     <form action="{{ route('cart.payment') }}" method="POST" enctype="multipart/form-data" class="form-inline">
