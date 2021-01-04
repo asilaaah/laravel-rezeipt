@@ -78,10 +78,11 @@ class CartController extends Controller
         return view('cart.cart', ['products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
 
-    public function reduceByOne($id) {
+    public function reduceItem($id){
+        $qty = request()->get('qty');
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->reduceByOne($id);
+        $cart->reduce($id,$qty);
 
         if (count($cart->items) > 0) {
             Session::put('cart', $cart);
@@ -91,19 +92,6 @@ class CartController extends Controller
         return redirect()->route('cart.cart');
     }
 
-    public function removeItem($id) {
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart = new Cart($oldCart);
-        $cart->removeItem($id);
-
-        if (count($cart->items) > 0) {
-            Session::put('cart', $cart);
-        } else {
-            Session::forget('cart');
-        }
-
-        return redirect()->route('cart.cart');
-    }
 
     public function generateQRCode()
     {

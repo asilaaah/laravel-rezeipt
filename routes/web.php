@@ -60,8 +60,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/product-list', 'App\Http\Controllers\CartController@productList')->name('cart.product-list');
         Route::post('/add-to-cart/{id}', 'App\Http\Controllers\CartController@addToCart')->name('cart.addToCart');
         Route::get('/cart', 'App\Http\Controllers\CartController@cart')->name('cart.cart');
-        Route::get('/reduce/{id}', 'App\Http\Controllers\CartController@reduceByOne')->name('cart.reduceByOne');
-        Route::get('/remove/{id}', 'App\Http\Controllers\CartController@removeItem')->name('cart.remove');
+        Route::match(['get', 'post'],'/remove/{id}', 'App\Http\Controllers\CartController@reduceItem')->name('cart.remove');
 
         Route::get('/qrcode', 'App\Http\Controllers\CartController@generateQRCode')->name('cart.qrcode');
         Route::get('/receipt/{id}', 'App\Http\Controllers\CartController@getReceipt')->name('cart.receipt');

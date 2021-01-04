@@ -21,10 +21,9 @@
                             <th>Quantity</th>
                             <th>Price (RM)</th>
                             <th>Subtotal (RM)</th>
-                            <th></th>
+                            <th>Action</th>
                         </tr>
                         </thead>
-                        <tbody>
                         @foreach($products as $id => $product)
                             <tr class="text-center">
                                 <td>{{$id}}</td>
@@ -32,18 +31,15 @@
                                 <td>{{ $product['qty'] }}</td>
                                 <td>{{ number_format( $product['item']['price'] , 2, '.', ',') }}</td>
                                 <td>{{ number_format( $product['price'] , 2, '.', ',') }}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action<span class="caret"></span></button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="{{ route('cart.reduceByOne', ['id' => $product['item']['id']]) }}">Reduce by 1</a></li>
-                                                <li><a href="{{ route('cart.remove', ['id' => $product['item']['id']]) }}">Reduce All</a></li>
-                                            </ul>
-                                    </div>
+                                <td class="d-flex justify-content-center">
+                                    <form method="POST" action="{{ route('cart.remove', ['id' => $product['item']['id']]) }}" class="form-inline">
+                                        @csrf
+                                        <input name="qty" id="qty" type="number" value="1" min="1" data-bind="value:qty" class="form-control mr-sm-2 text-center" />
+                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
-                        </tbody>
                     </table>
 
                     <div class="form-group row d-flex justify-content-between align-items-center">
