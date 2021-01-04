@@ -19,6 +19,8 @@ class CreateSalesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->text('cart');
+            $table->unsignedBigInteger('customerId')->nullable();
+            $table->index('customerId');
         });
     }
 
