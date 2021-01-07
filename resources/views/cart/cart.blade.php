@@ -85,7 +85,7 @@
                     </div>
                     @endif
 
-
+                    @if(!session()->has('paidAmount'))
                     <form action="{{ route('cart.payment') }}" method="POST" enctype="multipart/form-data" class="form-inline">
                         @csrf
                         <div class="form-group row">
@@ -100,10 +100,19 @@
                             <button type="submit" class="btn btn-primary mb-2">Calculate Change</button>
                         </div>
                     </form>
+                    @endif
 
-                    <div class="form-group row">
-                        <h4><strong>Change : RM {{ number_format( session()->get('change') , 2, '.', ',') }} </strong></h4>
+                    @if(session()->has('paidAmount'))
+                    <div class="form-group row d-flex justify-content-start align-items-center ">
+                        <h4 class="mt-1"><strong>Change : RM {{ number_format( session()->get('change') , 2, '.', ',') }} </strong></h4>
+                        <form action="{{ route('change.destroy') }}" method="POST" class="form-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-primary ml-2">Change</button>
+
+                        </form>
                     </div>
+                    @endif
 
                 @else
                     <h5>No items in cart</h5>

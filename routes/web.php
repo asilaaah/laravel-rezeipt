@@ -67,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
         Route::match(['get', 'post'], '/payment', 'App\Http\Controllers\CartController@getChange')->name('cart.payment');
         Route::match(['get', 'post'], '/coupon', 'App\Http\Controllers\CartController@validateCode')->name('coupon.validate');
         Route::delete('/coupon','App\Http\Controllers\CartController@destroyCode')->name('coupon.destroy');
+        Route::delete('/payment','App\Http\Controllers\CartController@destroyChange')->name('change.destroy');
     });
 
     Route::middleware(['admin'])->group(function () {

@@ -219,4 +219,14 @@ class CartController extends Controller
 
         return back()->with('success_message', 'Coupon has been removed.');
     }
+
+    public function destroyChange(Request $request)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+
+        $request->session()->forget('paidAmount');
+
+        return back();
+    }
 }
