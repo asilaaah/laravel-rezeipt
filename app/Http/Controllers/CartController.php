@@ -27,7 +27,6 @@ class CartController extends Controller
     {
         $user = FacadesAuth::user();
 
-
         if (request()->category)
         {
             $products = Product::with('category')->whereHas('category', function ($query) {
@@ -96,7 +95,9 @@ class CartController extends Controller
     public function generateQRCode()
     {
         //insert function to generate qr code and save sales order
-
+        if(!session()->has('paidAmount')){
+            return redirect()->route('cart.cart')->with('error','Enter paid amount!');
+        }
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
 
@@ -141,6 +142,7 @@ class CartController extends Controller
         $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change','rewardDetails'));
         session()->forget('redemptionCode');
         session()->forget('paidAmount');
+        session()->forget('change');
         return $pdf->stream();
     }
 }

@@ -4,6 +4,15 @@
 
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-10 margin-tb">
+                @if ($message = Session::get('error'))
+                <div class="alert alert-danger alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+                </div>
+                @endif
+            </div>
+
             <div class="col-md-10">
                 <div class="card">
 
@@ -11,6 +20,7 @@
                        <h4>Your cart</h4>
                     <a href="/product-list" class="btn btn-primary" role="button">Back</a>
             </div>
+
         <div class="card-body mx-2">
                 @if(Session::has('cart'))
                     <table class="table table-hover">
