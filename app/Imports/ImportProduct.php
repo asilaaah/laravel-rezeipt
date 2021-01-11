@@ -28,7 +28,7 @@ class ImportProduct implements ToModel
             'quantity' => $row[3],
             'minimum_quantity' => $row[4],
             'category_id' => Category::where('name', $row[5])->first()->id,
-            'store_id' => $user->store_id,
+            'storeId' => $user->storeId,
         ]);
     }
 
