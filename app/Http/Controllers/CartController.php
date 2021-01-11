@@ -125,6 +125,7 @@ class CartController extends Controller
 
     public function getReceipt(Request $request, $id)
     {
+        $priceBeforeDiscount = Session::get('priceBeforeDiscount');
         $user = FacadesAuth::user();
         $receipt = FacadesAuth::user()->sales;
         $receipt->transform(function ($sales, $key) {
@@ -139,7 +140,7 @@ class CartController extends Controller
             $paid = $request->session()->get('paidAmount');
             $change = $paid - $newreceipt->cart->totalPrice;
 
-        $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change','rewardDetails'));
+        $pdf = PDF::loadView('cart.receipt', compact('newreceipt', 'store', 'paid', 'change','rewardDetails','priceBeforeDiscount'));
         session()->forget('redemptionCode');
         session()->forget('paidAmount');
         session()->forget('change');

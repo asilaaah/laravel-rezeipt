@@ -59,16 +59,16 @@
                             <td>{{ number_format( $item['item']['price'] , 2, '.', ',') }}</td>
                             <td>{{ number_format( $item['price'] , 2, '.', ',') }}</td>
                         </tr>
-
+                @endforeach
 
 
             @if(session()->has('redemptionCode'))
             <tr>
                 <td colspan="4" style="text-align: right;">Redemption Code: {{ $rewardDetails->couponCode }} (-{{ $rewardDetails->discountAmount }}%)</td>
-                <td>- {{ number_format((($rewardDetails->discountAmount)/100)*($item['price']),2,'.',',') }}</td>
+                <td>- {{ number_format((($rewardDetails->discountAmount)/100)*($priceBeforeDiscount),2,'.',',') }}</td>
             </tr>
             @endif
-            @endforeach
+
             <tr>
                 <td colspan="4" style="text-align: right;">Total Price (RM)</td>
                 <td>{{ number_format( $newreceipt->cart->totalPrice , 2, '.', ',') }}</td>
