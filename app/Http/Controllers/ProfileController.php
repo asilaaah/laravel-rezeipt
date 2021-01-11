@@ -45,7 +45,7 @@ class ProfileController extends Controller
             'phone_number' => '',
             'address' => '',
             'birthday' => 'nullable|olderThan:18',
-            'profile_photo' => 'image|mimes:jpg,png'
+            'profile_photo' => 'image'
         ]);
 
         if (request('profile_photo')){
