@@ -56,6 +56,7 @@ class CategoryController extends Controller
 
     public function update(Category $category, Request $request)
     {
+        $user= Auth::user();
         $data = $request->all();
         if (Category::where('name', $request->name)->where('storeId',$user->storeId)->first()) {
             return redirect('/category/index')->with('error','Category already exist! ');
