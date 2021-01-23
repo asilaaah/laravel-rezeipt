@@ -49,7 +49,10 @@
                     <label for="price" class="col-md-4 col-form-label">Price</label>
 
                     <input id="price"
-                           type="text"
+                           min="1"
+                           step="0.01"
+                           data-bind="value:price"
+                           type="number"
                            class="form-control @error('price') is-invalid @enderror"
                            name="price"
                            value="{{ old('price') ?? $product->price }}"
@@ -65,7 +68,9 @@
                     <label for="quantity" class="col-md-4 col-form-label">Quantity</label>
 
                     <input id="quantity"
-                           type="text"
+                           min="1"
+                           data-bind="value:quantity"
+                           type="number"
                            class="form-control @error('quantity') is-invalid @enderror"
                            name="quantity"
                            value="{{ old('quantity') ?? $product->quantity }}"
@@ -81,7 +86,9 @@
                     <label for="minimum_quantity" class="col-md-4 col-form-label">Minimum Quantity</label>
 
                     <input id="minimum_quantity"
-                           type="text"
+                           min="1"
+                           data-bind="value:minimum_quantity"
+                           type="number"
                            class="form-control @error('minimum_quantity') is-invalid @enderror"
                            name="minimum_quantity"
                            value="{{ old('minimum_quantity') ?? $product->minimum_quantity }}"
