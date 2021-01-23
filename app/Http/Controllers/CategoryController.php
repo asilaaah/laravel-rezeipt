@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -22,13 +23,18 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $user= Auth::user();
         $data = $request->all();
-        if (Category::where('name', $request->name)->first()) {
+        if (Category::where('name', $request->name)->where('storeId',$user->storeId)->first()) {
             return redirect('/category/index')->with('error','Category already exist! ');
         }
         else{
-        $category = new Category($data);
-        $category->save();
+            $storeArray = ['storeId' => $user->storeId];
+
+            Category::create(array_merge(
+                $data,
+                $storeArray
+            ));
 
         return redirect('/category/index')->with('success','New category added successfully');
         }
@@ -37,7 +43,8 @@ class CategoryController extends Controller
 
         public function index()
     {
-        $categories = Category::all();
+        $user= Auth::user();
+        $categories = Category::where('storeId',$user->storeId)->get();
 
         return view('category.index', compact('categories'));
     }
@@ -50,7 +57,7 @@ class CategoryController extends Controller
     public function update(Category $category, Request $request)
     {
         $data = $request->all();
-        if (Category::where('name', $request->name)->first()) {
+        if (Category::where('name', $request->name)->where('storeId',$user->storeId)->first()) {
             return redirect('/category/index')->with('error','Category already exist! ');
         }
         else{

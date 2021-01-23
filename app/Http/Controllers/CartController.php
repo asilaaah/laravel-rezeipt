@@ -32,11 +32,11 @@ class CartController extends Controller
             $products = Product::with('category')->whereHas('category', function ($query) {
                 $query->where('name', request()->category);
             })->where('quantity', '>', 0)->where('storeId',$user->storeId)->get();
-            $categories = Category::all();
+            $categories = Category::where('storeId',$user->storeId)->get();
         }
         else {
             $products = Product::where('quantity', '>', 0)->where('storeId',$user->storeId)->get();
-            $categories = Category::all();
+            $categories = Category::where('storeId',$user->storeId)->get();
         }
 
         return view('cart.product-list', compact('products', 'user', 'categories'));

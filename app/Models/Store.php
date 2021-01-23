@@ -29,4 +29,9 @@ class Store extends Model
     {
         return $this->hasMany(Redemption::class);
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
