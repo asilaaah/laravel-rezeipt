@@ -16,7 +16,7 @@ class Product extends Model
         'category_id','image','user_id','name','description','price','quantity','minimum_quantity','storeId'
     ];
 
-    public $sortable = ['id','category_id','name','description','price', 'quality'];
+    public $sortable = ['id','category_id','name','description','price', 'quantity'];
 
     public function user()
     {

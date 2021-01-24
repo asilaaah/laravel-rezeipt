@@ -30,7 +30,7 @@
                         <th scope="col">@sortablelink('points','Points')</th>
                         <th scope="col">@sortablelink('discountUnit','Discount Unit')</th>
                         <th scope="col">@sortablelink('expirationDate','Expiration Date')</th>
-                        <th scope="col" class="text-primary">Coupon Code</th>
+                        <th scope="col" class="text-primary">@sortablelink('couponCode','Coupon Code')</th>
                         <th scope="col" class="text-primary">Action</th>
                     </tr>
                     </thead>

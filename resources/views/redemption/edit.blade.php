@@ -43,6 +43,7 @@
 
                         <input id="points"
                                type="number"
+                               min=1
                                class="form-control @error('points') is-invalid @enderror"
                                name="points"
                                value="{{ old('points') ?? $redemption->points }}"
@@ -59,6 +60,8 @@
 
                         <input id="discountAmount"
                                type="number"
+                               min=1
+                               max=100
                                class="form-control @error('discountAmount') is-invalid @enderror"
                                name="discountAmount"
                                value="{{ old('discountAmount') ?? $redemption->discountAmount}}"
@@ -75,6 +78,7 @@
 
                         <input id="discountUnit"
                                type="number"
+                               min=1
                                class="form-control @error('discountUnit') is-invalid @enderror"
                                name="discountUnit"
                                value="{{ old('discountUnit') ?? $redemption->discountUnit }}"

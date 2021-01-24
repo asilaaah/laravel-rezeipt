@@ -18,7 +18,7 @@ class Redemption extends Model
         'storeId','name','description','points','discountAmount','expirationDate','discountUnit','couponCode'
     ];
 
-    public $sortable = ['name','description','points','discountAmount','expirationDate','discountUnit'];
+    public $sortable = ['name','description','points','discountAmount','expirationDate','discountUnit','couponCode'];
 
     public function store()
     {

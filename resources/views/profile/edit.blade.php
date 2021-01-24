@@ -62,13 +62,13 @@
                                 <input id="name"
                                 type="text"
                                 class="form-control @error('name') is-invalid @enderror"
-                                name="phone_number"
+                                name="name"
                                 value="{{ old('name') ?? $user->name }}"
                                 autocomplete="name"
                                 required
                                 autofocus>
 
-                            @error('phone_number')
+                            @error('name')
                             <strong>{{ $message }}</strong>
                             @enderror
                             </div>

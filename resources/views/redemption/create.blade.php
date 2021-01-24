@@ -47,9 +47,10 @@
 
                         <input id="points"
                                type="number"
+                               min=1
+                               value=1
                                class="form-control @error('points') is-invalid @enderror"
                                name="points"
-                               value="{{ old('points') }}"
                                required autocomplete="points"
                                autofocus>
 
@@ -63,9 +64,11 @@
 
                         <input id="discountAmount"
                                type="number"
+                               min=1
+                               value=1
+                               max=100
                                class="form-control @error('discountAmount') is-invalid @enderror"
                                name="discountAmount"
-                               value="{{ old('discountAmount') }}"
                                required autocomplete="discountAmount"
                                autofocus>
 
@@ -79,9 +82,10 @@
 
                         <input id="discountUnit"
                                type="number"
+                               min=1
+                               value=1
                                class="form-control @error('discountUnit') is-invalid @enderror"
                                name="discountUnit"
-                               value="{{ old('discountUnit') }}"
                                required autocomplete="discountUnit"
                                autofocus>
 

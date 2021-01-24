@@ -21,7 +21,7 @@
                                 <th>@sortablelink('role','Role')</th>
                                 <th>@sortablelink('email','Email')</th>
                                 <th>@sortablelink('created_at','Registered at')</th>
-                                <th>@sortablelink('store_id', 'Store ID')</th>
+                                <th>@sortablelink('storeId', 'Store ID')</th>
                                 <th class="text-primary">Action</th>
                             </tr>
                             @forelse ($users as $user)
@@ -34,7 +34,7 @@
                                      @endif</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
-                                    <td>{{ $user->storeId}}</td>
+                                    <td>{{ $user->storeId ?? NULL }}</td>
                                     <td><a href="{{ route('admin.users.approve', $user->id) }}"
                                            class="btn btn-primary btn-sm">Approve</a></td>
                                 </tr>
