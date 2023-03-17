@@ -43,6 +43,12 @@ $app->singleton(
 
 $app->singleton(\Barryvdh\DomPDF\ServiceProvider::class);
 
+# new storage path
+# base_path() -> returns root path
+$path_storage = "/tmp";
+
+# override already $app->storagePath using the function
+$app->useStoragePath($path_storage);
 
 /*
 |--------------------------------------------------------------------------

@@ -21,7 +21,7 @@ class Profile extends Model
 
     public function profileImage()
     {
-        $imagePath = ($this->profile_photo) ? $this->profile_photo : 'profile/No-Photo-Available.jpg';
-        return '/storage/' . $imagePath;
+        $imagePath = ($this->profile_photo) ? $this->profile_photo : 'No-Photo-Available.jpg';
+        return '/png/' . $imagePath;
     }
 }
